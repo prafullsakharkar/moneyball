@@ -1,6 +1,5 @@
-import React from 'react';
 import { ErrorBoundary } from './ErrorBoundary';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Layout from './components/layout/Layout';
 
@@ -116,109 +115,624 @@ function NotFound() {
   );
 }
 
-function AppContent() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  return (
-    <Layout activePath={location.pathname} onNavigate={navigate}>
-      <Routes>
-        {/* ── Public ── */}
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/tournaments" element={<TournamentList />} />
-        <Route path="/tournaments/analytics" element={<TournamentAnalyticsPage />} />
-        <Route path="/teams" element={<TeamList />} />
-        <Route path="/teams/analytics" element={<TeamAnalyticsPage />} />
-        <Route path="/players" element={<PlayerList />} />
-        <Route path="/players/analytics" element={<PlayerAnalyticsPage />} />
-        <Route path="/captains" element={<CaptainDashboard />} />
-        <Route path="/captains/analytics" element={<CaptainAnalyticsPage />} />
-        <Route path="/matches" element={<MatchCenter />} />
-        <Route path="/matches/analytics" element={<MatchAnalyticsPage />} />
-        <Route path="/h2h" element={<H2HAnalytics />} />
-        <Route path="/h2h/analytics" element={<H2HAnalyticsDetailedPage />} />
-        <Route path="/awards" element={<OrangeCap />} />
-        <Route path="/awards/leaderboards" element={<AwardsLeaderboardsPage />} />
-        <Route path="/mvp" element={<MVPFantasyPage />} />
-        <Route path="/ai" element={<AIAnalytics />} />
-        <Route path="/ai/insights" element={<AIInsightsPage />} />
-        <Route path="/predictions" element={<Predictions />} />
-        <Route path="/predictions/detailed" element={<PredictionsEnhancedPage />} />
-
-        {/* Video Analysis module */}
-        <Route path="/video-analysis" element={<VideoAnalysisDashboard />} />
-        <Route path="/video-analysis/videos" element={<VideoLibrary />} />
-        <Route path="/video-analysis/match/:id" element={<MatchVideo />} />
-        <Route path="/video-analysis/clips" element={<BallClips />} />
-        <Route path="/video-analysis/tagging" element={<ShotTagging />} />
-        <Route path="/video-analysis/highlights" element={<PlayerHighlights />} />
-        <Route path="/video-analysis/ai" element={<AIHighlights />} />
-
-        {/* Training module */}
-        <Route path="/training" element={<CoachDashboard />} />
-        <Route path="/training/sessions" element={<PracticeSessions />} />
-        <Route path="/training/fitness" element={<FitnessTracking />} />
-        <Route path="/training/attendance" element={<Attendance />} />
-        <Route path="/training/performance" element={<PerformanceTracking />} />
-        {/* Academy */}
-        <Route path="/academy" element={<AcademyDashboard />} />
-        <Route path="/academy/students" element={<Students />} />
-        <Route path="/academy/batches" element={<Batches />} />
-        <Route path="/academy/curriculum" element={<Curriculum />} />
-        <Route path="/academy/progress" element={<StudentProgress />} />
-        {/* Auction */}
-        <Route path="/auction" element={<AuctionDashboard />} />
-        <Route path="/auction/room" element={<AuctionRoom />} />
-        <Route path="/auction/players" element={<PlayerPool />} />
-        <Route path="/auction/budget" element={<BudgetTracker />} />
-
-        {/* ── Admin ── */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
-        <Route path="/admin/portal" element={<AdminPortal />} />
-        <Route path="/admin/live-dashboard" element={<LiveDashboard />} />
-        <Route path="/admin/tournaments" element={<TournamentManagement />} />
-        <Route path="/admin/tournaments/:id" element={<TournamentDetail />} />
-        <Route path="/admin/teams" element={<TeamManagement />} />
-        <Route path="/admin/players" element={<PlayerManagement />} />
-        <Route path="/admin/squads" element={<SquadManagement />} />
-        <Route path="/admin/venues" element={<VenueManagement />} />
-        <Route path="/admin/organizers" element={<OrganizerManagement />} />
-        <Route path="/admin/matches" element={<MatchManagement />} />
-        <Route path="/admin/officials" element={<MatchOfficials />} />
-        <Route path="/admin/scoring" element={<LiveScoring />} />
-        <Route path="/admin/ball-by-ball" element={<BallByBallScoring />} />
-        <Route path="/admin/scorecards" element={<ScorecardManagement />} />
-        <Route path="/admin/streaming" element={<StreamingDetails />} />
-        <Route path="/admin/insights" element={<Insights />} />
-        <Route path="/admin/player-analytics" element={<PlayerAnalyticsDashboard />} />
-        <Route path="/admin/team-analytics" element={<TeamAnalyticsDashboard />} />
-        <Route path="/admin/match-analytics/:id?" element={<MatchAnalyticsDashboard />} />
-        <Route path="/admin/tournament-dashboard" element={<TournamentAnalyticsDashboard />} />
-        <Route path="/admin/batter-insights" element={<BatterInsights />} />
-        <Route path="/admin/bowler-insights" element={<BowlerInsights />} />
-        <Route path="/admin/mvp-analytics" element={<MVPAnalytics />} />
-        <Route path="/admin/captain-analytics" element={<CaptainAnalyticsDashboard />} />
-        <Route path="/admin/venue-analytics" element={<VenueAnalyticsDashboard />} />
-        <Route path="/admin/moneyball" element={<MoneyballAnalytics />} />
-        <Route path="/admin/leaderboards" element={<LeaderboardManagement />} />
-        <Route path="/admin/reports" element={<Reports />} />
-        <Route path="/admin/import" element={<ImportCenter />} />
-        <Route path="/admin/users" element={<UserManagement />} />
-        <Route path="/admin/audit" element={<AuditLogs />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
-  );
+function AppLayout({ children }: { children: React.ReactNode }) {
+  // Layout component will handle navigation internally
+  return <>{children}</>;
 }
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <AppLayout>
+        <Dashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/tournaments',
+    element: (
+      <AppLayout>
+        <TournamentList />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/tournaments/analytics',
+    element: (
+      <AppLayout>
+        <TournamentAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/teams',
+    element: (
+      <AppLayout>
+        <TeamList />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/teams/analytics',
+    element: (
+      <AppLayout>
+        <TeamAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/players',
+    element: (
+      <AppLayout>
+        <PlayerList />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/players/analytics',
+    element: (
+      <AppLayout>
+        <PlayerAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/captains',
+    element: (
+      <AppLayout>
+        <CaptainDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/captains/analytics',
+    element: (
+      <AppLayout>
+        <CaptainAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/matches',
+    element: (
+      <AppLayout>
+        <MatchCenter />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/matches/analytics',
+    element: (
+      <AppLayout>
+        <MatchAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/h2h',
+    element: (
+      <AppLayout>
+        <H2HAnalytics />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/h2h/analytics',
+    element: (
+      <AppLayout>
+        <H2HAnalyticsDetailedPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/awards',
+    element: (
+      <AppLayout>
+        <OrangeCap />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/awards/leaderboards',
+    element: (
+      <AppLayout>
+        <AwardsLeaderboardsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/mvp',
+    element: (
+      <AppLayout>
+        <MVPFantasyPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/ai',
+    element: (
+      <AppLayout>
+        <AIAnalytics />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/ai/insights',
+    element: (
+      <AppLayout>
+        <AIInsightsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/predictions',
+    element: (
+      <AppLayout>
+        <Predictions />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/predictions/detailed',
+    element: (
+      <AppLayout>
+        <PredictionsEnhancedPage />
+      </AppLayout>
+    ),
+  },
+  // Video Analysis module
+  {
+    path: '/video-analysis',
+    element: (
+      <AppLayout>
+        <VideoAnalysisDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/videos',
+    element: (
+      <AppLayout>
+        <VideoLibrary />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/match/:id',
+    element: (
+      <AppLayout>
+        <MatchVideo />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/clips',
+    element: (
+      <AppLayout>
+        <BallClips />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/tagging',
+    element: (
+      <AppLayout>
+        <ShotTagging />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/highlights',
+    element: (
+      <AppLayout>
+        <PlayerHighlights />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/video-analysis/ai',
+    element: (
+      <AppLayout>
+        <AIHighlights />
+      </AppLayout>
+    ),
+  },
+  // Training module
+  {
+    path: '/training',
+    element: (
+      <AppLayout>
+        <CoachDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/training/sessions',
+    element: (
+      <AppLayout>
+        <PracticeSessions />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/training/fitness',
+    element: (
+      <AppLayout>
+        <FitnessTracking />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/training/attendance',
+    element: (
+      <AppLayout>
+        <Attendance />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/training/performance',
+    element: (
+      <AppLayout>
+        <PerformanceTracking />
+      </AppLayout>
+    ),
+  },
+  // Academy
+  {
+    path: '/academy',
+    element: (
+      <AppLayout>
+        <AcademyDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/academy/students',
+    element: (
+      <AppLayout>
+        <Students />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/academy/batches',
+    element: (
+      <AppLayout>
+        <Batches />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/academy/curriculum',
+    element: (
+      <AppLayout>
+        <Curriculum />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/academy/progress',
+    element: (
+      <AppLayout>
+        <StudentProgress />
+      </AppLayout>
+    ),
+  },
+  // Auction
+  {
+    path: '/auction',
+    element: (
+      <AppLayout>
+        <AuctionDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/auction/room',
+    element: (
+      <AppLayout>
+        <AuctionRoom />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/auction/players',
+    element: (
+      <AppLayout>
+        <PlayerPool />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/auction/budget',
+    element: (
+      <AppLayout>
+        <BudgetTracker />
+      </AppLayout>
+    ),
+  },
+  // Admin
+  {
+    path: '/admin',
+    element: (
+      <AppLayout>
+        <AdminDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/analytics',
+    element: (
+      <AppLayout>
+        <AdminAnalyticsPage />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/portal',
+    element: (
+      <AppLayout>
+        <AdminPortal />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/live-dashboard',
+    element: (
+      <AppLayout>
+        <LiveDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/tournaments',
+    element: (
+      <AppLayout>
+        <TournamentManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/tournaments/:id',
+    element: (
+      <AppLayout>
+        <TournamentDetail />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/teams',
+    element: (
+      <AppLayout>
+        <TeamManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/players',
+    element: (
+      <AppLayout>
+        <PlayerManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/squads',
+    element: (
+      <AppLayout>
+        <SquadManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/venues',
+    element: (
+      <AppLayout>
+        <VenueManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/organizers',
+    element: (
+      <AppLayout>
+        <OrganizerManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/matches',
+    element: (
+      <AppLayout>
+        <MatchManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/officials',
+    element: (
+      <AppLayout>
+        <MatchOfficials />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/scoring',
+    element: (
+      <AppLayout>
+        <LiveScoring />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/ball-by-ball',
+    element: (
+      <AppLayout>
+        <BallByBallScoring />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/scorecards',
+    element: (
+      <AppLayout>
+        <ScorecardManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/streaming',
+    element: (
+      <AppLayout>
+        <StreamingDetails />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/insights',
+    element: (
+      <AppLayout>
+        <Insights />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/player-analytics',
+    element: (
+      <AppLayout>
+        <PlayerAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/team-analytics',
+    element: (
+      <AppLayout>
+        <TeamAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/match-analytics/:id?',
+    element: (
+      <AppLayout>
+        <MatchAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/tournament-dashboard',
+    element: (
+      <AppLayout>
+        <TournamentAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/batter-insights',
+    element: (
+      <AppLayout>
+        <BatterInsights />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/bowler-insights',
+    element: (
+      <AppLayout>
+        <BowlerInsights />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/mvp-analytics',
+    element: (
+      <AppLayout>
+        <MVPAnalytics />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/captain-analytics',
+    element: (
+      <AppLayout>
+        <CaptainAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/venue-analytics',
+    element: (
+      <AppLayout>
+        <VenueAnalyticsDashboard />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/moneyball',
+    element: (
+      <AppLayout>
+        <MoneyballAnalytics />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/leaderboards',
+    element: (
+      <AppLayout>
+        <LeaderboardManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/reports',
+    element: (
+      <AppLayout>
+        <Reports />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/import',
+    element: (
+      <AppLayout>
+        <ImportCenter />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/users',
+    element: (
+      <AppLayout>
+        <UserManagement />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/admin/audit',
+    element: (
+      <AppLayout>
+        <AuditLogs />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <AppLayout>
+        <NotFound />
+      </AppLayout>
+    ),
+  },
+]);
 
 function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </QueryClientProvider>
     </ErrorBoundary>
   );

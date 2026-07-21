@@ -1,6 +1,13 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import * as highchartsMoreModule from 'highcharts/highcharts-more';
+import * as solidGaugeModule from 'highcharts/modules/solid-gauge';
+
+// Extend Highcharts with more module and solid-gauge
+(highchartsMoreModule as any)(Highcharts);
+(solidGaugeModule as any)(Highcharts);
+
 import { chartColors } from '../../lib/mock-data';
 
 interface ChartProps {
@@ -320,31 +327,77 @@ interface GaugeChartProps {
   value: number;
   title?: string;
   height?: number;
+  yAxisMax?: number;
 }
 
-export function GaugeChart({ value, title, height = 200 }: GaugeChartProps) {
-  const normalizedValue = Math.max(0, Math.min(100, value));
-  const color = normalizedValue < 30
+export function GaugeChart({ value, title, height = 200, yAxisMax = 100 }: GaugeChartProps) {
+  const normalizedValue = Math.max(0, Math.min(yAxisMax, value));
+  const color = normalizedValue < (yAxisMax * 0.3)
     ? chartColors.error
-    : normalizedValue < 60
+    : normalizedValue < (yAxisMax * 0.6)
       ? chartColors.warning
       : chartColors.success;
 
-  return (
-    <div className="flex flex-col items-center justify-center" style={{ height }}>
-      {title && <p className="mb-3 text-sm font-medium text-slate-500 dark:text-slate-400">{title}</p>}
-      <div
-        className="relative h-32 w-32 rounded-full"
-        style={{
-          background: `conic-gradient(${color} ${normalizedValue * 3.6}deg, #e2e8f0 0deg)`,
-        }}
-      >
-        <div className="absolute inset-4 flex items-center justify-center rounded-full bg-white dark:bg-slate-900">
-          <span className="text-2xl font-bold text-slate-900 dark:text-white">{Math.round(normalizedValue)}%</span>
-        </div>
-      </div>
-    </div>
-  );
+  const options: Highcharts.Options = {
+    chart: {
+      type: 'solidgauge',
+      height,
+      backgroundColor: 'transparent',
+      style: { fontFamily: 'Inter, sans-serif' },
+    },
+    title: { text: title || '', style: { display: 'none' } },
+    pane: {
+      startAngle: -90,
+      endAngle: 90,
+      background: [{
+        backgroundColor: '#e2e8f0',
+        borderWidth: 0,
+        outerRadius: '100%',
+      }, {
+        backgroundColor: color,
+        borderWidth: 0,
+        outerRadius: `${(normalizedValue / yAxisMax) * 100}%`,
+      }, {
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        innerRadius: '70%',
+        outerRadius: '100%',
+      }],
+    },
+    yAxis: {
+      min: 0,
+      max: yAxisMax,
+      tickWidth: 0,
+      lineWidth: 0,
+      labels: { enabled: false },
+      plotBands: [{
+        from: 0,
+        to: yAxisMax * 0.3,
+        color: chartColors.error,
+        borderWidth: 0,
+      }, {
+        from: yAxisMax * 0.3,
+        to: yAxisMax * 0.6,
+        color: chartColors.warning,
+        borderWidth: 0,
+      }, {
+        from: yAxisMax * 0.6,
+        to: yAxisMax,
+        color: chartColors.success,
+        borderWidth: 0,
+      }],
+    },
+    series: [{
+      type: 'solidgauge',
+      data: [normalizedValue],
+      dataLabels: {
+        enabled: false,
+      },
+    }],
+    credits: { enabled: false },
+  };
+
+  return <HighchartsReact highcharts={Highcharts} options={options} />;
 }
 
 export { chartColors };
