@@ -1,3 +1,4 @@
+import React from 'react';
 import { ErrorBoundary } from './ErrorBoundary';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -5,6 +6,7 @@ import Layout from './components/layout/Layout';
 
 // Public pages
 import Dashboard from './pages/Dashboard';
+import Welcome from './pages/Welcome';
 import TournamentList from './pages/Tournaments';
 import TournamentAnalyticsPage from './pages/TournamentAnalytics';
 import TeamList from './pages/Teams';
@@ -116,13 +118,31 @@ function NotFound() {
 }
 
 function AppLayout({ children }: { children: React.ReactNode }) {
-  // Layout component will handle navigation internally
-  return <>{children}</>;
+  const [activePath, setActivePath] = React.useState(window.location.pathname);
+
+  const handleNavigate = React.useCallback((path: string) => {
+    setActivePath(path);
+    window.location.href = path;
+  }, []);
+
+  return (
+    <Layout activePath={activePath} onNavigate={handleNavigate}>
+      {children}
+    </Layout>
+  );
 }
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: (
+      <AppLayout>
+        <Welcome />
+      </AppLayout>
+    ),
+  },
+  {
+    path: '/dashboard',
     element: (
       <AppLayout>
         <Dashboard />
