@@ -28,6 +28,21 @@ import AIInsightsPage from '../pages/AIInsights';
 import Predictions from '../pages/Predictions';
 import PredictionsEnhancedPage from '../pages/PredictionsEnhanced';
 
+// Fantasy module
+import { FantasyAnalytics } from '../features/fantasy';
+
+// Notifications module
+import { Notifications } from '../features/notifications';
+
+// Sponsorship module
+import { Sponsorship } from '../features/sponsorship';
+
+// Monetization module
+import { Monetization } from '../features/monetization';
+
+// Reports page (root level)
+import ReportsPage from '../pages/Reports';
+
 // Video Analysis module (moved to features)
 import {
   VideoAnalysisDashboard,
@@ -306,6 +321,51 @@ export const router = createBrowserRouter([
     element: (
       <AppLayout>
         <PredictionsEnhancedPage />
+      </AppLayout>
+    ),
+  },
+  // Fantasy module
+  {
+    path: '/fantasy/analytics',
+    element: (
+      <AppLayout>
+        <FantasyAnalytics />
+      </AppLayout>
+    ),
+  },
+  // Notifications module
+  {
+    path: '/notifications',
+    element: (
+      <AppLayout>
+        <Notifications />
+      </AppLayout>
+    ),
+  },
+  // Sponsorship module
+  {
+    path: '/sponsorship',
+    element: (
+      <AppLayout>
+        <Sponsorship />
+      </AppLayout>
+    ),
+  },
+  // Monetization module
+  {
+    path: '/monetization',
+    element: (
+      <AppLayout>
+        <Monetization />
+      </AppLayout>
+    ),
+  },
+  // Reports (root level)
+  {
+    path: '/reports',
+    element: (
+      <AppLayout>
+        <ReportsPage />
       </AppLayout>
     ),
   },

@@ -136,8 +136,8 @@ const AUCTION: NavGroup = {
 const FANTASY: NavGroup = {
   id: 'fantasy', label: 'Fantasy', icon: Zap,
   children: [
-    { id: 'fantasy-main', label: 'Fantasy', icon: Zap, path: '/mvp' },
-    { id: 'fantasy-analytics', label: 'Fantasy Analytics', icon: BarChart3, path: '/mvp/analytics' },
+    { id: 'fantasy-main', label: 'Fantasy', icon: Zap, path: '/fantasy/analytics' },
+    { id: 'fantasy-analytics', label: 'Fantasy Analytics', icon: BarChart3, path: '/fantasy/analytics' },
   ],
 };
 

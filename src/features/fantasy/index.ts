@@ -1,0 +1,1 @@
+export { FantasyAnalytics } from './pages';

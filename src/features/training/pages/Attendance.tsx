@@ -6,7 +6,8 @@ import {
 } from 'lucide-react';
 import { GlassCard, KPIWidget } from '../../../components/ui/GlassCard';
 import { BarChart, DonutChart } from '../../../components/ui/Charts';
-import { AttendanceBadge, statusConfig } from '../components';
+import { AttendanceBadge } from '../components';
+import { statusConfig as attendanceStatusConfig } from '../components/AttendanceBadge';
 import {
   mockAttendance,
   getAttendanceStats,
@@ -228,10 +229,10 @@ export function Attendance() {
                                 className={cn(
                                   'w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold transition-all',
                                   status === s
-                                    ? statusConfig[s].bg + ' scale-110 shadow'
+                                    ? attendanceStatusConfig[s].bg + ' scale-110 shadow'
                                     : 'bg-slate-100 dark:bg-slate-800 text-slate-300 dark:text-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700'
                                 )}
-                                title={statusConfig[s].label}
+                                title={attendanceStatusConfig[s].label}
                               >
                                 {s === 'present' ? 'P' : s === 'absent' ? 'A' : s === 'late' ? 'L' : 'E'}
                               </button>
