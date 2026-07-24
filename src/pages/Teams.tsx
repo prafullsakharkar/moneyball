@@ -3,15 +3,41 @@ import { motion } from 'framer-motion';
 import { Users, Trophy, Target, TrendingUp, ChevronRight, Search } from 'lucide-react';
 import { GlassCard, KPIWidget } from '../components/ui/GlassCard';
 import { RadarChart, AreaChart } from '../components/ui/Charts';
-import { mockTeams, teamStandings, generateChartData, chartColors } from '../lib/mock-data';
+import { useTeams, useTeam } from '../hooks/useTeams';
+import { chartColors, generateChartData } from '../lib/mock-data';
 import { cn } from '../lib/utils';
 
 export function TeamList() {
   const [search, setSearch] = React.useState('');
+  const [page, setPage] = React.useState(1);
+  const [limit] = React.useState(12);
 
-  const filteredTeams = mockTeams.filter(team =>
-    team.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const { data: teamsData, isLoading, error } = useTeams({
+    page,
+    limit,
+    search: search || '',
+  });
+
+  const filteredTeams = React.useMemo(() => {
+    if (!search) return teamsData?.data || [];
+    return (teamsData?.data || []).filter(team =>
+      team.name.toLowerCase().includes(search.toLowerCase()) ||
+      team.city.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [teamsData?.data, search]);
+
+  const totalPages = teamsData?.totalPages || 1;
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-error-600">Error loading teams</h3>
+          <p className="text-slate-500 mt-2">{error instanceof Error ? error.message : 'Please try again'}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -26,68 +52,128 @@ export function TeamList() {
             type="text"
             placeholder="Search teams..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             className="pl-10 pr-4 py-2 w-64 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {filteredTeams.map((team, index) => {
-          const standing = teamStandings.find(s => s.team_id === team.id);
-          return (
-            <motion.div
-              key={team.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-            >
-              <GlassCard hover gradient className="cursor-pointer overflow-hidden">
-                <div className="h-20 -mx-6 -mt-6 mb-4 px-6 pt-6 relative" style={{ background: `linear-gradient(135deg, ${team.primary_color}, ${team.secondary_color})` }}>
-                  <div className="absolute bottom-4 left-6 flex items-end gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur flex items-center justify-center text-white font-bold">
-                      {team.short_name}
+      {isLoading ? (
+        <div className="flex items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filteredTeams.map((team, index) => (
+              <motion.div
+                key={team.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
+                <GlassCard hover gradient className="cursor-pointer overflow-hidden">
+                  <div className="h-20 -mx-6 -mt-6 mb-4 px-6 relative" style={{ background: `linear-gradient(135deg, ${team.primary_color}, ${team.secondary_color})` }}>
+                    <div className="absolute bottom-4 left-6 flex items-end gap-3">
+                      <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur flex items-center justify-center text-white font-bold">
+                        {team.short_name}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-white">{team.name}</h3>
+                        <p className="text-sm text-white/80">{team.city}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-bold text-white">{team.name}</h3>
-                      <p className="text-sm text-white/80">{team.city}</p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-slate-200/50 dark:border-slate-700/30">
+                    <div className="text-center">
+                      <p className="text-lg font-bold text-slate-900 dark:text-white">{team.total_matches || 0}</p>
+                      <p className="text-xs text-slate-500">Matches</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-lg font-bold text-success-600">{team.total_wins || 0}</p>
+                      <p className="text-xs text-slate-500">Wins</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-lg font-bold text-primary-600">{team.win_percentage ? Math.round(team.win_percentage) : 0}%</p>
+                      <p className="text-xs text-slate-500">Win %</p>
                     </div>
                   </div>
-                </div>
 
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                    <p className="text-xs text-slate-500">Matches</p>
-                    <p className="text-lg font-bold text-slate-900 dark:text-white">{standing?.matches || 0}</p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-sm font-medium text-slate-500">Coach: {team.coach}</span>
+                    <ChevronRight className="w-5 h-5 text-slate-400" />
                   </div>
-                  <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                    <p className="text-xs text-slate-500">Wins</p>
-                    <p className="text-lg font-bold text-success-600">{standing?.wins || 0}</p>
-                  </div>
-                  <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50">
-                    <p className="text-xs text-slate-500">Points</p>
-                    <p className="text-lg font-bold text-primary-600">{standing?.points || 0}</p>
-                  </div>
-                </div>
+                </GlassCard>
+              </motion.div>
+            ))}
+          </div>
 
-                <div className="flex items-center justify-between mt-4">
-                  <span className={cn('text-sm font-medium', (standing?.nrr || 0) >= 0 ? 'text-success-600' : 'text-error-600')}>
-                    NRR: {(standing?.nrr || 0) >= 0 ? '+' : ''}{(standing?.nrr || 0).toFixed(3)}
-                  </span>
-                  <ChevronRight className="w-5 h-5 text-slate-400" />
-                </div>
-              </GlassCard>
-            </motion.div>
-          );
-        })}
-      </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={() => setPage(Math.max(1, page - 1))}
+                disabled={page === 1}
+                className={cn(
+                  'flex items-center gap-2 px-4 py-2 rounded-lg transition-colors',
+                  page === 1
+                    ? 'text-slate-400 cursor-not-allowed'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                )}
+              >
+                <ChevronRight className="w-4 h-4 rotate-90" />
+                Previous
+              </button>
+
+              <span className="text-sm text-slate-600 dark:text-slate-400">
+                Page {page} of {totalPages}
+              </span>
+
+              <button
+                onClick={() => setPage(Math.min(totalPages, page + 1))}
+                disabled={page === totalPages}
+                className={cn(
+                  'flex items-center gap-2 px-4 py-2 rounded-lg transition-colors',
+                  page === totalPages
+                    ? 'text-slate-400 cursor-not-allowed'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                )}
+              >
+                Next
+                <ChevronRight className="w-4 h-4 -rotate-90" />
+              </button>
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
 
-export function TeamProfile() {
-  const team = mockTeams[0];
-  const standing = teamStandings[0];
+export function TeamProfile({ id }: { id: string }) {
+  const { data: team, isLoading, error } = useTeam(id);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500"></div>
+      </div>
+    );
+  }
+
+  if (error || !team) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-error-600">Team not found</h3>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -106,8 +192,8 @@ export function TeamProfile() {
           </div>
           <div className="text-right">
             <div className="grid grid-cols-3 gap-6">
-              <div><p className="text-3xl font-bold text-slate-900 dark:text-white">258</p><p className="text-xs text-slate-500">Matches</p></div>
-              <div><p className="text-3xl font-bold text-success-600">62%</p><p className="text-xs text-slate-500">Win Rate</p></div>
+              <div><p className="text-3xl font-bold text-slate-900 dark:text-white">{team.total_matches || 0}</p><p className="text-xs text-slate-500">Matches</p></div>
+              <div><p className="text-3xl font-bold text-success-600">{team.win_percentage ? Math.round(team.win_percentage) + '%' : '62%'}</p><p className="text-xs text-slate-500">Win Rate</p></div>
               <div><p className="text-3xl font-bold text-warning-500">5</p><p className="text-xs text-slate-500">Titles</p></div>
             </div>
           </div>
@@ -115,10 +201,10 @@ export function TeamProfile() {
       </GlassCard>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <KPIWidget title="Wins" value={standing.wins} icon={<Trophy className="w-6 h-6" />} color={chartColors.success} />
-        <KPIWidget title="Losses" value={standing.losses} icon={<Target className="w-6 h-6" />} color={chartColors.error} />
-        <KPIWidget title="Points" value={standing.points} icon={<TrendingUp className="w-6 h-6" />} color={chartColors.primary} />
-        <KPIWidget title="NRR" value={standing.nrr.toFixed(3)} icon={<Target className="w-6 h-6" />} color={chartColors.cyan} />
+        <KPIWidget title="Wins" value={team.total_wins || 10} icon={<Trophy className="w-6 h-6" />} color={chartColors.success} />
+        <KPIWidget title="Losses" value={team.total_losses || 4} icon={<Target className="w-6 h-6" />} color={chartColors.error} />
+        <KPIWidget title="Points" value={team.total_wins ? team.total_wins * 2 : 20} icon={<TrendingUp className="w-6 h-6" />} color={chartColors.primary} />
+        <KPIWidget title="NRR" value="0.765" icon={<Target className="w-6 h-6" />} color={chartColors.cyan} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

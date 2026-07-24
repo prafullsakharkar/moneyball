@@ -1,2 +1,3 @@
-export * from './types';
 export * from './pages';
+export * from './services/api';
+export * from './hooks/useAcademy';

@@ -1,0 +1,127 @@
+{
+  "tournaments": [
+    {
+      "id": "t1",
+      "name": "Indian Premier League",
+      "season": "2025",
+      "format": "T20",
+      "start_date": "2025-03-22",
+      "end_date": "2025-05-25",
+      "venue": "India",
+      "status": "ongoing",
+      "total_teams": 10,
+      "total_matches": 74
+    },
+    {
+      "id": "t2",
+      "name": "The Ashes",
+      "season": "2025",
+      "format": "Test",
+      "start_date": "2025-06-15",
+      "end_date": "2025-07-15",
+      "venue": "England",
+      "status": "upcoming",
+      "total_teams": 2,
+      "total_matches": 6
+    },
+    {
+      "id": "t3",
+      "name": "World Cup",
+      "season": "2027",
+      "format": "ODI",
+      "start_date": "2027-02-01",
+      "end_date": "2027-03-15",
+      "venue": "South Africa",
+      "status": "upcoming",
+      "total_teams": 14,
+      "total_matches": 50
+    },
+    {
+      "id": "t4",
+      "name": "Caribbean Premier League",
+      "season": "2025",
+      "format": "T20",
+      "start_date": "2025-08-01",
+      "end_date": "2025-09-15",
+      "venue": "West Indies",
+      "status": "upcoming",
+      "total_teams": 6,
+      "total_matches": 34
+    },
+    {
+      "id": "t5",
+      "name": "Big Bash League",
+      "season": "2025-26",
+      "format": "T20",
+      "start_date": "2025-12-13",
+      "end_date": "2026-01-31",
+      "venue": "Australia",
+      "status": "upcoming",
+      "total_teams": 8,
+      "total_matches": 58
+    },
+    {
+      "id": "t6",
+      "name": "Pakistan Super League",
+      "season": "2026",
+      "format": "T20",
+      "start_date": "2026-02-01",
+      "end_date": "2026-03-22",
+      "venue": "Pakistan",
+      "status": "upcoming",
+      "total_teams": 6,
+      "total_matches": 33
+    },
+    {
+      "id": "t7",
+      "name": " IPL T20",
+      "season": "2024",
+      "format": "T20",
+      "start_date": "2024-03-22",
+      "end_date": "2024-05-26",
+      "venue": "India",
+      "status": "completed",
+      "total_teams": 10,
+      "total_matches": 74
+    },
+    {
+      "id": "t8",
+      "name": "World T20",
+      "season": "2024",
+      "format": "T20",
+      "start_date": "2024-06-19",
+      "end_date": "2024-07-14",
+      "venue": "West Indies",
+      "status": "completed",
+      "total_teams": 20,
+      "total_matches": 59
+    },
+    {
+      "id": "t9",
+      "name": "Champions Trophy",
+      "season": "2025",
+      "format": "ODI",
+      "start_date": "2025-02-20",
+      "end_date": "2025-03-09",
+      "venue": "Pakistan",
+      "status": "completed",
+      "total_teams": 8,
+      "total_matches": 27
+    },
+    {
+      "id": "t10",
+      "name": "County Championship",
+      "season": "2025",
+      "format": "First Class",
+      "start_date": "2025-04-02",
+      "end_date": "2025-09-25",
+      "venue": "England",
+      "status": "ongoing",
+      "total_teams": 18,
+      "total_matches": 136
+    }
+  ],
+  "total": 10,
+  "page": 1,
+  "limit": 10
+}

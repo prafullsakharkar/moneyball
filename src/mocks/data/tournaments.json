@@ -1,0 +1,104 @@
+{
+  "tournaments": [
+    {
+      "id": "t1",
+      "name": "Indian Premier League",
+      "year": 2025,
+      "format": "T20",
+      "start_date": "2025-03-22",
+      "end_date": "2025-05-25",
+      "location": "India",
+      "teams": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    },
+    {
+      "id": "t2",
+      "name": "The Ashes",
+      "year": 2025,
+      "format": "Test",
+      "start_date": "2025-06-15",
+      "end_date": "2025-07-15",
+      "location": "England",
+      "teams": ["1", "2", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45"]
+    },
+    {
+      "id": "t3",
+      "name": "World Cup",
+      "year": 2027,
+      "format": "ODI",
+      "start_date": "2027-02-01",
+      "end_date": "2027-03-15",
+      "location": "South Africa",
+      "teams": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "23", "24", "25", "26", "27"]
+    },
+    {
+      "id": "t4",
+      "name": "Caribbean Premier League",
+      "year": 2025,
+      "format": "T20",
+      "start_date": "2025-08-01",
+      "end_date": "2025-09-15",
+      "location": "West Indies",
+      "teams": ["1", "2", "3", "4", "5", "6"]
+    },
+    {
+      "id": "t5",
+      "name": "Big Bash League",
+      "year": "2025-26",
+      "format": "T20",
+      "start_date": "2025-12-13",
+      "end_date": "2026-01-31",
+      "location": "Australia",
+      "teams": ["1", "2", "3", "4", "5", "6", "7", "8"]
+    },
+    {
+      "id": "t6",
+      "name": "Pakistan Super League",
+      "year": 2026,
+      "format": "T20",
+      "start_date": "2026-02-01",
+      "end_date": "2026-03-22",
+      "location": "Pakistan",
+      "teams": ["1", "2", "3", "4", "5", "6"]
+    },
+    {
+      "id": "t7",
+      "name": "IPL T20",
+      "year": 2024,
+      "format": "T20",
+      "start_date": "2024-03-22",
+      "end_date": "2024-05-26",
+      "location": "India",
+      "teams": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+    },
+    {
+      "id": "t8",
+      "name": "World T20",
+      "year": 2024,
+      "format": "T20",
+      "start_date": "2024-06-19",
+      "end_date": "2024-07-14",
+      "location": "West Indies",
+      "teams": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "23", "24", "36", "37"]
+    },
+    {
+      "id": "t9",
+      "name": "Champions Trophy",
+      "year": 2025,
+      "format": "ODI",
+      "start_date": "2025-02-20",
+      "end_date": "2025-03-09",
+      "location": "Pakistan",
+      "teams": ["1", "2", "3", "4", "5", "6", "23", "24"]
+    },
+    {
+      "id": "t10",
+      "name": "County Championship",
+      "year": 2025,
+      "format": "First Class",
+      "start_date": "2025-04-02",
+      "end_date": "2025-09-25",
+      "location": "England",
+      "teams": ["36", "37", "38", "39", "40", "41", "42", "43", "44", "45"]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "teams": [
+    {
+      "id": "1",
+      "name": "Chennai Super Kings",
+      "short_name": "CSK",
+      "logo_url": "https://example.com/logos/csk.png",
+      "city": "Chennai",
+      "founded_year": 2008,
+      "home_venue": "MA Chidambaram Stadium",
+      "primary_color": "#FFCB05",
+      "secondary_color": "#0081D0"
+    },
+    {
+      "id": "2",
+      "name": "Mumbai Indians",
+      "short_name": "MI",
+      "logo_url": "https://example.com/logos/mi.png",
+      "city": "Mumbai",
+      "founded_year": 2008,
+      "home_venue": "Wankhede Stadium",
+      "primary_color": "#004BA0",
+      "secondary_color": "#BF1D2D"
+    },
+    {
+      "id": "3",
+      "name": "Royal Challengers Bangalore",
+      "short_name": "RCB",
+      "logo_url": "https://example.com/logos/rcb.png",
+      "city": "Bangalore",
+      "founded_year": 2008,
+      "home_venue": "M. Chinnaswamy Stadium",
+      "primary_color": "#EC1C24",
+      "secondary_color": "#2C3E50"
+    },
+    {
+      "id": "4",
+      "name": "Kolkata Knight Riders",
+      "short_name": "KKR",
+      "logo_url": "https://example.com/logos/kkr.png",
+      "city": "Kolkata",
+      "founded_year": 2008,
+      "home_venue": "Eden Gardens",
+      "primary_color": "#3A225D",
+      "secondary_color": "#D4AF37"
+    },
+    {
+      "id": "5",
+      "name": "Rajasthan Royals",
+      "short_name": "RR",
+      "logo_url": "https://example.com/logos/rr.png",
+      "city": "Jaipur",
+      "founded_year": 2008,
+      "home_venue": "Sawai Mansingh Stadium",
+      "primary_color": "#254AA5",
+      "secondary_color": "#EA1A75"
+    },
+    {
+      "id": "6",
+      "name": "Delhi Capitals",
+      "short_name": "DC",
+      "logo_url": "https://example.com/logos/dc.png",
+      "city": "Delhi",
+      "founded_year": 2008,
+      "home_venue": "Arun Jaitley Stadium",
+      "primary_color": "#17479E",
+      "secondary_color": "#E74C3C"
+    },
+    {
+      "id": "7",
+      "name": "Sunrisers Hyderabad",
+      "short_name": "SRH",
+      "logo_url": "https://example.com/logos/srh.png",
+      "city": "Hyderabad",
+      "founded_year": 2012,
+      "home_venue": "Rajiv Gandhi Stadium",
+      "primary_color": "#FF8C00",
+      "secondary_color": "#E74C3C"
+    },
+    {
+      "id": "8",
+      "name": "Gujarat Titans",
+      "short_name": "GT",
+      "logo_url": "https://example.com/logos/gt.png",
+      "city": "Ahmedabad",
+      "founded_year": 2022,
+      "home_venue": "Narendra Modi Stadium",
+      "primary_color": "#1C1C1C",
+      "secondary_color": "#85C1E9"
+    },
+    {
+      "id": "9",
+      "name": "Lucknow Super Giants",
+      "short_name": "LSG",
+      "logo_url": "https://example.com/logos/lsg.png",
+      "city": "Lucknow",
+      "founded_year": 2022,
+      "home_venue": "BRSVCA Stadium",
+      "primary_color": "#2E3192",
+      "secondary_color": "#FFFFFF"
+    },
+    {
+      "id": "10",
+      "name": "Punjab Kings",
+      "short_name": "PBKS",
+      "logo_url": "https://example.com/logos/pbks.png",
+      "city": "Mohali",
+      "founded_year": 2008,
+      "home_venue": "IS Bindra Stadium",
+      "primary_color": "#9CA1B7",
+      "secondary_color": "#EF4123"
+    },
+    {
+      "id": "11",
+      "name": "Royal Challengers Bangalore Women",
+      "short_name": "RCBW",
+      "logo_url": "https://example.com/logos/rcbw.png",
+      "city": "Bangalore",
+      "founded_year": 2023,
+      "home_venue": "M. Chinnaswamy Stadium",
+      "primary_color": "#EC1C24",
+      "secondary_color": "#2C3E50"
+    },
+    {
+      "id": "12",
+      "name": "Guwahati Gators",
+      "short_name": "GG",
+      "logo_url": "https://example.com/logos/gg.png",
+      "city": "Guwahati",
+      "founded_year": 2024,
+      "home_venue": "Dr. Bhupen Hazarika Stadium",
+      "primary_color": "#0066CC",
+      "secondary_color": "#FFCC00"
+    }
+  ],
+  "total": 12,
+  "page": 1,
+  "limit": 12
+}
