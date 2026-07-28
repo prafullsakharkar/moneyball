@@ -163,7 +163,7 @@ const REPORTS: NavChild = {
 
 // 16. ⚙ Administration
 const ADMINISTRATION: NavGroup = {
-  id: 'administration', label: 'Administration', icon: UserCog,
+  id: 'administration', label: 'Administration', icon: UserCog, path: '/admin',
   children: [
     { id: 'admin-home', label: 'Admin Home', icon: LayoutDashboard, path: '/admin' },
     { id: 'admin-portal', label: 'Admin Portal', icon: Settings, path: '/admin/portal' },

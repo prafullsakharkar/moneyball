@@ -9,8 +9,28 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id: string) => {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('lucide-react')) {
+              return 'lucide-react';
+            }
+            if (id.includes('recharts')) {
+              return 'recharts';
+            }
+          }
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
+      '@': path.resolve(__dirname, 'src'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@features': path.resolve(__dirname, 'src/features'),
       '@lib': path.resolve(__dirname, 'src/lib'),

@@ -68,12 +68,3 @@ export function usePlayersByNationality(nationality: string, params: PaginatedPa
     enabled: !!nationality,
   });
 }
-
-// ─── EXPORTS ────────────────────────────────────────────────────────────────────
-export default {
-  usePlayers,
-  usePlayer,
-  usePlayerStats,
-  useSearchPlayers,
-  usePlayersByNationality,
-};

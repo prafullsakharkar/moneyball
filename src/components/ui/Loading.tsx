@@ -1,129 +1,124 @@
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
+import { Loader2, AlertCircle, CheckCircle2, XCircle } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-const spinnerVariants = cva(
-  'animate-spin rounded-full border-2 border-current border-t-transparent',
-  {
-    variants: {
-      size: {
-        xs: 'w-4 h-4 border-width-3',
-        sm: 'w-6 h-6',
-        md: 'w-8 h-8',
-        lg: 'w-12 h-12',
-        xl: 'w-16 h-16',
-      },
-      variant: {
-        primary: 'border-primary-500 border-t-white',
-        secondary: 'border-slate-400 border-t-white',
-        white: 'border-white border-t-transparent',
-        dark: 'border-slate-900 border-t-transparent',
-      },
-    },
-    defaultVariants: {
-      size: 'md',
-      variant: 'primary',
-    },
-  }
-);
+// ─── TYPES ─────────────────────────────────────────────────────────────────────────
+export type LoadingVariant = 'default' | 'spinner' | 'skeleton' | 'error' | 'empty' | 'success';
 
-const skeletonVariants = cva(
-  'animate-pulse rounded-lg bg-slate-200 dark:bg-slate-700',
-  {
-    variants: {
-      size: {
-        xs: 'h-3 w-16',
-        sm: 'h-4 w-24',
-        md: 'h-4 w-full',
-        lg: 'h-8 w-3/4',
-        xl: 'h-16 w-full',
-      },
-      shape: {
-        rect: 'rounded-lg',
-        circle: 'rounded-full',
-        square: 'rounded-lg',
-      },
-    },
-    defaultVariants: {
-      size: 'md',
-      shape: 'rect',
-    },
-  }
-);
-
-export interface LoadingProps extends VariantProps<typeof spinnerVariants> {
+export interface LoadingProps {
+  variant?: LoadingVariant;
+  message?: string;
   className?: string;
-  text?: string;
-  fullscreen?: boolean;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export const Loading = ({
-  size,
-  variant,
-  className,
-  text,
-  fullscreen = false,
-}: LoadingProps) => {
-  return (
-    <div
-      className={cn(
-        'flex flex-col items-center justify-center gap-3',
-        fullscreen && 'fixed inset-0 z-50 bg-white dark:bg-slate-950',
-        className
-      )}
-    >
-      <div className={cn(spinnerVariants({ size, variant }))} />
-      {text && <p className="text-sm font-medium text-slate-600 dark:text-slate-400 animate-pulse">{text}</p>}
-    </div>
-  );
-};
+// ─── COMPONENTS ────────────────────────────────────────────────────────────────────
 
-export interface SkeletonProps extends VariantProps<typeof skeletonVariants> {
-  className?: string;
+/**
+ * Skeleton Loader Component - Shows placeholder for content loading
+ */
+export function Skeleton({ className }: { className?: string }) {
+  return (
+    <div className={cn('animate-pulse rounded-md bg-slate-200 dark:bg-slate-700', className)} />
+  );
 }
 
-export const Skeleton = ({ size, shape, className }: SkeletonProps) => {
-  return <div className={cn(skeletonVariants({ size, shape, className }))} />;
-};
+/**
+ * Loading Spinner Component
+ */
+export function LoadingSpinner({ size = 'md', className }: { size?: 'sm' | 'md' | 'lg'; className?: string }) {
+  const sizeClasses = {
+    sm: 'h-4 w-4',
+    md: 'h-8 w-8',
+    lg: 'h-12 w-12',
+  };
 
-export const LoadingOverlay = ({
-  isLoading,
-  text = 'Loading...',
-  className,
-}: {
-  isLoading: boolean;
-  text?: string;
-  className?: string;
-}) => {
-  if (!isLoading) return null;
+  return <Loader2 className={cn('animate-spin text-slate-500 dark:text-slate-400', sizeClasses[size], className)} />;
+}
 
+/**
+ * Empty State Component
+ */
+export function EmptyState({ message = 'No data available' }: { message?: string }) {
   return (
-    <div
-      className={cn(
-        'absolute inset-0 z-10 flex items-center justify-center bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm',
-        className
-      )}
-    >
-      <Loading text={text} size="lg" />
+    <div className="flex flex-col items-center justify-center py-12 text-center">
+      <div className="rounded-full bg-slate-100 p-4 dark:bg-slate-800">
+        <AlertCircle className="h-8 w-8 text-slate-400" />
+      </div>
+      <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">No data available</h3>
+      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{message}</p>
     </div>
   );
-};
+}
 
-export const LoadingWrapper = ({
-  isLoading,
-  children,
-  text = 'Loading...',
-  className,
-}: {
-  isLoading: boolean;
-  children: React.ReactNode;
-  text?: string;
-  className?: string;
-}) => {
+/**
+ * Error State Component
+ */
+export function ErrorState({ message = 'Failed to load data' }: { message?: string }) {
   return (
-    <div className={cn('relative', className)}>
-      {children}
-      {isLoading && <LoadingOverlay isLoading={isLoading} text={text} />}
+    <div className="flex flex-col items-center justify-center py-12 text-center">
+      <div className="rounded-full bg-red-50 p-4 dark:bg-red-900/20">
+        <XCircle className="h-8 w-8 text-red-500" />
+      </div>
+      <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">Failed to load</h3>
+      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{message}</p>
     </div>
   );
-};
+}
+
+/**
+ * Success State Component
+ */
+export function SuccessState({ message = 'Data loaded successfully' }: { message?: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-12 text-center">
+      <div className="rounded-full bg-green-50 p-4 dark:bg-green-900/20">
+        <CheckCircle2 className="h-8 w-8 text-green-500" />
+      </div>
+      <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-white">Success</h3>
+      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{message}</p>
+    </div>
+  );
+}
+
+/**
+ * Content Loader Component - Handles all loading states
+ */
+export function ContentLoader({ variant = 'default', message, className, size = 'md' }: LoadingProps) {
+  switch (variant) {
+    case 'spinner':
+      return (
+        <div className={cn('flex items-center justify-center', className)}>
+          <LoadingSpinner size={size} />
+        </div>
+      );
+
+    case 'skeleton':
+      return (
+        <div className={cn('space-y-3', className)}>
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-4 w-1/2" />
+          <Skeleton className="h-4 w-5/6" />
+        </div>
+      );
+
+    case 'error':
+      return <ErrorState message={message} />;
+
+    case 'empty':
+      return <EmptyState message={message} />;
+
+    case 'success':
+      return <SuccessState message={message} />;
+
+    default:
+      return (
+        <div className={cn('flex items-center justify-center', className)}>
+          <LoadingSpinner size={size} />
+          {message && <span className="ml-3 text-sm text-slate-500 dark:text-slate-400">{message}</span>}
+        </div>
+      );
+  }
+}
+
+// ─── EXPORTS ───────────────────────────────────────────────────────────────────────
+export default ContentLoader;

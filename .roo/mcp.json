@@ -1,0 +1,72 @@
+{
+	"mcpServers": {
+		"filesystem": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-filesystem",
+				"${workspaceFolder}"
+			]
+		},
+		"git": {
+			"command": "uvx",
+			"args": [
+				"mcp-server-git",
+				"--repository",
+				"${workspaceFolder}"
+			],
+			"disabled": true,
+			"alwaysAllow": []
+		},
+		"postgresql": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-postgres",
+				"postgresql://roo_readonly:strong-password@192.168.1.109:5439/cricketiq"
+			],
+			"disabled": true,
+			"alwaysAllow": []
+		},
+		"firecrawl": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"firecrawl-mcp"
+			],
+			"env": {
+				"FIRECRAWL_API_KEY": "${env:FIRECRAWL_API_KEY}"
+			},
+			"disabled": true,
+			"alwaysAllow": []
+		},
+		"brave-search": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@modelcontextprotocol/server-brave-search"
+			],
+			"env": {
+				"BRAVE_API_KEY": "${env:BRAVE_API_KEY}"
+			},
+			"disabled": false,
+			"alwaysAllow": []
+		},
+		"chrome-devtools": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"chrome-devtools-mcp@latest"
+			],
+			"disabled": true,
+			"alwaysAllow": []
+		},
+		"playwright": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"@playwright/mcp@latest"
+			]
+		}
+	}
+}

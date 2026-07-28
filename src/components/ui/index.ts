@@ -4,8 +4,9 @@ export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
 export { Input, InputGroup, InputLabel, InputHint, type InputProps } from './Input';
 export { Select, SelectOption, type SelectProps } from './Select';
 export { Modal, ModalHeader, ModalBody, ModalFooter, type ModalProps } from './Modal';
-export { Toast, ToastContainer, type ToastProps } from './Toast';
-export { Loading, Skeleton, LoadingOverlay, LoadingWrapper, type LoadingProps, type SkeletonProps } from './Loading';
+export { ToastProvider } from './Toast';
+export { LoadingSpinner, Skeleton, EmptyState, ErrorState, SuccessState, ContentLoader, type LoadingVariant, type LoadingProps } from './Loading';
+export { LazyImage, Avatar } from './Image';
 
 // Existing exports
 export { GlassCard, KPIWidget } from './GlassCard';

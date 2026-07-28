@@ -1,263 +1,247 @@
-# moneyball — CricketIQ Analytics Platform
+# CricketIQ - Cricket Intelligence Platform
 
-> Enterprise-grade Cricket Analytics & Management Platform
+A comprehensive cricket management platform for teams, players, associations, and tournaments. Built with a modern microservices architecture.
 
-## 📋 Overview
+## Architecture
 
-Moneyball (CricketIQ) is a comprehensive cricket analytics and management platform built for tournaments, teams, players, coaches, and administrators. It provides real-time scoring, advanced analytics, video analysis, training management, academy operations, and live auction capabilities — all in a modern, responsive web application.
+### Backend (Microservices)
 
-## 🛠️ Tech Stack
+The backend is built using a microservices architecture with the following services:
 
-| Category | Technology |
-|----------|-----------|
-| **Frontend Framework** | React 19 + TypeScript 6 |
-| **Build Tool** | Vite 8 |
-| **Styling** | Tailwind CSS 4 + Tailwind Merge |
-| **Animations** | Framer Motion |
-| **Routing** | React Router DOM 7 |
-| **Data Fetching** | TanStack React Query 5 |
-| **Backend** | Supabase |
-| **Charts** | Highcharts + highcharts-react-official |
-| **HTTP Client** | Ky |
-| **Icons** | Lucide React |
-| **Linting** | ESLint + TypeScript ESLint |
+| Service | Port | Description |
+|---------|------|-------------|
+| API Gateway | 3000 | Central entry point for all API requests |
+| Identity | 3001 | User authentication and authorization |
+| Organization | 3002 | Cricket organization and venue management |
+| Player | 3003 | Player profiles and statistics |
+| Team | 3004 | Team management and rosters |
+| Match | 3005 | Match scheduling and management |
+| Scoring | 3006 | Ball-by-ball scoring |
+| Competition | 3007 | Tournament and competition management |
+| Analytics | 3008 | Player and team analytics |
+| Media | 3009 | Media file management |
+| Finance | 3010 | Financial transactions and subscriptions |
+| Notification | 3011 | Notification management |
+| Video Analysis | 3012 | Video analysis and highlights |
+| Training | 3013 | Training session management |
+| Scouting | 3014 | Scouting reports and player rankings |
+| Reporting | 3015 | Report generation and scheduling |
+| Auction | 3016 | Auction management |
+| Sponsorship | 3017 | Sponsorship deals and payments |
+| Admin | 3018 | System administration and audit |
 
-## 📁 Project Structure
+### Frontend
 
-```
-moneyball/
-├── src/
-│   ├── components/                 # Shared UI components
-│   │   ├── layout/                 # Layout, Sidebar with navigation
-│   │   └── ui/                     # Charts, GlassCard
-│   ├── modules/                    # Feature modules (self-contained)
-│   │   ├── video-analysis/         # Video library, clips, tagging, highlights
-│   │   ├── training/               # Coach dashboard, sessions, fitness, attendance
-│   │   ├── academy/                # Students, batches, curriculum, progress
-│   │   └── auction/                # Auction room, player pool, budget
-│   ├── pages/                      # Public-facing pages
-│   │   └── admin/                  # Admin portal pages
-│   ├── App.tsx                     # Route definitions & app shell
-│   ├── main.tsx                    # Entry point
-│   └── index.css                   # Global styles (Tailwind)
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-└── tsconfig.json
-```
+The frontend is built with:
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Zustand (state management)
+- TanStack Query (data fetching)
+- React Router (routing)
 
-## 🚀 Features
+## Technology Stack
 
-### Public Pages
-| Feature | Description |
-|---------|-------------|
-| **Dashboard** | Overview of tournaments, teams, matches, and key stats |
-| **Tournaments** | Browse tournaments with detailed analytics |
-| **Teams** | Team rosters, standings, and performance metrics |
-| **Players** | Player profiles, statistics, and career analytics |
-| **Captains** | Captain performance dashboard and analytics |
-| **Matches** | Match center with schedules, results, and details |
-| **Head-to-Head** | Player/team comparison with detailed analytics |
-| **Awards** | Orange Cap, leaderboards, and achievement tracking |
-| **MVP / Fantasy** | Fantasy cricket and MVP predictions |
-| **AI Analytics** | AI-powered insights and recommendations |
-| **Predictions** | Match and tournament predictions |
+### Backend
+- Node.js 20.x
+- TypeScript 5.x
+- Express.js
+- PostgreSQL 15.x
+- Redis 7.x (caching)
+- Apache Kafka (event bus)
+- Docker & Docker Compose
 
-### Video Analysis Module
-- **Video Library** — Upload, organize, and browse match videos
-- **Ball Clips** — Extract and manage ball-by-ball highlight clips
-- **Shot Tagging** — Tag shots and batting techniques
-- **Player Highlights** — Individual player highlight reels
-- **AI Highlights** — AI-generated key moments
+### Frontend
+- React 18.x
+- TypeScript 5.x
+- Vite
+- Tailwind CSS
+- Zustand
+- TanStack Query
+- Axios
 
-### Training Module
-- **Coach Dashboard** — Training overview and planning
-- **Practice Sessions** — Schedule and manage sessions
-- **Fitness Tracking** — Monitor player fitness metrics
-- **Attendance** — Track session attendance
-- **Performance Tracking** — Player performance analytics
-
-### Academy Module
-- **Academy Dashboard** — Overview of all batches and students
-- **Students** — Student management and profiles
-- **Batches** — Batch scheduling and management
-- **Curriculum** — Course and training curriculum
-- **Student Progress** — Track learning and skill development
-
-### Auction Module
-- **Auction Dashboard** — Live auction overview
-- **Auction Room** — Real-time bidding interface
-- **Player Pool** — Available players for auction
-- **Budget Tracker** — Team budget management
-
-### Admin Portal
-| Category | Features |
-|----------|----------|
-| **Management** | Tournaments, Teams, Players, Squads, Venues, Organizers |
-| **Matches & Scoring** | Match management, Live scoring, Ball-by-ball scoring, Scorecards, Streaming |
-| **Analytics** | Player, Team, Match, Tournament dashboards; Batter/Bowler insights; MVP, Captain, Venue analytics; Moneyball analytics |
-| **Reports** | Generate reports, Import center |
-| **System** | User management, Audit logs |
-
-## 📊 Route Map
-
-### Public Routes (40+)
-```
-/                              → Dashboard
-/tournaments                   → Tournament List
-/tournaments/analytics         → Tournament Analytics
-/teams                         → Team List
-/teams/analytics               → Team Analytics
-/players                       → Player List
-/players/analytics             → Player Analytics
-/captains                      → Captain Dashboard
-/captains/analytics            → Captain Analytics
-/matches                       → Match Center
-/matches/analytics             → Match Analytics
-/h2h                           → Head-to-Head Comparison
-/h2h/analytics                 → H2H Detailed Analytics
-/awards                        → Awards (Orange Cap)
-/awards/leaderboards           → Leaderboards
-/mvp                           → MVP / Fantasy
-/ai                            → AI Analytics
-/ai/insights                   → AI Insights
-/predictions                   → Predictions
-/predictions/detailed          → Detailed Predictions
-
-/video-analysis                → Video Analysis Dashboard
-/video-analysis/videos         → Video Library
-/video-analysis/clips          → Ball Clips
-/video-analysis/tagging        → Shot Tagging
-/video-analysis/highlights     → Player Highlights
-/video-analysis/ai             → AI Highlights
-
-/training                      → Coach Dashboard
-/training/sessions             → Practice Sessions
-/training/fitness              → Fitness Tracking
-/training/attendance           → Attendance
-/training/performance          → Performance Tracking
-
-/academy                       → Academy Dashboard
-/academy/students              → Students
-/academy/batches               → Batches
-/academy/curriculum            → Curriculum
-/academy/progress              → Student Progress
-
-/auction                       → Auction Dashboard
-/auction/room                  → Auction Room
-/auction/players               → Player Pool
-/auction/budget                → Budget Tracker
-```
-
-### Admin Routes (30+)
-```
-/admin                              → Admin Dashboard
-/admin/analytics                    → Analytics Overview
-/admin/portal                       → Admin Portal
-/admin/live-dashboard               → Live Dashboard
-/admin/tournaments                  → Tournament Management
-/admin/teams                        → Team Management
-/admin/players                      → Player Management
-/admin/squads                       → Squad Management
-/admin/venues                       → Venue Management
-/admin/organizers                   → Organizer Management
-/admin/matches                      → Match Management
-/admin/officials                    → Match Officials
-/admin/scoring                      → Live Scoring
-/admin/ball-by-ball                 → Ball-by-Ball Scoring
-/admin/scorecards                   → Scorecard Management
-/admin/streaming                    → Streaming Details
-/admin/insights                     → AI Insights
-/admin/player-analytics             → Player Analytics Dashboard
-/admin/team-analytics               → Team Analytics Dashboard
-/admin/match-analytics              → Match Analytics Dashboard
-/admin/tournament-dashboard         → Tournament Analytics Dashboard
-/admin/batter-insights              → Batter Insights
-/admin/bowler-insights              → Bowler Insights
-/admin/mvp-analytics                → MVP Analytics
-/admin/captain-analytics            → Captain Analytics Dashboard
-/admin/venue-analytics              → Venue Analytics Dashboard
-/admin/moneyball                    → Moneyball Analytics
-/admin/leaderboards                 → Leaderboards & MVP
-/admin/reports                      → Generate Reports
-/admin/import                       → Import Center
-/admin/users                        → User Management
-/admin/audit                        → Audit Logs
-```
-
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or pnpm
+
+- Node.js 20.x
+- PostgreSQL 15.x
+- Redis 7.x
+- Kafka 3.x
+- Docker and Docker Compose
 
 ### Installation
 
+1. Clone the repository:
 ```bash
-# Clone the repository
-git clone git@github.com:prafullsakharkar/moneyball.git
+git clone <repository-url>
 cd moneyball
+```
 
-# Install dependencies
+2. Install backend dependencies:
+```bash
+cd backend
 npm install
+```
 
-# Start development server
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+```
+
+### Running the Application
+
+#### Using Docker Compose (Recommended)
+
+```bash
+docker-compose up -d
+```
+
+This will start all services including PostgreSQL, Redis, Kafka, and all microservices.
+
+#### Running Services Individually
+
+1. Start the database services:
+```bash
+docker-compose up -d postgres redis kafka
+```
+
+2. Initialize the database:
+```bash
+cd backend/database
+npm install
+ts-node setup.ts
+```
+
+3. Start individual services:
+```bash
+cd backend/identity
 npm run dev
+```
 
-# Build for production
-npm run build
+Repeat for each service, changing the directory accordingly.
 
-# Preview production build
-npm run preview
+4. Start the frontend:
+```bash
+cd frontend
+npm run dev
+```
 
-# Run linter
+## Environment Variables
+
+Each service requires the following environment variables:
+
+```env
+NODE_ENV=development
+PORT=<service-port>
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=cricketiq_<service-name>
+DB_USER=postgres
+DB_PASSWORD=postgres
+KAFKA_BROKERS=localhost:9092
+JWT_SECRET=your-super-secret-jwt-key-change-in-production
+```
+
+## API Documentation
+
+Once the API Gateway is running, you can access the API at `http://localhost:3000/api/v1`.
+
+## Project Structure
+
+```
+moneyball/
+├── backend/
+│   ├── shared/              # Shared utilities and types
+│   ├── identity/            # Identity Service
+│   ├── organization/        # Organization Service
+│   ├── player/              # Player Service
+│   ├── team/                # Team Service
+│   ├── match/               # Match Service
+│   ├── scoring/             # Scoring Service
+│   ├── competition/         # Competition Service
+│   ├── analytics/           # Analytics Service
+│   ├── media/               # Media Service
+│   ├── finance/             # Finance Service
+│   ├── notification/        # Notification Service
+│   ├── video-analysis/      # Video Analysis Service
+│   ├── training/            # Training Service
+│   ├── scouting/            # Scouting Service
+│   ├── reporting/           # Reporting Service
+│   ├── auction/             # Auction Service
+│   ├── sponsorship/         # Sponsorship Service
+│   ├── admin/               # Admin Service
+│   ├── api-gateway/         # API Gateway
+│   ├── event-bus/           # Event Bus (Kafka)
+│   ├── database/            # Database setup scripts
+│   └── docker-compose.yml   # Docker Compose configuration
+├── frontend/
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── features/        # Feature-specific code
+│   │   ├── pages/           # Page components
+│   │   ├── hooks/           # Custom hooks
+│   │   ├── services/        # API services
+│   │   ├── types/           # TypeScript types
+│   │   └── utils/           # Utility functions
+│   ├── public/              # Static assets
+│   └── package.json
+└── plans/                   # Architecture and planning documents
+```
+
+## Development
+
+### Running Linting
+
+```bash
+# Backend
+cd backend/identity
 npm run lint
 
-# Type check
-npm run typecheck
+# Frontend
+cd frontend
+npm run lint
 ```
 
-## 🏗️ Architecture
+### Building for Production
 
-### Module Pattern
-Each feature module follows a self-contained structure:
+```bash
+# Backend
+cd backend/identity
+npm run build
+
+# Frontend
+cd frontend
+npm run build
 ```
-module/
-├── index.ts            # Barrel exports
-├── components/         # Module-specific components
-├── pages/              # Module pages
-├── services/           # Data services (mock-data.ts)
-└── types/              # TypeScript interfaces
+
+## Deployment
+
+### Docker Deployment
+
+```bash
+docker-compose build
+docker-compose up -d
 ```
 
-### Key Design Patterns
-- **Collapsible Sidebar Navigation** — Animated with Framer Motion, supports nested groups with badges
-- **Dark Mode** — Toggle via class toggle on `<html>` element
-- **React Query Integration** — Server-state caching with 5-minute stale time
-- **Error Boundary** — Graceful error handling wrapping the entire app
-- **Barrel Exports** — Clean imports via `index.ts` files
-- **Mock Data** — Development-friendly mock services in each module
+### Kubernetes Deployment
 
-## 📦 Dependencies
+See the `kubernetes/` directory for Kubernetes manifests (to be created).
 
-### Runtime
-- `react` / `react-dom` — UI framework
-- `react-router-dom` — Client-side routing
-- `@tanstack/react-query` — Data fetching & caching
-- `@supabase/supabase-js` — Backend as a service
-- `framer-motion` — Animations
-- `highcharts` / `highcharts-react-official` — Data visualization
-- `ky` — HTTP client
-- `lucide-react` — Icon library
-- `tailwind-merge` / `clsx` — Class name utilities
+## Contributing
 
-### Development
-- `typescript` — Type checking
-- `vite` — Build tool
-- `tailwindcss` / `postcss` / `autoprefixer` — CSS pipeline
-- `eslint` / `eslint-plugin-react-hooks` — Linting
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📝 License
+## License
 
-Private Repository — All rights reserved
+MIT
+
+## Support
+
+For support, email support@cricketiq.com or join our Slack channel.

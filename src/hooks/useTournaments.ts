@@ -68,12 +68,3 @@ export function useTournamentsByFormat(format: string, params: PaginatedParams =
     enabled: !!format,
   });
 }
-
-// ─── EXPORTS ────────────────────────────────────────────────────────────────────
-export default {
-  useTournaments,
-  useTournament,
-  useTournamentStats,
-  useSearchTournaments,
-  useTournamentsByFormat,
-};

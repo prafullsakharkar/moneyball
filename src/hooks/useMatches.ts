@@ -77,13 +77,3 @@ export function useCompletedMatches(params: PaginatedParams = {}) {
     queryFn: () => matchService.getCompletedMatches(params),
   });
 }
-
-// ─── EXPORTS ────────────────────────────────────────────────────────────────────
-export default {
-  useMatches,
-  useMatch,
-  useMatchStats,
-  useMatchesByTournament,
-  useLiveMatches,
-  useCompletedMatches,
-};

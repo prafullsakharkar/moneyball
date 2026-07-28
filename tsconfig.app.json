@@ -20,19 +20,20 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
 
-    /* Path Aliases */
-    "paths": {
-      "@components/*": ["./src/components/*"],
-      "@features/*": ["./src/features/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@services/*": ["./src/services/*"],
-      "@stores/*": ["./src/stores/*"],
-      "@types/*": ["./src/types/*"]
-    }
+     /* Path Aliases */
+     "paths": {
+       "@/*": ["./src/*"],
+       "@components/*": ["./src/components/*"],
+       "@features/*": ["./src/features/*"],
+       "@lib/*": ["./src/lib/*"],
+       "@utils/*": ["./src/utils/*"],
+       "@hooks/*": ["./src/hooks/*"],
+       "@layouts/*": ["./src/layouts/*"],
+       "@pages/*": ["./src/pages/*"],
+       "@services/*": ["./src/services/*"],
+       "@stores/*": ["./src/stores/*"],
+       "@types/*": ["./src/types/*"]
+     }
   },
-  "include": ["src"]
+  "include": ["src", "mocks"]
 }

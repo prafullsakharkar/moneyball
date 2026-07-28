@@ -1,117 +1,106 @@
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
-import { CheckCircle, AlertCircle, AlertTriangle, Info, X } from 'lucide-react';
+import { useEffect } from 'react';
+import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useToastStore, type ToastType } from '@/store/useToastStore';
 
-const toastVariants = cva(
-  'fixed bottom-4 right-4 z-[100] flex items-center gap-3 rounded-xl px-4 py-3.5 shadow-2xl transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in',
-  {
-    variants: {
-      variant: {
-        success: 'bg-emerald-500 text-white',
-        error: 'bg-red-500 text-white',
-        warning: 'bg-amber-500 text-white',
-        info: 'bg-primary-500 text-white',
-        dark: 'bg-slate-900 text-white',
-      },
-      isOpen: {
-        true: 'translate-y-0 opacity-100',
-        false: 'translate-y-12 opacity-0',
-      },
-      position: {
-        'top-right': 'top-4 right-4',
-        'bottom-right': 'bottom-4 right-4',
-        'top-left': 'top-4 left-4',
-        'bottom-left': 'bottom-4 left-4',
-        'top-center': 'top-4 left-1/2 -translate-x-1/2',
-        'bottom-center': 'bottom-4 left-1/2 -translate-x-1/2',
-      },
-    },
-    defaultVariants: {
-      variant: 'info',
-      position: 'bottom-right',
-    },
-  }
-);
+// ─── TYPES ─────────────────────────────────────────────────────────────────────────
+export type ToastVariant = 'success' | 'error' | 'info' | 'warning';
 
-const toastIconVariants = cva('', {
-  variants: {
-    variant: {
-      success: 'text-emerald-100',
-      error: 'text-red-100',
-      warning: 'text-amber-100',
-      info: 'text-primary-100',
-      dark: 'text-slate-300',
-    },
-  },
-});
+// ─── COMPONENTS ────────────────────────────────────────────────────────────────────
 
-export interface ToastProps extends VariantProps<typeof toastVariants> {
-  isOpen: boolean;
-  onClose: () => void;
-  title?: string;
+const toastStyles: Record<ToastType, string> = {
+  success: 'bg-green-50 border-green-200 text-green-800 dark:bg-green-900/30 dark:border-green-800 dark:text-green-300',
+  error: 'bg-red-50 border-red-200 text-red-800 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300',
+  info: 'bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300',
+  warning: 'bg-yellow-50 border-yellow-200 text-yellow-800 dark:bg-yellow-900/30 dark:border-yellow-800 dark:text-yellow-300',
+};
+
+const toastIcons: Record<ToastType, React.ReactNode> = {
+  success: (
+    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  error: (
+    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  info: (
+    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  ),
+  warning: (
+    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+  ),
+};
+
+interface ToastItemProps {
+  id: string;
+  type: ToastType;
+  title: string;
   message?: string;
   duration?: number;
-  className?: string;
 }
 
-export const Toast = ({
-  isOpen,
-  onClose,
-  title,
-  message,
-  variant,
-  position,
-  duration = 3000,
-  className,
-}: ToastProps) => {
-  React.useEffect(() => {
-    if (isOpen && duration > 0) {
-      const timer = setTimeout(onClose, duration);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen, duration, onClose]);
+function ToastItem({ id, type, title, message, duration = 5000 }: ToastItemProps) {
+  const removeToast = useToastStore((state) => state.removeToast);
 
-  const getIcon = () => {
-    switch (variant) {
-      case 'success':
-        return <CheckCircle className="w-5 h-5" />;
-      case 'error':
-        return <AlertCircle className="w-5 h-5" />;
-      case 'warning':
-        return <AlertTriangle className="w-5 h-5" />;
-      case 'info':
-        return <Info className="w-5 h-5" />;
-      default:
-        return <Info className="w-5 h-5" />;
-    }
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      removeToast(id);
+    }, duration);
+
+    return () => clearTimeout(timer);
+  }, [id, duration, removeToast]);
 
   return (
     <div
-      className={cn(toastVariants({ variant, position, isOpen, className }))}
-      role="alert"
-      aria-live="assertive"
+      className={cn(
+        'group relative mb-3 flex w-full max-w-sm items-start gap-3 rounded-lg border p-4 shadow-lg transition-all duration-300 animate-in slide-in-from-bottom-5 fade-in',
+        toastStyles[type]
+      )}
     >
-      {getIcon()}
-      <div className="flex-1 space-y-0.5">
-        {title && <p className="font-medium text-sm">{title}</p>}
-        {message && <p className="text-sm opacity-90">{message}</p>}
+      <div className="mt-0.5 shrink-0">{toastIcons[type]}</div>
+      <div className="flex-1 space-y-1">
+        <h4 className="text-sm font-semibold">{title}</h4>
+        {message && <p className="text-xs opacity-90">{message}</p>}
       </div>
       <button
-        onClick={onClose}
-        className="rounded-lg p-1 hover:bg-white/10 transition-colors"
+        onClick={() => removeToast(id)}
+        className="shrink-0 opacity-50 transition-opacity hover:opacity-100"
       >
-        <X className="w-4 h-4" />
+        <X className="h-4 w-4" />
       </button>
     </div>
   );
-};
-
-export interface ToastContainerProps {
-  className?: string;
 }
 
-export const ToastContainer = ({ className }: ToastContainerProps) => {
-  return <div className={cn('fixed inset-0 z-[100] pointer-events-none', className)} />;
-};
+// ─── TOAST PROVIDER ────────────────────────────────────────────────────────────────
+export function ToastProvider({ children }: { children: React.ReactNode }) {
+  const toasts = useToastStore((state) => state.toasts);
+
+  return (
+    <>
+      {children}
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+        {toasts.map((toast) => (
+          <ToastItem
+            key={toast.id}
+            id={toast.id}
+            type={toast.type}
+            title={toast.title}
+            message={toast.message}
+            duration={toast.duration}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
+// ─── EXPORTS ───────────────────────────────────────────────────────────────────────
+export default ToastProvider;
