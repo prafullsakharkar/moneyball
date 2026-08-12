@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: brain-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-brain}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-brain}
+      POSTGRES_DB: ${POSTGRES_DB:-brain}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - brain_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-brain}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brain-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-brain}:${POSTGRES_PASSWORD:-brain}@db:5432/${POSTGRES_DB:-brain}
+      STORAGE_DIR: /srv/brain/storage
+      APP_ENV: production
+      OPENAI_BACKEND: ${OPENAI_BACKEND:-http://localhost:8033/v1}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-qwen35b}
+      OPENAI_ADVERTISED_MODEL: ${OPENAI_ADVERTISED_MODEL:-repository-brain-v1}
+      OPENAI_TIMEOUT: ${OPENAI_TIMEOUT:-300}
+    ports:
+      - "${BRAIN_PORT:-8000}:8000"
+    volumes:
+      - ./storage:/srv/brain/storage
+      # Mount repositories you want to index here, e.g.:
+      # - /path/to/my/repo:/repos/my-repo:ro
+
+volumes:
+  brain_pgdata:

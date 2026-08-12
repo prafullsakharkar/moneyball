@@ -1,0 +1,95 @@
+[project]
+name = "repository-brain"
+version = "0.1.0"
+description = "An open-source repository intelligence engine that understands, indexes, remembers and exposes the structure of software repositories."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+    { name = "Repository Brain Contributors" },
+]
+keywords = [
+    "repository", "code-intelligence", "indexer", "graph", "symbols",
+    "dependencies", "architecture", "tree-sitter",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.32,<1",
+    "sqlalchemy>=2.0.36,<3",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic>=2.9,<3",
+    "pydantic-settings>=2.6,<3",
+    "alembic>=1.14,<2",
+    "structlog>=24.4,<25",
+    "tree-sitter>=0.23,<1",
+    "tree-sitter-language-pack>=0.9,<1",
+    "python-multipart>=0.0.12",
+    "httpx>=0.28,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9",
+    "pytest-cov>=6,<7",
+    "ruff>=0.8,<1",
+    "anyio>=4.6,<5",
+]
+
+[project.scripts]
+repository-brain = "repository_brain.main:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["repository_brain"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["repository_brain", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "B", "UP", "SIM", "C4", "RUF", "ASYNC",
+    "ARG", "PIE", "RET",
+]
+ignore = [
+    "E501",
+    "B008",
+    "UP046",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "ARG"]
+"repository_brain/api/routes/*.py" = ["ARG"]
+"repository_brain/symbols/service.py" = ["ARG004"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    # Upstream Starlette library internals (TestClient import and a deprecated
+    # HTTP status constant used by Starlette's own exception handlers). Cosmetic
+    # and outside our code; suppressed so the suite reports cleanly.
+    "ignore::starlette.exceptions.StarletteDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["repository_brain"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
