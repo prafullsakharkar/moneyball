@@ -48,6 +48,27 @@ class RepositoryOut(BaseModel):
     updated_at: datetime
 
 
+class RepositoryIndexIn(BaseModel):
+    """Payload for registering a repository via the index endpoint."""
+
+    path: str = Field(min_length=1, max_length=4096)
+
+
+class RepositoryIndexOut(BaseModel):
+    """Persistent repository record returned by the index endpoint."""
+
+    id: str
+    name: str
+    description: str | None = None
+    root_path: str
+    default_branch: str | None = None
+    status: str
+    language_set: list[str] = Field(default_factory=list)
+    framework_set: list[str] = Field(default_factory=list)
+    created_at: datetime
+    updated_at: datetime
+
+
 class RepositoryScanOut(BaseModel):
     """Result of a scan or reindex operation."""
 

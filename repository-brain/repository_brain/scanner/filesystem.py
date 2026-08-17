@@ -22,6 +22,8 @@ class FileMetadata:
     is_binary: bool
     encoding: str
     line_count: int
+    extension: str | None = None
+    language: str | None = None
 
     @property
     def is_empty(self) -> bool:
@@ -98,6 +100,7 @@ def compute_file_metadata(path: str | Path, *, sample_only: bool = True) -> File
         is_binary=is_binary,
         encoding=encoding,
         line_count=line_count if not is_binary else 0,
+        extension=file_path.suffix.lower() or None,
     )
 
 

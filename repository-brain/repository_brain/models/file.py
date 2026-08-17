@@ -21,6 +21,7 @@ class FileEntry(UUIDPrimaryKeyMixin, Base):
     )
     path: Mapped[str] = mapped_column(String(1024))
     language: Mapped[str | None] = mapped_column(String(64), index=True)
+    extension: Mapped[str | None] = mapped_column(String(32))
     size: Mapped[int] = mapped_column(Integer, default=0)
     sha256: Mapped[str] = mapped_column(String(64), index=True)
     mtime: Mapped[float] = mapped_column(Float, default=0.0)

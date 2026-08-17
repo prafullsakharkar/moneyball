@@ -12,6 +12,7 @@ _OPENAI_ENV = (
     "OPENAI_MODEL",
     "OPENAI_ADVERTISED_MODEL",
     "OPENAI_TIMEOUT",
+    "INDEX_DETECT_FILE_LIMIT",
 )
 
 
@@ -104,6 +105,19 @@ class TestValidation:
 
     def test_model_can_be_overridden(self):
         assert _settings(openai_model="qwen32b").openai_model == "qwen32b"
+
+
+class TestIndexDetectionLimit:
+    def test_default_file_limit(self):
+        assert _settings().index_detect_file_limit == 10_000
+
+    def test_file_limit_from_environment(self, monkeypatch):
+        monkeypatch.setenv("INDEX_DETECT_FILE_LIMIT", "500")
+        assert _settings().index_detect_file_limit == 500
+
+    def test_file_limit_must_be_positive(self):
+        with pytest.raises(ValidationError):
+            _settings(index_detect_file_limit=0)
 
 
 class TestBackendUrlResolution:

@@ -42,6 +42,17 @@ class Settings(BaseSettings):
     # --- Workers ---
     indexer_workers: int = 4
     watch_interval: int = 0
+    # Upper bound of files examined while detecting languages at index time.
+    # Keeps synchronous POST /api/v1/repositories/index bounded on large repos;
+    # the later background scan queue replaces this with a full walk.
+    index_detect_file_limit: int = Field(default=10_000, ge=1)
+
+    # --- Context retrieval (Phase 3 part 4) ---
+    # Hard caps on how much repository knowledge one context response may carry.
+    # These keep responses bounded and deterministic on large repositories.
+    max_context_files: int = Field(default=20, ge=1, le=200)
+    max_context_symbols: int = Field(default=25, ge=1, le=500)
+    max_context_relationships: int = Field(default=50, ge=1, le=1000)
 
     # --- OpenAI-compatible proxy (Phase 1) ---
     # Upstream OpenAI-compatible backend (e.g. llama.cpp serving Qwen3).

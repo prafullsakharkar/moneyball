@@ -163,6 +163,141 @@ A textual architecture summary.
 
 Index statistics (files, symbols, dependencies, modules, languages).
 
+## Repository Knowledge (Phase 3)
+
+Deterministic, structural repository queries backed entirely by the index. No
+LLM is invoked for any of these endpoints; they work without Qwen.
+
+### `GET /knowledge/overview?repository_id=<id>`
+
+Repository overview: name, root path, languages, frameworks, file/symbol/
+relationship/module counts, top-level directories, config files, git branch and
+indexing status. `404` when the repository is unknown.
+
+```json
+{
+  "repository_id": "uuid",
+  "name": "my-project",
+  "root_path": "/abs/path",
+  "languages": ["python"],
+  "frameworks": ["fastapi"],
+  "file_count": 42,
+  "symbol_count": 120,
+  "relationship_count": 57,
+  "module_count": 3,
+  "top_level_directories": ["src", "tests"],
+  "config_files": ["pyproject.toml"],
+  "git_branch": "main",
+  "status": "scanned",
+  "last_scanned_at": "2026-01-01T00:00:00"
+}
+```
+
+### `GET /knowledge/files?repository_id=<id>`
+
+Structured file tree. Query params: `depth` (1–10, default 3), `children_limit`
+(1–1000, default 200), `limit`, `offset`. The top level is paginated; each
+directory is bounded by `children_limit` and marked `truncated` when capped.
+
+```json
+{
+  "repository_id": "uuid",
+  "root": "my-project",
+  "total": 2,
+  "limit": 50,
+  "offset": 0,
+  "truncated": false,
+  "nodes": [
+    {"name": "src", "path": "src", "type": "dir",
+     "children": [{"name": "main.py", "path": "src/main.py", "type": "file", "language": "python"}]},
+    {"name": "pyproject.toml", "path": "pyproject.toml", "type": "file", "language": "toml"}
+  ]
+}
+```
+
+### `GET /knowledge/symbols?repository_id=<id>`
+
+Symbol lookup. Query params: `name` (exact or partial), `kind`, `language`,
+`exact` (bool, default false), `limit`, `offset`. Returns a paginated
+`SymbolPage` of `SymbolOut` items with `file_path`, `qualified_name`, `line`.
+
+```bash
+curl "http://localhost:8000/knowledge/symbols?repository_id=<id>&name=UserService"
+```
+
+### `GET /knowledge/relationships?repository_id=<id>`
+
+Relationship edges with readable endpoints. Query params: `kind` (e.g.
+`import`, `call`, `inheritance`, `manifest`), `direction` (`outgoing` |
+`incoming`), `file_path` (substring filter), `limit`, `offset`. `outgoing`
+includes repository-level manifest dependencies.
+
+```json
+{
+  "items": [
+    {"id": "uuid", "kind": "import", "name": "api.client", "direction": "outgoing",
+     "source_path": "src/weather/forecast.py", "target_path": "src/api/client.py",
+     "source_symbol": null, "target_symbol": "ApiClient",
+     "is_resolved": true, "is_external": false, "line": 4}
+  ],
+  "total": 1, "limit": 50, "offset": 0
+}
+```
+
+### `GET /knowledge/imports?repository_id=<id>`
+
+Import edges only (shorthand for relationships with `kind=import`). Same
+params: `direction`, `file_path`, `limit`, `offset`. Answers "what imports
+service.py?" (`direction=incoming&file_path=service.py`) and "what does
+service.py import?" (`direction=outgoing&file_path=service.py`).
+
+### `GET /knowledge/dependencies?repository_id=<id>`
+
+External package dependencies declared in manifests. Query param `kind`
+(default `manifest`), `limit`, `offset`.
+
+## Context Retrieval (Phase 3)
+
+### `POST /api/v1/repositories/{repository_id}/context`
+
+Build a structured, deterministic repository context bundle for a query. This is
+the retrieval foundation used by later phases; **no LLM is called** and the Phase 1
+chat proxy is unaffected.
+
+```json
+{
+  "query": "authentication service",
+  "limit": 20
+}
+```
+
+Response: `RepositoryContextOut` with `repository`, `files`, `symbols`,
+`relationships`, `architecture`, `counts` and a transparent `ranking` list.
+
+```json
+{
+  "query": "authentication service",
+  "repository_id": "uuid",
+  "repository_name": "my-project",
+  "repository": {"name": "my-project", "languages": ["python"], "file_count": 42},
+  "files": [{"path": "src/api/auth.py", "language": "python", "score": 80.0, "match": "file_name"}],
+  "symbols": [{"name": "Authenticator", "qualified_name": "Authenticator",
+               "kind": "class", "file_path": "src/api/auth.py", "line": 1,
+               "score": 100.0, "match": "exact_symbol"}],
+  "relationships": [],
+  "architecture": {"languages": ["python"], "frameworks": ["fastapi"],
+                   "top_level_directories": ["src"], "entry_points": ["src/main.py"],
+                   "config_files": ["pyproject.toml"]},
+  "counts": {"files": 1, "symbols": 1, "relationships": 0},
+  "ranking": [{"type": "symbol", "name": "Authenticator", "score": 100.0, "match": "exact_symbol"}]
+}
+```
+
+`limit` (1–100) caps files/symbols/relationships; when omitted the
+`MAX_CONTEXT_FILES` / `MAX_CONTEXT_SYMBOLS` / `MAX_CONTEXT_RELATIONSHIPS`
+settings apply. Ranking tiers: exact symbol > qualified name > file name >
+path > partial name/token. Repeated identical queries return identical output.
+
 ## System
 
 ### `GET /health`

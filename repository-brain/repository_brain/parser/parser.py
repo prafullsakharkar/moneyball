@@ -33,6 +33,31 @@ def _strip_quotes(value: str) -> str:
     return value
 
 
+#: Maximum number of syntax-error diagnostics recorded per file.
+_MAX_SYNTAX_ERRORS = 20
+
+
+def _syntax_error_messages(root: Node) -> list[str]:
+    """Collect concise diagnostics for ERROR/MISSING nodes in a parse tree.
+
+    Bounded to avoid unbounded diagnostics on pathological inputs. Messages
+    contain the node type and 1-based line only -- never source content.
+    """
+    messages: list[str] = []
+
+    def visit(node: Node) -> None:
+        if len(messages) >= _MAX_SYNTAX_ERRORS:
+            return
+        if node.type == "ERROR" or node.is_missing:
+            messages.append(f"syntax error: {node.type} at line {node.start_point.row + 1}")
+            return
+        for child in node.children:
+            visit(child)
+
+    visit(root)
+    return messages
+
+
 class TreeSitterExtractor:
     """Walks a tree-sitter tree and extracts symbols, imports and calls."""
 
@@ -638,6 +663,9 @@ class ParsingService:
             return parsed
 
         root = tree.root_node
+        if root.has_error:
+            parsed.errors.extend(_syntax_error_messages(root))
+
         extractor = TreeSitterExtractor(config, content, path)
         symbols, imports, calls = extractor.extract(root)
         parsed.symbols = symbols

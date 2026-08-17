@@ -5,7 +5,7 @@ from __future__ import annotations
 import uuid
 from dataclasses import dataclass
 
-from sqlalchemy import delete, select
+from sqlalchemy import and_, delete, select
 from sqlalchemy.orm import Session
 
 from repository_brain.core.logging import get_logger
@@ -87,6 +87,50 @@ class DependencyEngine:
         session.flush()
         return total
 
+    def build_manifest_dependencies(
+        self,
+        session: Session,
+        repository_id: uuid.UUID,
+        root_path: str,
+    ) -> DependencyBuildResult:
+        """Replace repository-level external dependencies declared in manifests.
+
+        Manifest files (``pyproject.toml``, ``requirements.txt``,
+        ``package.json``, ``Cargo.toml``, ``go.mod``, ``pom.xml``, ...) are read
+        statically and their declared packages are persisted as external
+        dependency edges with no source file. Repeated calls are idempotent.
+        """
+        from repository_brain.graph.manifest import ManifestDependencyReader
+
+        result = DependencyBuildResult()
+        session.execute(
+            delete(Dependency).where(
+                Dependency.repository_id == repository_id,
+                Dependency.kind == "manifest",
+            )
+        )
+
+        seen: set[str] = set()
+        for dep in ManifestDependencyReader().read(root_path):
+            if dep.name in seen:
+                continue
+            seen.add(dep.name)
+            session.add(
+                Dependency(
+                    repository_id=repository_id,
+                    kind="manifest",
+                    name=dep.name,
+                    target_name=dep.version_spec,
+                    is_resolved=False,
+                    is_external=True,
+                    extra={"manager": dep.manager, "manifest": dep.manifest},
+                )
+            )
+            result.edges += 1
+            result.external += 1
+        session.flush()
+        return result
+
     def build_for_file(
         self,
         session: Session,
@@ -103,6 +147,25 @@ class DependencyEngine:
         by_id = self._file_symbol_by_id(ctx, file_entry.id)
         result = DependencyBuildResult()
         seen: set[tuple] = set()
+
+        # Remove incoming edges that reference symbols which no longer exist in
+        # this file (e.g. a symbol was deleted during re-indexing). Keeping this
+        # explicit makes the graph free of dangling FKs even when the database
+        # does not enforce ON DELETE CASCADE.
+        current_ids = {symbol.id for group in file_symbols.values() for symbol in group}
+        if current_ids:
+            stale_target = and_(
+                Dependency.target_file_id == file_entry.id,
+                Dependency.target_symbol_id.is_not(None),
+                Dependency.target_symbol_id.not_in(current_ids),
+            )
+        else:
+            stale_target = and_(
+                Dependency.target_file_id == file_entry.id,
+                Dependency.target_symbol_id.is_not(None),
+            )
+        session.execute(delete(Dependency).where(stale_target))
+        session.flush()
 
         imported_names = self._resolve_imports(
             session, ctx, resolver, file_entry, parsed, result, seen
@@ -133,6 +196,8 @@ class DependencyEngine:
         language = file_entry.language or ""
 
         for import_ref in parsed.imports:
+            if not import_ref.name:
+                continue
             target_path, is_external = resolver.resolve_import(
                 import_ref.name,
                 import_ref.symbol_name,
@@ -140,42 +205,43 @@ class DependencyEngine:
                 source_path=file_entry.path,
             )
             target_file = ctx.get_file(target_path) if target_path else None
-            target_symbol: Symbol | None = None
+            target_symbol = self._match_imported_module_symbol(ctx, target_file, import_ref, None)
 
-            if target_file is not None:
-                if import_ref.symbol_name and import_ref.symbol_name != "*":
-                    candidates = ctx.symbols_by_name(target_file.id).get(import_ref.symbol_name, [])
-                    if candidates:
-                        target_symbol = candidates[0]
-                else:
-                    last = import_ref.name.split(".")[-1]
-                    candidates = ctx.symbols_by_name(target_file.id).get(last, [])
-                    if candidates:
-                        target_symbol = candidates[0]
+            # An absolute import that did not resolve to a repository file is
+            # either a standard-library or third-party package; represent it as
+            # an external module. A relative import that did not resolve points
+            # at a missing local module and is recorded as unresolved instead.
+            if target_file is None and not is_external:
+                is_external = not import_ref.name.startswith(".")
 
-            if target_file is not None or is_external:
-                key = ("import", import_ref.name, import_ref.line)
-                if key not in seen:
-                    seen.add(key)
-                    session.add(
-                        Dependency(
-                            repository_id=file_entry.repository_id,
-                            source_file_id=file_entry.id,
-                            target_file_id=target_file.id if target_file else None,
-                            target_symbol_id=target_symbol.id if target_symbol else None,
-                            kind="import",
-                            name=import_ref.name,
-                            target_name=import_ref.symbol_name or import_ref.alias,
-                            is_resolved=target_file is not None,
-                            is_external=is_external,
-                            line=import_ref.line,
-                        )
+            key = (
+                "import",
+                import_ref.name,
+                import_ref.symbol_name,
+                import_ref.alias,
+                import_ref.line,
+            )
+            if key not in seen:
+                seen.add(key)
+                session.add(
+                    Dependency(
+                        repository_id=file_entry.repository_id,
+                        source_file_id=file_entry.id,
+                        target_file_id=target_file.id if target_file else None,
+                        target_symbol_id=target_symbol.id if target_symbol else None,
+                        kind="import",
+                        name=import_ref.name,
+                        target_name=import_ref.symbol_name or import_ref.alias,
+                        is_resolved=target_file is not None,
+                        is_external=is_external,
+                        line=import_ref.line,
                     )
-                    result.edges += 1
-                    if target_file is not None:
-                        result.resolved += 1
-                    elif is_external:
-                        result.external += 1
+                )
+                result.edges += 1
+                if target_file is not None:
+                    result.resolved += 1
+                elif is_external:
+                    result.external += 1
 
             bind_name = import_ref.alias or import_ref.symbol_name
             if bind_name and bind_name != "*":
@@ -189,12 +255,18 @@ class DependencyEngine:
     def _match_imported_module_symbol(
         self,
         ctx: RepoGraphContext,
-        target_file: FileEntry,
+        target_file: FileEntry | None,
         import_ref,
         _target_symbol: Symbol | None,
-    ) -> None:
+    ) -> Symbol | None:
         """Best-effort match of a module import to a symbol in the target file."""
-        last = import_ref.name.split(".")[-1] if import_ref.name else ""
+        if target_file is None:
+            return None
+        if import_ref.symbol_name and import_ref.symbol_name != "*":
+            candidates = ctx.symbols_by_name(target_file.id).get(import_ref.symbol_name, [])
+            if candidates:
+                return candidates[0]
+        last = import_ref.name.split(".")[-1]
         candidates = ctx.symbols_by_name(target_file.id).get(last, [])
         if candidates:
             return candidates[0]
@@ -237,7 +309,8 @@ class DependencyEngine:
                     target_symbol = local[0]
 
             source_symbol = self._enclosing_for_line(enclosing_ranges, call.line)
-            key = ("call", call.name, call.line)
+            source_key = source_symbol.id if source_symbol else None
+            key = ("call", source_key, call.name)
             if key not in seen:
                 seen.add(key)
                 session.add(

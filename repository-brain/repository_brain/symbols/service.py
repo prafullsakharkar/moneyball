@@ -50,25 +50,51 @@ class SymbolService:
 
         Returns the number of symbols written. Deletes existing symbols for the
         file first so incremental re-parsing never leaves stale rows behind.
+
+        Symbols are deduplicated on their qualified name within the file (first
+        occurrence wins) so redefinitions or parser repeats never violate the
+        ``(repository_id, file_id, qualified_name)`` uniqueness constraint and
+        re-indexing never creates duplicate rows.
         """
         session.execute(delete(Symbol).where(Symbol.file_id == file_entry.id))
         session.flush()
 
-        created_ids: dict[str, uuid.UUID] = {}
+        created_by_qualified: dict[str, uuid.UUID] = {}
         count = 0
 
         for parsed_symbol in parsed.symbols:
-            parent_id = None
-            if parsed_symbol.parent_name is not None:
-                parent_id = created_ids.get(parsed_symbol.parent_name)
+            qualified = parsed_symbol.qualified_name or parsed_symbol.name
+            if qualified in created_by_qualified:
+                continue
+            parent_id = self._resolve_parent_id(parsed_symbol, qualified, created_by_qualified)
 
             symbol = self._to_model(repository_id, file_entry, parsed_symbol, parent_id)
             session.add(symbol)
-            created_ids[parsed_symbol.name] = symbol.id
+            created_by_qualified[qualified] = symbol.id
             count += 1
 
         session.flush()
         return count
+
+    @staticmethod
+    def _resolve_parent_id(
+        parsed_symbol: ParsedSymbol,
+        qualified_name: str,
+        created_by_qualified: dict[str, uuid.UUID],
+    ) -> uuid.UUID | None:
+        """Resolve the parent symbol id from the qualified name.
+
+        The parent of a nested symbol is its qualified name without the last
+        component (e.g. ``Outer.Inner.method`` -> ``Outer.Inner``). Matching on
+        qualified names rather than bare names keeps parent links correct even
+        when unrelated symbols share a simple name.
+        """
+        if parsed_symbol.parent_name is None:
+            return None
+        parent_qualified = qualified_name.rsplit(".", 1)[0]
+        if parent_qualified == qualified_name:
+            return None
+        return created_by_qualified.get(parent_qualified)
 
     def _to_model(
         self,
