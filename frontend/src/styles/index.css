@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 Theme Customization ──────────────────────── */
+
+@theme {
+  /* Brand */
+  --color-primary: #1565c0;
+  --color-primary-hover: #0d47a1;
+  --color-primary-light: #e3f2fd;
+  --color-primary-contrast: #ffffff;
+
+  /* Status */
+  --color-success: #2e7d32;
+  --color-warning: #ed6c02;
+  --color-error: #d32f2f;
+  --color-info: #0288d1;
+
+  /* Neutral — MUI-style greys */
+  --color-surface: #ffffff;
+  --color-surface-dim: #f5f5f5;
+  --color-surface-container: #fafafa;
+  --color-border: #e0e0e0;
+
+  /* Sidebar */
+  --color-sidebar-bg: #111827;
+  --color-sidebar-text: #9ca3af;
+  --color-sidebar-active: #1565c0;
+
+  /* Shadows */
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --header-height: 56px;
+}
+
+/* ── Base Resets ──────────────────────────────────────────── */
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ── Focus Visible ────────────────────────────────────────── */
+/* Accessibility: visible focus ring for keyboard navigation */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default focus ring for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+/* Accessibility: respect user preference */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* ── Dark Mode ────────────────────────────────────────────── */
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #111318;
+  color: #f8f9fb;
+}
+
+/* ── Utility ──────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Tabular Numbers for Stats ────────────────────────────── */
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Live Animation ───────────────────────────────────────── */
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse-live {
+  animation: pulse-live 1.5s ease-in-out infinite;
+}
+
+/* ── Page Transitions ─────────────────────────────────────── */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
