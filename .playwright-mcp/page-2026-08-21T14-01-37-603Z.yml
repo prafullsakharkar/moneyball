@@ -1,0 +1,46 @@
+- generic [ref=e43]:
+  - banner [ref=e44]:
+    - generic [ref=e45]:
+      - button "Cricket Australia" [ref=e46] [cursor=pointer]:
+        - paragraph [ref=e50]: Cricket Australia
+      - textbox "Global search" [ref=e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=e62] [cursor=pointer]
+      - button "0 notifications" [ref=e65] [cursor=pointer]
+      - button "JS" [ref=e69] [cursor=pointer]
+  - navigation [ref=e71]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e79]:
+          - heading "CricketOS" [level=6] [ref=e80]
+          - generic [ref=e81]: Cricket Australia
+        - button [ref=e82] [cursor=pointer]
+      - generic [ref=e85]:
+        - list [ref=e86]:
+          - listitem [ref=e87]: Home
+          - listitem [ref=e88]:
+            - button "Dashboard" [ref=e89] [cursor=pointer]
+        - list [ref=e98]:
+          - listitem [ref=e99]: Platform
+          - listitem [ref=e100]:
+            - button "Help" [ref=e101] [cursor=pointer]
+      - button "Collapse" [ref=e109] [cursor=pointer]
+  - main [ref=e115]:
+    - generic [ref=e118]:
+      - generic [ref=e120]:
+        - heading "Dashboard" [level=4] [ref=e121]
+        - paragraph [ref=e122]: Overview of your cricket platform
+      - generic [ref=e124]:
+        - generic [ref=e130]:
+          - text: Teams
+          - paragraph [ref=e132]: "0"
+        - generic [ref=e138]:
+          - text: Players
+          - paragraph [ref=e140]: "0"
+        - generic [ref=e147]:
+          - text: Matches
+          - paragraph [ref=e149]: "0"
+        - generic [ref=e155]:
+          - text: Competitions
+          - paragraph [ref=e157]: "0"
