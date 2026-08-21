@@ -6,6 +6,7 @@ interface ThemeContextValue {
   theme: Theme;
   resolvedTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
+  toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
@@ -35,6 +36,15 @@ export function ThemeProvider({
   });
 
   const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      if (prev === 'system') {
+        return getSystemTheme() === 'dark' ? 'light' : 'dark';
+      }
+      return prev === 'dark' ? 'light' : 'dark';
+    });
+  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -67,7 +77,7 @@ export function ThemeProvider({
   }, [theme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

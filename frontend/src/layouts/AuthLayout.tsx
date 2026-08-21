@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import { Box, Card, CardContent, Typography } from '@mui/material';
-import SportsCricketIcon from '@mui/icons-material/SportsCricket';
+import { Box, Typography } from '@mui/material';
+import { Zap } from 'lucide-react';
+import { Card } from '@shared/components';
 
 export function AuthLayout() {
   return (
@@ -10,23 +11,23 @@ export function AuthLayout() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'grey.100',
+        bgcolor: 'background.default',
         p: 2,
       }}
     >
       <Card sx={{ width: '100%', maxWidth: 440 }}>
-        <CardContent sx={{ p: 4 }}>
-          <Box sx={{ textAlign: 'center', mb: 3 }}>
-            <SportsCricketIcon sx={{ fontSize: 48, color: 'primary.main' }} />
-            <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>
-              CricketOS
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Global Cricket Platform
-            </Typography>
+        <Box sx={{ textAlign: 'center', mb: 3 }}>
+          <Box sx={{ display: 'inline-flex', color: 'primary.main', mb: 1 }}>
+            <Zap size={48} strokeWidth={1.5} />
           </Box>
-          <Outlet />
-        </CardContent>
+          <Typography variant="h5" sx={{ fontWeight: 700, mt: 1 }}>
+            CricketOS
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Global Cricket Platform
+          </Typography>
+        </Box>
+        <Outlet />
       </Card>
     </Box>
   );

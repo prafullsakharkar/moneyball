@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod/v4';
-import { TextField, Alert, Typography, Box } from '@mui/material';
-import { LoadingButton } from '@shared/components/LoadingButton';
+import { Typography, Box } from '@mui/material';
+import { Input, Button, Banner } from '@shared/components';
 import { useAuth } from '@providers/AuthProvider';
 
 const schema = z.object({ email: z.email('Please enter a valid email') });
@@ -28,7 +28,7 @@ export default function ForgotPasswordPage() {
     return (
       <Box>
         <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>Check Your Email</Typography>
-        <Alert severity="success">We sent a password reset link. Please check your inbox.</Alert>
+        <Banner tone="success">We sent a password reset link. Please check your inbox.</Banner>
         <Typography variant="body2" sx={{ color: 'text.secondary', mt: 3, textAlign: 'center' }}>
           <Link to="/auth/login" style={{ fontWeight: 500 }}>Back to Sign In</Link>
         </Typography>
@@ -40,14 +40,14 @@ export default function ForgotPasswordPage() {
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
       <Typography variant="h6" sx={{ fontWeight: 600 }}>Reset Password</Typography>
       <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-        Enter your email and we&apos;ll send you a reset link.
+        Enter your email and we'll send you a reset link.
       </Typography>
-      {error && <Alert severity="error">{error}</Alert>}
-      <TextField label="Email" type="email" placeholder="you@example.com" autoComplete="email"
-        error={!!errors.email} helperText={errors.email?.message} {...register('email')} />
-      <LoadingButton type="submit" variant="contained" size="large" fullWidth loading={isSubmitting}>
+      {error && <Banner tone="error">{error}</Banner>}
+      <Input label="Email" type="email" placeholder="you@example.com" autoComplete="email"
+        error={errors.email?.message} helperText={errors.email?.message} {...register('email')} />
+      <Button type="submit" variant="primary" size="large" fullWidth loading={isSubmitting}>
         Send Reset Link
-      </LoadingButton>
+      </Button>
       <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
         Remember your password?{' '}
         <Link to="/auth/login" style={{ fontWeight: 500 }}>Sign in</Link>

@@ -10,6 +10,9 @@ export type { CardProps } from './Card';
 export { Dialog } from './Dialog';
 export type { DialogProps } from './Dialog';
 
+export { Drawer } from './Drawer';
+export type { DrawerProps } from './Drawer';
+
 export { EmptyState } from './EmptyState';
 export type { EmptyStateProps } from './EmptyState';
 
@@ -21,3 +24,6 @@ export type { ErrorStateProps } from './ErrorState';
 
 export { ConfirmDialog } from './ConfirmDialog';
 export type { ConfirmDialogProps } from './ConfirmDialog';
+
+export { ThemeToggle } from './ThemeToggle';
+export type { ThemeToggleProps } from './ThemeToggle';

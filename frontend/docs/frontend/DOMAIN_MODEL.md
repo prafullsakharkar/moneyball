@@ -1,5 +1,10 @@
 # CricketOS Domain Model
 
+> The ten domains below are registered as the single source of truth in
+> `src/types/domain.ts` (`CRICKET_DOMAINS`). Each domain maps to a future
+> `src/modules/<slug>/` module. See `docs/frontend/MODULES.md` for the module
+> structure and dependency rules.
+
 ## Foundation Domain
 
 Core platform entities that support all cricket operations.

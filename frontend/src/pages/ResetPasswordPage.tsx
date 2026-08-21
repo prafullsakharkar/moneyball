@@ -3,8 +3,8 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod/v4';
-import { TextField, Alert, Typography, Box } from '@mui/material';
-import { LoadingButton } from '@shared/components/LoadingButton';
+import { Typography, Box } from '@mui/material';
+import { Input, Button, Banner } from '@shared/components';
 import { useAuth } from '@providers/AuthProvider';
 
 const schema = z.object({
@@ -28,7 +28,7 @@ export default function ResetPasswordPage() {
     return (
       <Box>
         <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>Invalid Link</Typography>
-        <Alert severity="error">This password reset link is invalid or has expired.</Alert>
+        <Banner tone="error">This password reset link is invalid or has expired.</Banner>
         <Typography variant="body2" sx={{ color: 'text.secondary', mt: 3, textAlign: 'center' }}>
           <Link to="/auth/forgot-password" style={{ fontWeight: 500 }}>Request a new reset link</Link>
         </Typography>
@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
     return (
       <Box>
         <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>Password Reset</Typography>
-        <Alert severity="success">Your password has been reset. Redirecting to sign in...</Alert>
+        <Banner tone="success">Your password has been reset. Redirecting to sign in...</Banner>
       </Box>
     );
   }
@@ -57,14 +57,14 @@ export default function ResetPasswordPage() {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
       <Typography variant="h6" sx={{ fontWeight: 600 }}>Set New Password</Typography>
-      {error && <Alert severity="error">{error}</Alert>}
-      <TextField label="New Password" type="password" placeholder="At least 8 characters" autoComplete="new-password"
-        error={!!errors.password} helperText={errors.password?.message} {...register('password')} />
-      <TextField label="Confirm Password" type="password" placeholder="Repeat your password" autoComplete="new-password"
-        error={!!errors.confirmPassword} helperText={errors.confirmPassword?.message} {...register('confirmPassword')} />
-      <LoadingButton type="submit" variant="contained" size="large" fullWidth loading={isSubmitting}>
+      {error && <Banner tone="error">{error}</Banner>}
+      <Input label="New Password" type="password" placeholder="At least 8 characters" autoComplete="new-password"
+        error={errors.password?.message} helperText={errors.password?.message} {...register('password')} />
+      <Input label="Confirm Password" type="password" placeholder="Repeat your password" autoComplete="new-password"
+        error={errors.confirmPassword?.message} helperText={errors.confirmPassword?.message} {...register('confirmPassword')} />
+      <Button type="submit" variant="primary" size="large" fullWidth loading={isSubmitting}>
         Reset Password
-      </LoadingButton>
+      </Button>
     </Box>
   );
 }

@@ -1,6 +1,6 @@
 /**
- * Legacy organization service.
- * Re-exports from the repository layer.
- * Remove once all consumers import from @api/repositories directly.
+ * Organization service (backward-compatible entry point).
+ * Re-exports from the service layer.
+ * Prefer importing from '@api/services' or '@api/index' for new code.
  */
-export { organizationRepository as organizationService } from './repositories/organization';
+export { organizationService } from './services/organizationService';

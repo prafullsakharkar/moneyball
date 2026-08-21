@@ -14,24 +14,36 @@ The frontend communicates with the backend through a layered API architecture th
 - 401 handling via `afterResponse` hook (token refresh + redirect)
 - Components never import this directly
 
-### 2. Service Layer
-**Files:** `src/api/identity.ts`, `src/api/<domain>.ts`
+### 2. Adapter Layer
+**File:** `src/api/adapter.ts`
 
-- Thin wrappers around API client calls
-- Typed request/response interfaces
-- One service per domain area (identity, players, teams, etc.)
-- No business logic — just HTTP calls
+- Transforms Django REST response shapes into the application's canonical types
+- `unwrap()` — extracts `data` from `ApiResponse<T>`
+- `transformPagination()` — maps Django pagination to `PaginatedResponse<T>`
+- `transformResource()` / `transformList()` — field mapping
+- `extractValidationErrors()` — normalizes field errors for forms
+- `buildFilterParams()` — builds query-string filter params
 
 ### 3. Repository Layer
-**Files:** `src/modules/<domain>/services/repository.ts`
+**Files:** `src/api/repositories/<domain>.ts`
 
-- Business logic and data transformation
-- TanStack Query key management
-- Cache invalidation strategies
-- Used by hooks, never by components directly
+- Concrete HTTP calls via the API client
+- Applies adapter transformations to responses
+- Adds `X-Organization-Id` header for tenant isolation
+- Implements the repository interface from `src/api/repositories/types.ts`
+- No business logic — just HTTP + transformation
 
-### 4. Hook Layer
-**Files:** `src/modules/<domain>/hooks/use<Domain>.ts`
+### 4. Service Layer
+**Files:** `src/api/services/<domain>Service.ts`
+
+- Business logic and tenant-isolation enforcement
+- Every organization-scoped method requires an explicit `orgId`
+- Delegates to the matching repository
+- Implements the same interface as the repository (e.g. `OrganizationRepository`)
+- Consumed by hooks, never by components directly
+
+### 5. Hook Layer
+**Files:** `src/hooks/use<Domain>.ts` (or `src/modules/<domain>/hooks/`)
 
 - TanStack Query `useQuery` / `useMutation` wrappers
 - Organization-scoped query keys
@@ -41,7 +53,7 @@ The frontend communicates with the backend through a layered API architecture th
 ## Request Flow
 
 ```
-Component → usePlayers() → useQuery(['players', orgId]) → playerRepository.list(orgId) → playerService.list(orgId) → apiClient.get('players')
+Component → useOrganizationMembers() → useQuery(['org', orgId, 'members']) → organizationService.getMembers(orgId) → organizationRepository.getMembers(orgId) → apiClient.get('organizations/:orgId/members') → adapter.transformPagination()
 ```
 
 ## Authentication
@@ -54,24 +66,30 @@ Component → usePlayers() → useQuery(['players', orgId]) → playerRepository
 
 ## Organization Scoping
 
-All API calls are scoped to the current organization:
+All API calls are scoped to the current organization. The active org is
+provided by the `OrganizationProvider` context (see `src/providers/OrganizationProvider.tsx`),
+which exposes `orgId`, `organization`, `organizations`, `membership`, `role`,
+`permissions`, `isReady`, and `isSwitching`.
 
 ```typescript
-// In repository
-listPlayers(orgId: string, params: PaginationParams) {
-  return playerService.list(orgId, params);
+// In service — tenant isolation enforced at the boundary
+getMembers(orgId: string, params?: ListParams) {
+  return organizationRepository.getMembers(orgId, params);
 }
 
-// In hook
-export function usePlayers(params?: PaginationParams) {
-  const orgId = useOrganizationStore(s => s.currentOrganization?.id);
+// In hook — reads org from context, scopes query key
+export function useOrganizationMembers(params?: ListParams) {
+  const { orgId } = useOrgContext();
   return useQuery({
-    queryKey: queryKeys.players.list(orgId!, params),
-    queryFn: () => playerRepository.list(orgId!, params),
+    queryKey: useOrgQueryKey('organization', 'members', params),
+    queryFn: () => organizationService.getMembers(orgId!, params),
     enabled: !!orgId,
   });
 }
 ```
+
+When the organization switches, the `orgId` changes, query keys change, and all
+org-scoped queries automatically refetch with the new tenant context.
 
 ## MSW Integration
 

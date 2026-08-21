@@ -1,6 +1,6 @@
 /**
- * Legacy identity service.
- * Re-exports from the repository layer.
- * Remove once all consumers import from @api/repositories directly.
+ * Identity service (backward-compatible entry point).
+ * Re-exports from the service layer.
+ * Prefer importing from '@api/services' or '@api/index' for new code.
  */
-export { identityRepository as identityService } from './repositories/identity';
+export { identityService } from './services/identityService';

@@ -3,13 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod/v4';
-import {
-  TextField, Alert, Typography, Box, Checkbox, FormControlLabel,
-  InputAdornment, IconButton,
-} from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { LoadingButton } from '@shared/components/LoadingButton';
+import { Box, Typography } from '@mui/material';
+import { Eye, EyeOff } from 'lucide-react';
+import { Input, Button, Checkbox, Banner } from '@shared/components';
 import { useAuth } from '@providers/AuthProvider';
 
 const loginSchema = z.object({
@@ -66,44 +62,53 @@ export default function LoginPage() {
       </Box>
 
       {error && (
-        <Alert severity="error" onClose={() => setError(null)} role="alert">
+        <Banner tone="error" onDismiss={() => setError(null)}>
           {error}
-        </Alert>
+        </Banner>
       )}
 
-      <TextField
+      <Input
         label="Email"
         type="email"
         placeholder="you@example.com"
         autoComplete="email"
         autoFocus
-        error={!!errors.email}
+        error={errors.email?.message}
         helperText={errors.email?.message}
         slotProps={{ htmlInput: { 'aria-label': 'Email address' } }}
         {...register('email')}
       />
 
-      <TextField
+      <Input
         label="Password"
         type={showPassword ? 'text' : 'password'}
         placeholder="Enter your password"
         autoComplete="current-password"
-        error={!!errors.password}
+        error={errors.password?.message}
         helperText={errors.password?.message}
         slotProps={{
           htmlInput: { 'aria-label': 'Password' },
           input: {
             endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={showPassword ? 'Hide password' : 'Show password'}
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                  size="small"
-                >
-                  {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </IconButton>
-              </InputAdornment>
+              <Box
+                component="button"
+                type="button"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                onClick={() => setShowPassword(!showPassword)}
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  p: 0.5,
+                  border: 'none',
+                  background: 'transparent',
+                  cursor: 'pointer',
+                  color: 'text.secondary',
+                  '&:hover': { color: 'text.primary' },
+                }}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </Box>
             ),
           },
         }}
@@ -111,21 +116,18 @@ export default function LoginPage() {
       />
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <FormControlLabel
-          control={<Checkbox size="small" {...register('rememberMe')} />}
-          label={<Typography variant="body2">Remember me</Typography>}
-        />
+        <Checkbox label="Remember me" {...register('rememberMe')} />
         <Link to="/auth/forgot-password" style={{ fontSize: '0.875rem' }}>
           Forgot password?
         </Link>
       </Box>
 
-      <LoadingButton type="submit" variant="contained" size="large" fullWidth loading={isSubmitting}>
+      <Button type="submit" variant="primary" size="large" fullWidth loading={isSubmitting}>
         Sign In
-      </LoadingButton>
+      </Button>
 
       <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
-        Don&apos;t have an account?{' '}
+        Don't have an account?{' '}
         <Link to="/auth/register" style={{ fontWeight: 500 }}>Create one</Link>
       </Typography>
     </Box>

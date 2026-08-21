@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod/v4';
-import { TextField, Alert, Typography, Box, Grid } from '@mui/material';
-import { LoadingButton } from '@shared/components/LoadingButton';
+import { Typography, Box, Grid } from '@mui/material';
+import { Input, Button, Banner } from '@shared/components';
 import { useAuth } from '@providers/AuthProvider';
 
 const registerSchema = z.object({
@@ -37,26 +37,26 @@ export default function RegisterPage() {
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
       <Typography variant="h6" sx={{ fontWeight: 600 }}>Create Account</Typography>
-      {error && <Alert severity="error" onClose={() => setError(null)}>{error}</Alert>}
+      {error && <Banner tone="error" onDismiss={() => setError(null)}>{error}</Banner>}
       <Grid container spacing={2}>
         <Grid size={6}>
-          <TextField label="First Name" placeholder="John" autoComplete="given-name"
-            error={!!errors.firstName} helperText={errors.firstName?.message} {...register('firstName')} />
+          <Input label="First Name" placeholder="John" autoComplete="given-name"
+            error={errors.firstName?.message} helperText={errors.firstName?.message} {...register('firstName')} />
         </Grid>
         <Grid size={6}>
-          <TextField label="Last Name" placeholder="Doe" autoComplete="family-name"
-            error={!!errors.lastName} helperText={errors.lastName?.message} {...register('lastName')} />
+          <Input label="Last Name" placeholder="Doe" autoComplete="family-name"
+            error={errors.lastName?.message} helperText={errors.lastName?.message} {...register('lastName')} />
         </Grid>
       </Grid>
-      <TextField label="Email" type="email" placeholder="you@example.com" autoComplete="email"
-        error={!!errors.email} helperText={errors.email?.message} {...register('email')} />
-      <TextField label="Password" type="password" placeholder="At least 8 characters" autoComplete="new-password"
-        error={!!errors.password} helperText={errors.password?.message} {...register('password')} />
-      <TextField label="Confirm Password" type="password" placeholder="Repeat your password" autoComplete="new-password"
-        error={!!errors.confirmPassword} helperText={errors.confirmPassword?.message} {...register('confirmPassword')} />
-      <LoadingButton type="submit" variant="contained" size="large" fullWidth loading={isSubmitting}>
+      <Input label="Email" type="email" placeholder="you@example.com" autoComplete="email"
+        error={errors.email?.message} helperText={errors.email?.message} {...register('email')} />
+      <Input label="Password" type="password" placeholder="At least 8 characters" autoComplete="new-password"
+        error={errors.password?.message} helperText={errors.password?.message} {...register('password')} />
+      <Input label="Confirm Password" type="password" placeholder="Repeat your password" autoComplete="new-password"
+        error={errors.confirmPassword?.message} helperText={errors.confirmPassword?.message} {...register('confirmPassword')} />
+      <Button type="submit" variant="primary" size="large" fullWidth loading={isSubmitting}>
         Create Account
-      </LoadingButton>
+      </Button>
       <Typography variant="body2" sx={{ color: 'text.secondary', textAlign: 'center' }}>
         Already have an account?{' '}
         <Link to="/auth/login" style={{ fontWeight: 500 }}>Sign in</Link>

@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {
-  Box, Card, CardContent, Typography, Tabs, Tab, Avatar, Chip, Grid,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, IconButton, Divider,
-} from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import EditIcon from '@mui/icons-material/Edit';
-import GroupsIcon from '@mui/icons-material/Groups';
-import SportsCricketIcon from '@mui/icons-material/SportsCricket';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import PeopleIcon from '@mui/icons-material/People';
+import { Box, Typography, Tabs, Tab, Avatar, Chip, Grid, IconButton } from '@mui/material';
+import { ArrowLeft, Edit, Plus, Users, Shield, Building2 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { organizationService } from '@api/organization';
+import {
+  PageShell,
+  PageHeader,
+  PageSection,
+  Card,
+  Button,
+  StatCard,
+  DataTable,
+  type DataTableColumn,
+} from '@shared/components';
 
 import type { OrganizationMember, OrganizationRole, Department } from '@domain/index';
 
@@ -54,9 +55,8 @@ function OverviewTab({ orgId }: { orgId: string }) {
 
   return (
     <Box>
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
-          <Typography variant="h6" sx={{ mb: 2 }}>Organization Info</Typography>
+      <PageSection title="Organization Info">
+        <Card>
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ mb: 1 }}>
@@ -97,66 +97,56 @@ function OverviewTab({ orgId }: { orgId: string }) {
               </Box>
             </Grid>
           </Grid>
-        </CardContent>
-      </Card>
+        </Card>
+      </PageSection>
 
       {/* Stats */}
       {stats && (
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(4, 1fr)' }, gap: 2, mb: 3 }}>
-          {[
-            { label: 'Members', value: stats.memberCount, icon: <PeopleIcon />, color: 'primary.main' },
-            { label: 'Teams', value: stats.teamCount, icon: <GroupsIcon />, color: 'success.main' },
-            { label: 'Competitions', value: stats.competitionCount, icon: <EmojiEventsIcon />, color: 'warning.main' },
-            { label: 'Matches', value: stats.matchCount, icon: <SportsCricketIcon />, color: 'info.main' },
-          ].map((stat) => (
-            <Card key={stat.label}>
-              <CardContent sx={{ textAlign: 'center', py: 2 }}>
-                <Typography variant="h4" sx={{ fontWeight: 700, color: stat.color }}>{stat.value}</Typography>
-                <Typography variant="body2" color="text.secondary">{stat.label}</Typography>
-              </CardContent>
-            </Card>
-          ))}
+          <StatCard value={stats.memberCount} label="Members" icon={<Users size={20} />} accent="primary" />
+          <StatCard value={stats.teamCount} label="Teams" icon={<Shield size={20} />} accent="success" />
+          <StatCard value={stats.competitionCount} label="Competitions" icon={<Building2 size={20} />} accent="warning" />
+          <StatCard value={stats.matchCount} label="Matches" icon={<Edit size={20} />} accent="info" />
         </Box>
       )}
 
       {/* Teams */}
       {teamList.length > 0 && (
-        <Card>
-          <CardContent>
-            <Typography variant="h6" sx={{ mb: 2 }}>Teams</Typography>
-            <TableContainer>
-              <Table size="small">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Team</TableCell>
-                    <TableCell>Gender</TableCell>
-                    <TableCell>Level</TableCell>
-                    <TableCell align="right">Players</TableCell>
-                    <TableCell align="right">Coaches</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {teamList.map((team) => (
-                    <TableRow key={team.id}>
-                      <TableCell>
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <Avatar sx={{ width: 28, height: 28, bgcolor: 'secondary.main', fontSize: '0.7rem' }}>
-                            {team.shortName ?? team.name.charAt(0)}
-                          </Avatar>
-                          <Typography variant="body2" sx={{ fontWeight: 500 }}>{team.name}</Typography>
-                        </Box>
-                      </TableCell>
-                      <TableCell><Chip label={team.gender} size="small" variant="outlined" /></TableCell>
-                      <TableCell><Chip label={team.level.replace(/_/g, ' ')} size="small" /></TableCell>
-                      <TableCell align="right">{team.playerCount}</TableCell>
-                      <TableCell align="right">{team.coachCount}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </CardContent>
-        </Card>
+        <PageSection title="Teams">
+          <Card>
+            <DataTable
+              columns={[
+                {
+                  id: 'name',
+                  header: 'Team',
+                  cell: (_, team) => (
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Avatar sx={{ width: 28, height: 28, bgcolor: 'secondary.main', fontSize: '0.7rem' }}>
+                        {team.shortName ?? team.name.charAt(0)}
+                      </Avatar>
+                      <Typography variant="body2" sx={{ fontWeight: 500 }}>{team.name}</Typography>
+                    </Box>
+                  ),
+                },
+                {
+                  id: 'gender',
+                  header: 'Gender',
+                  cell: (_, team) => <Chip label={team.gender} size="small" variant="outlined" />,
+                },
+                {
+                  id: 'level',
+                  header: 'Level',
+                  cell: (_, team) => <Chip label={team.level.replace(/_/g, ' ')} size="small" />,
+                },
+                { id: 'playerCount', header: 'Players', align: 'right' },
+                { id: 'coachCount', header: 'Coaches', align: 'right' },
+              ]}
+              data={teamList}
+              getRowId={(row) => row.id}
+              dense
+            />
+          </Card>
+        </PageSection>
       )}
     </Box>
   );
@@ -172,67 +162,76 @@ function MembersTab({ orgId }: { orgId: string }) {
 
   const memberList = data?.data ?? [];
 
+  const columns: DataTableColumn<OrganizationMember>[] = [
+    {
+      id: 'name',
+      header: 'Member',
+      cell: (_, member) => (
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Avatar sx={{ width: 32, height: 32, fontSize: '0.8rem' }}>
+            {member.user.firstName.charAt(0)}{member.user.lastName.charAt(0)}
+          </Avatar>
+          <Box>
+            <Typography variant="body2" sx={{ fontWeight: 500 }}>
+              {member.user.firstName} {member.user.lastName}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">{member.user.email}</Typography>
+          </Box>
+        </Box>
+      ),
+    },
+    {
+      id: 'role',
+      header: 'Role',
+      cell: (_, member) => (
+        <Chip label={member.role} size="small" color={member.role === 'admin' ? 'primary' : 'default'} variant="outlined" />
+      ),
+    },
+    {
+      id: 'status',
+      header: 'Status',
+      cell: (_, member) => (
+        <Chip
+          label={member.status}
+          size="small"
+          color={member.status === 'active' ? 'success' : member.status === 'invited' ? 'warning' : 'default'}
+        />
+      ),
+    },
+    {
+      id: 'joinedAt',
+      header: 'Joined',
+      cell: (_, member) => new Date(member.joinedAt).toLocaleDateString(),
+    },
+    {
+      id: 'actions',
+      header: '',
+      align: 'right',
+      sortable: false,
+      cell: () => (
+        <IconButton size="small"><Edit size={16} /></IconButton>
+      ),
+    },
+  ];
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h6">Members ({memberList.length})</Typography>
-        <Button variant="contained" size="small">Invite Member</Button>
-      </Box>
-
-      <Card>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Member</TableCell>
-                <TableCell>Role</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Joined</TableCell>
-                <TableCell align="right">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {isLoading ? (
-                <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}>Loading...</TableCell></TableRow>
-              ) : memberList.length === 0 ? (
-                <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}>No members found</TableCell></TableRow>
-              ) : (
-                memberList.map((member: OrganizationMember) => (
-                  <TableRow key={member.id} hover>
-                    <TableCell>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                        <Avatar sx={{ width: 32, height: 32, fontSize: '0.8rem' }}>
-                          {member.user.firstName.charAt(0)}{member.user.lastName.charAt(0)}
-                        </Avatar>
-                        <Box>
-                          <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                            {member.user.firstName} {member.user.lastName}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary">{member.user.email}</Typography>
-                        </Box>
-                      </Box>
-                    </TableCell>
-                    <TableCell>
-                      <Chip label={member.role} size="small" color={member.role === 'admin' ? 'primary' : 'default'} variant="outlined" />
-                    </TableCell>
-                    <TableCell>
-                      <Chip
-                        label={member.status}
-                        size="small"
-                        color={member.status === 'active' ? 'success' : member.status === 'invited' ? 'warning' : 'default'}
-                      />
-                    </TableCell>
-                    <TableCell>{new Date(member.joinedAt).toLocaleDateString()}</TableCell>
-                    <TableCell align="right">
-                      <IconButton size="small"><EditIcon fontSize="small" /></IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Card>
+      <PageSection
+        title={`Members (${memberList.length})`}
+        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Invite Member</Button>}
+      >
+        <Card>
+          <DataTable
+            columns={columns}
+            data={memberList}
+            getRowId={(row) => row.id}
+            loading={isLoading}
+            loadingRows={5}
+            emptyTitle="No members found"
+            dense
+          />
+        </Card>
+      </PageSection>
     </Box>
   );
 }
@@ -245,59 +244,59 @@ function RolesTab({ orgId }: { orgId: string }) {
     queryFn: () => organizationService.getRoles(orgId),
   });
 
+  const columns: DataTableColumn<OrganizationRole>[] = [
+    {
+      id: 'name',
+      header: 'Role',
+      cell: (_, role) => <Typography variant="body2" sx={{ fontWeight: 500 }}>{role.name}</Typography>,
+    },
+    {
+      id: 'description',
+      header: 'Description',
+      cell: (_, role) => (
+        <Typography variant="body2" color="text.secondary">{role.description ?? '—'}</Typography>
+      ),
+    },
+    { id: 'memberCount', header: 'Members', align: 'right' },
+    {
+      id: 'isSystem',
+      header: 'System',
+      cell: (_, role) =>
+        role.isSystem ? (
+          <Chip label="System" size="small" color="info" variant="outlined" />
+        ) : (
+          <Chip label="Custom" size="small" variant="outlined" />
+        ),
+    },
+    {
+      id: 'actions',
+      header: '',
+      align: 'right',
+      sortable: false,
+      cell: (_, role) => (
+        <IconButton size="small" disabled={role.isSystem}><Edit size={16} /></IconButton>
+      ),
+    },
+  ];
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h6">Roles</Typography>
-        <Button variant="contained" size="small">Create Role</Button>
-      </Box>
-
-      <Card>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Role</TableCell>
-                <TableCell>Description</TableCell>
-                <TableCell align="right">Members</TableCell>
-                <TableCell>System</TableCell>
-                <TableCell align="right">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {isLoading ? (
-                <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}>Loading...</TableCell></TableRow>
-              ) : !roles || roles.length === 0 ? (
-                <TableRow><TableCell colSpan={5} align="center" sx={{ py: 4 }}>No roles found</TableCell></TableRow>
-              ) : (
-                roles.map((role: OrganizationRole) => (
-                  <TableRow key={role.id} hover>
-                    <TableCell>
-                      <Typography variant="body2" sx={{ fontWeight: 500 }}>{role.name}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2" color="text.secondary">{role.description ?? '—'}</Typography>
-                    </TableCell>
-                    <TableCell align="right">{role.memberCount}</TableCell>
-                    <TableCell>
-                      {role.isSystem ? (
-                        <Chip label="System" size="small" color="info" variant="outlined" />
-                      ) : (
-                        <Chip label="Custom" size="small" variant="outlined" />
-                      )}
-                    </TableCell>
-                    <TableCell align="right">
-                      <IconButton size="small" disabled={role.isSystem}>
-                        <EditIcon fontSize="small" />
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Card>
+      <PageSection
+        title="Roles"
+        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Role</Button>}
+      >
+        <Card>
+          <DataTable
+            columns={columns}
+            data={roles ?? []}
+            getRowId={(row) => row.id}
+            loading={isLoading}
+            loadingRows={5}
+            emptyTitle="No roles found"
+            dense
+          />
+        </Card>
+      </PageSection>
     </Box>
   );
 }
@@ -312,33 +311,30 @@ function DepartmentsTab({ orgId }: { orgId: string }) {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h6">Departments</Typography>
-        <Button variant="contained" size="small">Create Department</Button>
-      </Box>
-
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 2 }}>
+      <PageSection
+        title="Departments"
+        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Department</Button>}
+      >
         {isLoading ? (
           <Typography color="text.secondary">Loading...</Typography>
         ) : !departments || departments.length === 0 ? (
           <Typography color="text.secondary">No departments found</Typography>
         ) : (
-          departments.map((dept: Department) => (
-            <Card key={dept.id}>
-              <CardContent>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 2 }}>
+            {departments.map((dept: Department) => (
+              <Card key={dept.id}>
                 <Typography variant="subtitle1" sx={{ fontWeight: 500 }}>{dept.name}</Typography>
                 {dept.description && (
                   <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{dept.description}</Typography>
                 )}
-                <Divider sx={{ my: 1.5 }} />
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1.5 }}>
                   {dept.memberCount} member{dept.memberCount !== 1 ? 's' : ''}
                 </Typography>
-              </CardContent>
-            </Card>
-          ))
+              </Card>
+            ))}
+          </Box>
         )}
-      </Box>
+      </PageSection>
     </Box>
   );
 }
@@ -371,35 +367,28 @@ export default function OrganizationDetailPage() {
 
   if (!orgId) {
     return (
-      <Box>
+      <PageShell>
         <Typography>No organization selected</Typography>
         <Button onClick={() => navigate('/organizations')} sx={{ mt: 1 }}>Back to Organizations</Button>
-      </Box>
+      </PageShell>
     );
   }
 
   return (
-    <Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-        <IconButton onClick={() => navigate('/organizations')} size="small">
-          <ArrowBackIcon />
-        </IconButton>
-        {org && (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>
-              {org.name.charAt(0)}
-            </Avatar>
-            <Box>
-              <Typography variant="h5" sx={{ fontWeight: 600 }}>{org.name}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {ORG_TYPE_LABELS[org.type] ?? org.type}
-              </Typography>
-            </Box>
-          </Box>
-        )}
-      </Box>
+    <PageShell>
+      <PageHeader
+        eyebrow="Organization"
+        title={org?.name ?? 'Organization'}
+        description={org ? (ORG_TYPE_LABELS[org.type] ?? org.type) : undefined}
+        actions={
+          <Button variant="ghost" size="small" onClick={() => navigate('/organizations')}>
+            <ArrowLeft size={16} />
+            Back
+          </Button>
+        }
+      />
 
-      <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
         <Tab label="Overview" />
         <Tab label="Members" />
         <Tab label="Roles" />
@@ -422,6 +411,6 @@ export default function OrganizationDetailPage() {
       <TabPanel value={tab} index={4}>
         <Typography color="text.secondary">Organization settings coming soon.</Typography>
       </TabPanel>
-    </Box>
+    </PageShell>
   );
 }

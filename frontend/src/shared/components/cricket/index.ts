@@ -1,6 +1,9 @@
 export { Score } from './Score';
 export type { ScoreProps } from './Score';
 
+export { Scoreboard } from './Scoreboard';
+export type { ScoreboardProps, ScoreboardTeam } from './Scoreboard';
+
 export { PlayerAvatar } from './PlayerAvatar';
 export type { PlayerAvatarProps } from './PlayerAvatar';
 

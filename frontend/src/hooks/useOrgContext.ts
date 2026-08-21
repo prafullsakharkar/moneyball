@@ -1,38 +1,21 @@
 /**
  * Tenant isolation hook.
- * Provides current organization context for all org-scoped queries and mutations.
+ * ============================================
+ * Provides the current organization context for all org-scoped queries and
+ * mutations. This is the public API over the OrganizationContext provider.
+ *
  * Components must use this to ensure they never display cross-tenant data.
+ * The underlying state is provided by <OrganizationProvider> (see
+ * `@providers/OrganizationProvider`).
  */
-import { useMemo } from 'react';
-import { useOrganizationStore } from '@stores/organizationStore';
-import { useAuthStore } from '@stores/authStore';
+import { useOrganizationContext } from '@providers/OrganizationProvider';
 
 /**
  * Returns the current organization context.
  * Every organization-aware component must use this hook.
  */
 export function useOrgContext() {
-  const currentOrganization = useOrganizationStore((s) => s.currentOrganization);
-  const memberships = useAuthStore((s) => s.memberships);
-
-  const currentMembership = useMemo(() => {
-    if (!currentOrganization) return null;
-    return memberships.find(
-      (m) => m.organizationId === currentOrganization.id && m.status === 'active'
-    ) ?? null;
-  }, [currentOrganization, memberships]);
-
-  const orgId = currentOrganization?.id ?? '';
-  const isReady = Boolean(currentOrganization);
-
-  return {
-    orgId,
-    organization: currentOrganization,
-    membership: currentMembership,
-    role: currentMembership?.role ?? null,
-    permissions: currentMembership?.permissions ?? [],
-    isReady,
-  };
+  return useOrganizationContext();
 }
 
 /**
@@ -41,5 +24,6 @@ export function useOrgContext() {
  */
 export function useOrgQueryKey<T extends readonly unknown[]>(...suffix: T): readonly unknown[] {
   const { orgId } = useOrgContext();
-  return useMemo(() => ['org', orgId, ...suffix] as const, [orgId, ...suffix]);
+  // TanStack Query performs deep equality on query keys, so a fresh array is safe.
+  return ['org', orgId, ...suffix] as const;
 }

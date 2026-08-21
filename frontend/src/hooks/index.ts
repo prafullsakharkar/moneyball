@@ -1,3 +1,6 @@
+export { useResponsive } from './useResponsive';
+export type { ResponsiveFlags } from './useResponsive';
+
 export {
   useCurrentRole,
   useHasRole,
@@ -8,6 +11,7 @@ export {
 } from './usePermission';
 
 export { useOrgContext, useOrgQueryKey } from './useOrgContext';
+export { useFilteredNavigation } from './useFilteredNavigation';
 
 export {
   orgQueryKeys,

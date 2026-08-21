@@ -27,23 +27,28 @@ CricketOS is a multi-tenant, enterprise-grade global Cricket Operating System. T
 ```
 src/
 ├── app/                  # App shell — root component, providers composition
-├── core/                 # Platform infrastructure (env, errors, query client)
+├── core/                 # Platform infrastructure (env, errors, query client, theme)
 ├── shared/               # Genuinely reusable UI and utilities
-│   └── components/       # PageHeader, ProtectedRoute, etc.
-├── modules/              # Domain-specific functionality
-│   ├── organization/     # OrganizationSwitcher, context
+│   └── components/       # ProtectedRoute, GuestRoute, ui/, form/, table/, cricket/, etc.
+├── modules/              # Domain-specific functionality (one folder per domain)
+│   ├── organization/     # OrganizationSwitcher
 │   ├── search/           # GlobalSearch, CommandPalette
 │   ├── notifications/    # NotificationCenter
 │   └── user/             # UserMenu
-├── api/                  # API client, services, types
+├── api/                  # API client, adapter, repositories, services
+│   ├── client.ts         # Ky instance with interceptors
+│   ├── adapter.ts        # Response transformation (Django → app shape)
+│   ├── repositories/     # Repository layer (HTTP + transformation)
+│   └── services/         # Service layer (business logic, tenant isolation)
 ├── mocks/                # MSW handlers and server setup
-├── providers/            # React context providers
-├── layouts/              # AppShell, AuthLayout, navigation
+├── providers/            # React context providers (Auth, Organization, Theme, Toast)
+├── layouts/              # AppShell, AuthLayout, navigation, header, breadcrumbs
 ├── routes/               # Route definitions with lazy loading
 ├── assets/               # Static assets (images, icons)
 ├── styles/               # Tailwind config, MUI theme, global CSS
-├── types/                # TypeScript type definitions
+├── types/                # TypeScript type definitions + domain registry
 ├── stores/               # Zustand stores (client state)
+├── hooks/                # Shared feature hooks (useOrganization, usePermission, etc.)
 └── utils/                # Pure utility functions
 ```
 
@@ -56,14 +61,22 @@ Component
   ↓
 Feature Hook (useQuery/useMutation)
   ↓
-Repository (business logic, query key management)
+Service (business logic, tenant isolation)
   ↓
-Service (HTTP calls via Ky)
+Repository (HTTP calls via Ky + response transformation)
   ↓
 API Client (Ky instance with interceptors)
   ↓
-MSW (tests) or Backend (production)
+Adapter (Django → app response shape)
+  ↓
+MSW (tests/dev) or Backend (production)
 ```
+
+The service layer enforces tenant isolation at its boundary: every
+organization-scoped operation requires an explicit `orgId`. Hooks consume
+services; services delegate to repositories; repositories call the API client
+and transform responses through the adapter. Components never reach below the
+hook layer.
 
 ## State Management Strategy
 

@@ -100,3 +100,11 @@ export type {
   OrganizationListParams,
   OrganizationStats,
 } from './organization';
+
+/* ── Domain Registry ───────────────────────────────────────── */
+
+export type {
+  CricketDomainSlug,
+  CricketDomain,
+} from './domain';
+export { CRICKET_DOMAINS, getDomain, ALL_DOMAIN_RESOURCES } from './domain';

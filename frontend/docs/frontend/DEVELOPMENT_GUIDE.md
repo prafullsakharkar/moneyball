@@ -47,28 +47,34 @@ Set `VITE_MSW_ENABLED=true` to enable MSW API mocking in the browser.
 - Use MUI components for UI consistency
 - Use Tailwind for layout and responsive utilities
 - Include organization ID in all query keys
+- Read the active org from `useOrgContext()` (OrganizationProvider)
 - Write tests for hooks and components
 
 ### ❌ DON'T
-- Import `ky`, `fetch`, or API URLs in components
+- Import `ky`, `fetch`, API URLs, repositories, or services in components
 - Use `useEffect` for data fetching (use TanStack Query)
 - Store server state in Zustand
 - Create duplicate utilities or components
 - Use inline styles (use Tailwind or MUI sx)
 - Use `any` type (use proper TypeScript types)
+- Bypass the service layer to call repositories directly
 
 ## Adding a New Module
 
-1. Create module directory: `src/modules/<domain>/`
-2. Add types to `src/types/<domain>.ts`
-3. Create service: `src/api/<domain>.ts`
-4. Create repository: `src/modules/<domain>/services/repository.ts`
-5. Create hooks: `src/modules/<domain>/hooks/`
-6. Add query keys to `src/core/queryClient.ts`
-7. Create components: `src/modules/<domain>/components/`
-8. Add routes to `src/routes/router.tsx`
-9. Add navigation item to `PrimaryNavigation`
-10. Write tests
+1. Register the domain in `src/types/domain.ts` (`CRICKET_DOMAINS`) if new
+2. Create module directory: `src/modules/<domain>/`
+3. Add types to `src/types/<domain>.ts`
+4. Create repository: `src/api/repositories/<domain>.ts` (implements the interface in `src/api/repositories/types.ts`)
+5. Create service: `src/api/services/<domain>Service.ts` (delegates to the repository, enforces `orgId`)
+6. Export the service from `src/api/services/index.ts`
+7. Create hooks: `src/hooks/use<Domain>.ts` (consume the service, scope query keys with `useOrgQueryKey`)
+8. Add query keys to `src/core/queryClient.ts`
+9. Create components: `src/modules/<domain>/components/`
+10. Add routes to `src/routes/router.tsx`
+11. Add a permission-aware navigation item to `src/layouts/navigation.ts` (with `permission` metadata)
+12. Write tests
+
+**Data flow:** `Component → Feature Hook → Service → Repository → API Client → Adapter → MSW`
 
 ## Testing
 

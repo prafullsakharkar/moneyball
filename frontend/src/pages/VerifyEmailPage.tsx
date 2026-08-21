@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Alert, Typography, Box, CircularProgress } from '@mui/material';
-import { LoadingButton } from '@shared/components/LoadingButton';
+import { Typography, Box, CircularProgress } from '@mui/material';
+import { Button, Banner } from '@shared/components';
 import { useAuth } from '@providers/AuthProvider';
 import { useAuthStore } from '@stores/authStore';
 import { identityService } from '@api/index';
@@ -47,7 +47,7 @@ export default function VerifyEmailPage() {
     return (
       <Box>
         <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>Email Verified</Typography>
-        <Alert severity="success">Your email has been verified successfully!</Alert>
+        <Banner tone="success">Your email has been verified successfully!</Banner>
         <Typography variant="body2" sx={{ color: 'text.secondary', mt: 3, textAlign: 'center' }}>
           <Link to="/" style={{ fontWeight: 500 }}>Go to Dashboard</Link>
         </Typography>
@@ -61,12 +61,12 @@ export default function VerifyEmailPage() {
       <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
         We sent a verification link to <strong>{user?.email ?? 'your email'}</strong>.
       </Typography>
-      {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
-      {resent && <Alert severity="success" sx={{ mb: 2 }}>Verification email sent! Check your inbox.</Alert>}
+      {error && <Banner tone="error" sx={{ mb: 2 }}>{error}</Banner>}
+      {resent && <Banner tone="success" sx={{ mb: 2 }}>Verification email sent! Check your inbox.</Banner>}
       {!resent && (
-        <LoadingButton onClick={handleResend} variant="outlined" size="large" fullWidth loading={loading}>
+        <Button onClick={handleResend} variant="secondary" size="large" fullWidth loading={loading}>
           Resend Verification Email
-        </LoadingButton>
+        </Button>
       )}
       <Typography variant="body2" sx={{ color: 'text.secondary', mt: 3, textAlign: 'center' }}>
         <Link to="/auth/login" style={{ fontWeight: 500 }}>Back to Sign In</Link>

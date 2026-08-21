@@ -13,11 +13,7 @@ export type { ApiResponse, ApiErrorResponse, PaginatedResponse, PaginationParams
 export { identityRepository, organizationRepository } from './repositories';
 export type { IdentityRepository, OrganizationRepository, ListParams } from './repositories';
 
-/* ── Legacy exports (backward compat) ────────────────── */
-// These point to repository implementations for existing hooks/pages.
-// Remove once all consumers migrate to repository imports.
-import { identityRepository } from './repositories/identity';
-import { organizationRepository } from './repositories/organization';
-
-export const identityService = identityRepository;
-export const organizationService = organizationRepository;
+/* ── Services ────────────────────────────────────────── */
+// Services are the ONLY layer hooks/components may depend on.
+// Component → Feature Hook → TanStack Query → Service → Repository → API Client → Adapter → MSW
+export { identityService, organizationService } from './services';

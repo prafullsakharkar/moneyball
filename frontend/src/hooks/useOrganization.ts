@@ -3,7 +3,7 @@
  * All hooks are tenant-isolated — they use the current org context.
  */
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { organizationRepository } from '@api/repositories/organization';
+import { organizationService } from '@api/services/organizationService';
 import { useOrgContext } from './useOrgContext';
 import type {
   MemberInviteRequest,
@@ -33,7 +33,7 @@ export function useOrganizationDetail() {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.detail(orgId),
-    queryFn: () => organizationRepository.get(orgId),
+    queryFn: () => organizationService.get(orgId),
     enabled: Boolean(orgId),
   });
 }
@@ -42,7 +42,7 @@ export function useOrganizationStats() {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.stats(orgId),
-    queryFn: () => organizationRepository.getStats(orgId),
+    queryFn: () => organizationService.getStats(orgId),
     enabled: Boolean(orgId),
   });
 }
@@ -53,7 +53,7 @@ export function useOrganizationMembers(params?: { page?: number; limit?: number;
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.members(orgId, params as Record<string, unknown>),
-    queryFn: () => organizationRepository.getMembers(orgId, params),
+    queryFn: () => organizationService.getMembers(orgId, params),
     enabled: Boolean(orgId),
   });
 }
@@ -62,7 +62,7 @@ export function useOrganizationMember(memberId: string) {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.member(orgId, memberId),
-    queryFn: () => organizationRepository.getMember(orgId, memberId),
+    queryFn: () => organizationService.getMember(orgId, memberId),
     enabled: Boolean(orgId) && Boolean(memberId),
   });
 }
@@ -71,7 +71,7 @@ export function useInviteMember() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: MemberInviteRequest) => organizationRepository.inviteMember(orgId, data),
+    mutationFn: (data: MemberInviteRequest) => organizationService.inviteMember(orgId, data),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: orgQueryKeys.members(orgId) });
       qc.invalidateQueries({ queryKey: orgQueryKeys.stats(orgId) });
@@ -84,7 +84,7 @@ export function useUpdateMember() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: ({ memberId, data }: { memberId: string; data: MemberUpdateRequest }) =>
-      organizationRepository.updateMember(orgId, memberId, data),
+      organizationService.updateMember(orgId, memberId, data),
     onSuccess: (_res, variables) => {
       qc.invalidateQueries({ queryKey: orgQueryKeys.members(orgId) });
       qc.invalidateQueries({ queryKey: orgQueryKeys.member(orgId, variables.memberId) });
@@ -96,7 +96,7 @@ export function useRemoveMember() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (memberId: string) => organizationRepository.removeMember(orgId, memberId),
+    mutationFn: (memberId: string) => organizationService.removeMember(orgId, memberId),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: orgQueryKeys.members(orgId) });
       qc.invalidateQueries({ queryKey: orgQueryKeys.stats(orgId) });
@@ -110,7 +110,7 @@ export function useOrganizationRoles() {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.roles(orgId),
-    queryFn: () => organizationRepository.getRoles(orgId),
+    queryFn: () => organizationService.getRoles(orgId),
     enabled: Boolean(orgId),
   });
 }
@@ -119,7 +119,7 @@ export function useCreateRole() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: CreateRoleRequest) => organizationRepository.createRole(orgId, data),
+    mutationFn: (data: CreateRoleRequest) => organizationService.createRole(orgId, data),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.roles(orgId) }),
   });
 }
@@ -129,7 +129,7 @@ export function useUpdateRole() {
   const qc = useQueryClient();
   return useMutation({
     mutationFn: ({ roleId, data }: { roleId: string; data: UpdateRoleRequest }) =>
-      organizationRepository.updateRole(orgId, roleId, data),
+      organizationService.updateRole(orgId, roleId, data),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.roles(orgId) }),
   });
 }
@@ -138,7 +138,7 @@ export function useDeleteRole() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (roleId: string) => organizationRepository.deleteRole(orgId, roleId),
+    mutationFn: (roleId: string) => organizationService.deleteRole(orgId, roleId),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.roles(orgId) }),
   });
 }
@@ -149,7 +149,7 @@ export function useOrganizationDepartments() {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.departments(orgId),
-    queryFn: () => organizationRepository.getDepartments(orgId),
+    queryFn: () => organizationService.getDepartments(orgId),
     enabled: Boolean(orgId),
   });
 }
@@ -158,7 +158,7 @@ export function useCreateDepartment() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: CreateDepartmentRequest) => organizationRepository.createDepartment(orgId, data),
+    mutationFn: (data: CreateDepartmentRequest) => organizationService.createDepartment(orgId, data),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.departments(orgId) }),
   });
 }
@@ -167,7 +167,7 @@ export function useDeleteDepartment() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (deptId: string) => organizationRepository.deleteDepartment(orgId, deptId),
+    mutationFn: (deptId: string) => organizationService.deleteDepartment(orgId, deptId),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.departments(orgId) }),
   });
 }
@@ -178,7 +178,7 @@ export function useUpdateOrganization() {
   const { orgId } = useOrgContext();
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (data: UpdateOrganizationRequest) => organizationRepository.update(orgId, data),
+    mutationFn: (data: UpdateOrganizationRequest) => organizationService.update(orgId, data),
     onSuccess: () => qc.invalidateQueries({ queryKey: orgQueryKeys.detail(orgId) }),
   });
 }
@@ -189,7 +189,7 @@ export function useOrganizationTeams(params?: { page?: number; limit?: number; s
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.teams(orgId, params as Record<string, unknown>),
-    queryFn: () => organizationRepository.getTeams(orgId, params),
+    queryFn: () => organizationService.getTeams(orgId, params),
     enabled: Boolean(orgId),
   });
 }
@@ -198,7 +198,7 @@ export function useOrganizationCompetitions(params?: { page?: number; limit?: nu
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.competitions(orgId, params as Record<string, unknown>),
-    queryFn: () => organizationRepository.getCompetitions(orgId, params),
+    queryFn: () => organizationService.getCompetitions(orgId, params),
     enabled: Boolean(orgId),
   });
 }
@@ -207,7 +207,7 @@ export function useOrganizationFacilities() {
   const { orgId } = useOrgContext();
   return useQuery({
     queryKey: orgQueryKeys.facilities(orgId),
-    queryFn: () => organizationRepository.getFacilities(orgId),
+    queryFn: () => organizationService.getFacilities(orgId),
     enabled: Boolean(orgId),
   });
 }
