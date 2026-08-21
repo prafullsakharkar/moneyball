@@ -63,7 +63,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               borderRadius: 'var(--radius-md)',
               border: '1px solid var(--color-border)',
               background: 'var(--color-primary)',
-              color: '#fff',
+              color: 'var(--color-primary-contrast)',
               cursor: 'pointer',
             }}
           >

@@ -1,8 +1,14 @@
 /**
- * MatchStatus — CricketIQ Design System
+ * MatchStatus — CricketOS Design System
  * Match status badge with live indicator, result, and scheduling info.
+ *
+ * Status semantics per DESIGN.md:
+ *   LIVE       → accent with subtle indicator
+ *   COMPLETED  → muted neutral styling
+ *   UPCOMING   → secondary text with subtle emphasis
+ *   ABANDONED  → warning/error semantics
  */
-import { Box, Typography, Chip, type SxProps, type Theme } from '@mui/material';
+import { Box, Typography, Chip, useTheme, type SxProps, type Theme } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export type MatchState =
@@ -27,18 +33,21 @@ export interface MatchStatusProps {
   sx?: SxProps<Theme>;
 }
 
-const stateConfig: Record<MatchState, { label: string; color: string; bg: string }> = {
-  scheduled: { label: 'Scheduled', color: '#6b7280', bg: '#f3f4f6' },
-  in_progress: { label: 'In Progress', color: '#1565c0', bg: '#e3f2fd' },
-  live: { label: 'Live', color: '#d32f2f', bg: '#ffebee' },
-  innings_break: { label: 'Innings Break', color: '#ed6c02', bg: '#fff3e0' },
-  rain_delay: { label: 'Rain Delay', color: '#0288d1', bg: '#e1f5fe' },
-  completed: { label: 'Completed', color: '#2e7d32', bg: '#e8f5e9' },
-  abandoned: { label: 'Abandoned', color: '#9e9e9e', bg: '#f5f5f5' },
-  no_result: { label: 'No Result', color: '#9e9e9e', bg: '#f5f5f5' },
-};
-
 export function MatchStatus({ state, result, innings, size = 'md', sx }: MatchStatusProps) {
+  const theme = useTheme();
+  const { palette } = theme;
+
+  const stateConfig: Record<MatchState, { label: string; color: string; bg: string }> = {
+    scheduled: { label: 'Scheduled', color: palette.text.secondary, bg: 'transparent' },
+    in_progress: { label: 'In Progress', color: palette.primary.main, bg: palette.primary.main + '1a' },
+    live: { label: 'Live', color: palette.primary.main, bg: palette.primary.main + '1a' },
+    innings_break: { label: 'Innings Break', color: palette.warning.main, bg: palette.warning.main + '1a' },
+    rain_delay: { label: 'Rain Delay', color: palette.info.main, bg: palette.info.main + '1a' },
+    completed: { label: 'Completed', color: palette.success.main, bg: palette.success.main + '1a' },
+    abandoned: { label: 'Abandoned', color: palette.error.main, bg: palette.error.main + '1a' },
+    no_result: { label: 'No Result', color: palette.text.secondary, bg: 'transparent' },
+  };
+
   const config = stateConfig[state];
   const isLive = state === 'live' || state === 'in_progress';
 
@@ -51,7 +60,7 @@ export function MatchStatus({ state, result, innings, size = 'md', sx }: MatchSt
               <FiberManualRecordIcon
                 sx={{
                   fontSize: size === 'sm' ? 8 : 10,
-                  color: 'error.main',
+                  color: config.color,
                   animation: 'pulse-live 1.5s ease-in-out infinite',
                   '@keyframes pulse-live': {
                     '0%, 100%': { opacity: 1 },
@@ -69,6 +78,8 @@ export function MatchStatus({ state, result, innings, size = 'md', sx }: MatchSt
             fontWeight: 500,
             fontSize: size === 'sm' ? '0.625rem' : '0.75rem',
             height: size === 'sm' ? 20 : 24,
+            border: config.bg === 'transparent' ? '1px solid' : 'none',
+            borderColor: 'divider',
             '& .MuiChip-label': { px: 1 },
           }}
         />

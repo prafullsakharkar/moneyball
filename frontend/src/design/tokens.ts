@@ -1,89 +1,89 @@
 /**
- * CricketIQ Design Tokens
+ * CricketOS Design Tokens
  * ============================================
  * Foundation for the entire design system.
- * Inspired by Linear-level polish + enterprise density + sports technology.
- *
- * All components reference these tokens — never hardcode values.
+ * Dark-first, cricket-inspired lime accent, enterprise density,
+ * Linear-level polish. All components reference these tokens —
+ * never hardcode values.
  */
 
 /* ── Colors ──────────────────────────────────────────────── */
 
 export const colors = {
-  /* Brand — Deep cricket blue (pitch, tradition, trust) */
+  /* Brand — CricketOS lime accent (active / live / primary action) */
   brand: {
-    50: '#e8f0fe',
-    100: '#c5d9fc',
-    200: '#9ebef9',
-    300: '#6fa0f5',
-    400: '#4a88f0',
-    500: '#1565c0',    // Primary
-    600: '#1258a8',
-    700: '#0d47a1',    // Dark
-    800: '#0a3680',
-    900: '#072660',
-    950: '#041a42',
+    50: '#F7FEE7',
+    100: '#ECFCCB',
+    200: '#D9F99D',
+    300: '#BEF264',
+    400: '#A3E635',    // Dark-mode primary
+    500: '#84CC16',
+    600: '#65A30D',    // Light-mode primary
+    700: '#4D7C0F',
+    800: '#3F6212',
+    900: '#365314',
+    950: '#1A2E05',
   },
 
-  /* Teal — Accent (score highlights, success states) */
+  /* Accent — Lime-green ramp for active/success highlights */
   accent: {
-    50: '#e0f2f1',
-    100: '#b2dfdb',
-    200: '#80cbc4',
-    300: '#4db6ac',
-    400: '#26a69a',
-    500: '#00897b',
-    600: '#00796b',
-    700: '#00695c',
-    800: '#004d40',
-    900: '#003330',
+    50: '#F7FEE7',
+    100: '#ECFCCB',
+    200: '#D9F99D',
+    300: '#BEF264',
+    400: '#A3E635',
+    500: '#84CC16',
+    600: '#65A30D',
+    700: '#4D7C0F',
+    800: '#3F6212',
+    900: '#365314',
   },
 
-  /* Neutrals — Sophisticated greys */
+  /* Neutrals — CricketOS surfaces + text ramp */
   neutral: {
-    0: '#ffffff',
-    25: '#fcfcfd',
-    50: '#f8f9fb',
-    100: '#f1f3f5',
-    200: '#e9ecef',
-    300: '#dee2e6',
-    400: '#ced4da',
-    500: '#adb5bd',
-    600: '#868e96',
-    700: '#495057',
-    800: '#343a40',
-    900: '#212529',
-    950: '#111318',
+    0: '#FFFFFF',
+    25: '#F7F7F5',
+    50: '#F1F3F4',
+    100: '#E9EBED',
+    200: '#DBDEE2',
+    300: '#B8BDC3',
+    400: '#94999F',
+    500: '#70757D',
+    600: '#50545B',
+    700: '#191C20',
+    800: '#141619',
+    900: '#101113',
+    950: '#090A0B',
   },
 
   /* Semantic — Status colors */
   success: {
-    50: '#e8f5e9',
-    100: '#c8e6c9',
-    500: '#2e7d32',
-    600: '#1b5e20',
-    700: '#1a4721',
+    50: '#F7FEE7',
+    100: '#ECFCCB',
+    500: '#84CC16',
+    600: '#65A30D',
+    700: '#4D7C0F',
   },
   warning: {
-    50: '#fff3e0',
-    100: '#ffe0b2',
-    500: '#ed6c02',
-    600: '#e65100',
-    700: '#bf360c',
+    50: '#FFFBEB',
+    100: '#FEF3C7',
+    500: '#F59E0B',
+    600: '#D97706',
+    700: '#B45309',
   },
   error: {
-    50: '#ffebee',
-    100: '#ffcdd2',
-    500: '#d32f2f',
-    600: '#c62828',
-    700: '#b71c1c',
+    50: '#FEF2F2',
+    100: '#FEE2E2',
+    500: '#F87171',
+    600: '#EF4444',
+    700: '#DC2626',
   },
   info: {
-    50: '#e1f5fe',
-    100: '#b3e5fc',
-    500: '#0288d1',
-    600: '#0277bd',
-    700: '#01579b',
+    50: '#EFF6FF',
+    100: '#DBEAFE',
+    500: '#60A5FA',
+    600: '#3B82F6',
+    700: '#2563EB',
   },
 
   /* Cricket-specific */
@@ -105,9 +105,9 @@ export const colors = {
 
 export const typography = {
   fontFamily: {
-    sans: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    mono: '"JetBrains Mono", "Roboto Mono", "Consolas", monospace',
-    display: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    sans: '"Inter", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    mono: '"JetBrains Mono", "SFMono-Regular", ui-monospace, Consolas, "Liberation Mono", monospace',
+    display: '"Inter", "SF Pro Display", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
   },
 
   /* Font sizes — Tight, enterprise-dense */
@@ -153,53 +153,52 @@ export const typography = {
   /* Preset text styles */
   presets: {
     display: {
-      fontSize: '2.25rem',
-      fontWeight: 700,
-      lineHeight: 1.15,
-      letterSpacing: '-0.03em',
+      fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+      fontWeight: 500,
+      lineHeight: 1.04,
+      letterSpacing: '-0.035em',
     },
     h1: {
-      fontSize: '1.5rem',
+      fontSize: '1.5rem',   // 24px page heading
       fontWeight: 600,
-      lineHeight: 1.25,
+      lineHeight: 1.2,
       letterSpacing: '-0.02em',
     },
     h2: {
-      fontSize: '1.25rem',
+      fontSize: '1rem',     // 16px section heading
       fontWeight: 600,
       lineHeight: 1.3,
-      letterSpacing: '-0.015em',
     },
     h3: {
-      fontSize: '1.125rem',
+      fontSize: '0.9375rem',
       fontWeight: 600,
       lineHeight: 1.35,
     },
     h4: {
-      fontSize: '1rem',
+      fontSize: '0.875rem',
       fontWeight: 600,
       lineHeight: 1.4,
     },
     body: {
-      fontSize: '0.875rem',
+      fontSize: '0.875rem', // 14px body
       fontWeight: 400,
-      lineHeight: 1.5,
+      lineHeight: 1.55,
+      letterSpacing: '-0.005em',
     },
     'body-sm': {
-      fontSize: '0.8125rem',
+      fontSize: '0.8125rem', // 13px small body
       fontWeight: 400,
       lineHeight: 1.5,
     },
     caption: {
-      fontSize: '0.75rem',
+      fontSize: '0.75rem',  // 12px metadata
       fontWeight: 400,
       lineHeight: 1.4,
     },
     label: {
-      fontSize: '0.75rem',
+      fontSize: '0.75rem',  // 12px label
       fontWeight: 500,
       lineHeight: 1.4,
-      letterSpacing: '0.01em',
     },
     overline: {
       fontSize: '0.6875rem',
@@ -208,9 +207,19 @@ export const typography = {
       letterSpacing: '0.06em',
       textTransform: 'uppercase' as const,
     },
+    score: {
+      fontSize: '1.75rem',  // 28px score
+      fontWeight: 600,
+      lineHeight: 1.1,
+      letterSpacing: '-0.03em',
+      fontVariantNumeric: 'tabular-nums' as const,
+    },
+    numeric: {
+      fontVariantNumeric: 'tabular-nums' as const,
+    },
     code: {
       fontSize: '0.8125rem',
-      fontFamily: '"JetBrains Mono", "Roboto Mono", monospace',
+      fontFamily: '"JetBrains Mono", "SFMono-Regular", ui-monospace, Consolas, monospace',
       fontWeight: 400,
     },
   },
@@ -293,11 +302,11 @@ export const borders = {
     dotted: 'dotted',
   },
   color: {
-    light: 'rgba(0, 0, 0, 0.06)',
-    DEFAULT: 'rgba(0, 0, 0, 0.08)',
-    medium: 'rgba(0, 0, 0, 0.12)',
-    strong: 'rgba(0, 0, 0, 0.20)',
-    focus: colors.brand[500],
+    light: 'rgba(21, 21, 21, 0.09)',
+    DEFAULT: 'rgba(21, 21, 21, 0.12)',
+    medium: 'rgba(21, 21, 21, 0.16)',
+    strong: 'rgba(21, 21, 21, 0.20)',
+    focus: colors.brand[400],
     error: colors.error[500],
     success: colors.success[500],
     warning: colors.warning[500],
@@ -405,7 +414,7 @@ export const breakpoints = {
 /* ── Layout Constants ────────────────────────────────────── */
 
 export const layout = {
-  sidebarWidth: 260,
+  sidebarWidth: 240,
   sidebarCollapsedWidth: 64,
   headerHeight: 56,
   /** Dense header for data-heavy views */

@@ -1,8 +1,8 @@
 /**
- * CricketIQ Theme — Dark
+ * CricketOS Theme — Dark
  * ============================================
  * Dark mode MUI theme built from centralized theme modules.
- * Dark is the default and primary experience (StudioHub reference).
+ * Dark is the default and primary CricketOS experience.
  */
 import { createTheme } from '@mui/material/styles';
 import { darkPalette } from './palette';
@@ -28,9 +28,14 @@ export const darkTheme = createTheme({
     text: {
       primary: darkPalette.text.primary,
       secondary: darkPalette.text.secondary,
+      tertiary: darkPalette.text.tertiary,
       disabled: darkPalette.text.disabled,
     },
     divider: darkPalette.divider,
+    border: darkPalette.border,
+    borderStrong: darkPalette.borderStrong,
+    hover: darkPalette.hover,
+    active: darkPalette.active,
   },
   typography,
   shape: muiShape,

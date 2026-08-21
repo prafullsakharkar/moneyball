@@ -1,8 +1,8 @@
 /**
- * StatCard — CricketIQ Design System
+ * StatCard — CricketOS Design System
  * Stat card with value, label, trend, and comparison.
  */
-import { Box, Typography, type SxProps, type Theme } from '@mui/material';
+import { Box, Typography, useTheme, type SxProps, type Theme } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -27,14 +27,6 @@ export interface StatCardProps {
   sx?: SxProps<Theme>;
 }
 
-const accentColors: Record<string, string> = {
-  primary: '#1565c0',
-  success: '#2e7d32',
-  warning: '#ed6c02',
-  error: '#d32f2f',
-  info: '#0288d1',
-};
-
 export function StatCard({
   value,
   label,
@@ -46,6 +38,9 @@ export function StatCard({
   compact = false,
   sx,
 }: StatCardProps) {
+  const theme = useTheme();
+  const accentColor = theme.palette[accent].main;
+
   const trendIcons = {
     up: <TrendingUpIcon sx={{ fontSize: 14, color: 'success.main' }} />,
     down: <TrendingDownIcon sx={{ fontSize: 14, color: 'error.main' }} />,
@@ -65,7 +60,7 @@ export function StatCard({
         bgcolor: 'background.paper',
         transition: 'border-color 200ms',
         '&:hover': {
-          borderColor: accentColors[accent],
+          borderColor: accentColor,
         },
         ...sx,
       }}
@@ -76,11 +71,11 @@ export function StatCard({
             width: compact ? 32 : 40,
             height: compact ? 32 : 40,
             borderRadius: 1.5,
-            bgcolor: `${accentColors[accent]}14`,
+            bgcolor: `${accentColor}14`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: accentColors[accent],
+            color: accentColor,
             flexShrink: 0,
           }}
         >

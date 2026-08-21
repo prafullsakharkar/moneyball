@@ -1,5 +1,5 @@
 /**
- * CricketIQ Theme — Light
+ * CricketOS Theme — Light
  * ============================================
  * Light mode MUI theme built from centralized theme modules.
  */
@@ -27,9 +27,14 @@ export const lightTheme = createTheme({
     text: {
       primary: lightPalette.text.primary,
       secondary: lightPalette.text.secondary,
+      tertiary: lightPalette.text.tertiary,
       disabled: lightPalette.text.disabled,
     },
     divider: lightPalette.divider,
+    border: lightPalette.border,
+    borderStrong: lightPalette.borderStrong,
+    hover: lightPalette.hover,
+    active: lightPalette.active,
   },
   typography,
   shape: muiShape,

@@ -1,8 +1,8 @@
 /**
- * TournamentBadge — CricketIQ Design System
+ * TournamentBadge — CricketOS Design System
  * Tournament/league badge with type indicator and season.
  */
-import { Box, Typography, Chip, type SxProps, type Theme } from '@mui/material';
+import { Box, Typography, Chip, useTheme, type SxProps, type Theme } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import LeagueIcon from '@mui/icons-material/Schema';
 
@@ -20,14 +20,6 @@ export interface TournamentBadgeProps {
   sx?: SxProps<Theme>;
 }
 
-const statusColors: Record<string, { bg: string; color: string }> = {
-  draft: { bg: '#f3f4f6', color: '#6b7280' },
-  upcoming: { bg: '#e3f2fd', color: '#1565c0' },
-  active: { bg: '#e8f5e9', color: '#2e7d32' },
-  completed: { bg: '#f3f4f6', color: '#6b7280' },
-  cancelled: { bg: '#ffebee', color: '#d32f2f' },
-};
-
 export function TournamentBadge({
   name,
   type = 'tournament',
@@ -36,6 +28,17 @@ export function TournamentBadge({
   size = 'md',
   sx,
 }: TournamentBadgeProps) {
+  const theme = useTheme();
+  const { palette } = theme;
+
+  const statusColors: Record<string, { bg: string; color: string }> = {
+    draft: { bg: palette.action.hover, color: palette.text.disabled },
+    upcoming: { bg: palette.primary.main + '1a', color: palette.primary.main },
+    active: { bg: palette.success.main + '1a', color: palette.success.main },
+    completed: { bg: palette.action.hover, color: palette.text.secondary },
+    cancelled: { bg: palette.error.main + '1a', color: palette.error.main },
+  };
+
   const sizeMap = {
     sm: { iconSize: 16, fontSize: '0.6875rem', chipH: 18 },
     md: { iconSize: 20, fontSize: '0.8125rem', chipH: 22 },

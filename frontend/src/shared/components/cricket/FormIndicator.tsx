@@ -1,8 +1,8 @@
 /**
- * FormIndicator — CricketIQ Design System
+ * FormIndicator — CricketOS Design System
  * Recent form display (e.g., W, D, L, W, W) with color-coded results.
  */
-import { Box, Tooltip, type SxProps, type Theme } from '@mui/material';
+import { Box, Tooltip, useTheme, type SxProps, type Theme } from '@mui/material';
 
 export type FormResult = 'W' | 'L' | 'D' | 'T' | 'NR';
 
@@ -16,15 +16,18 @@ export interface FormIndicatorProps {
   sx?: SxProps<Theme>;
 }
 
-const resultConfig: Record<FormResult, { color: string; bg: string; label: string }> = {
-  W: { color: '#ffffff', bg: '#2e7d32', label: 'Won' },
-  L: { color: '#ffffff', bg: '#d32f2f', label: 'Lost' },
-  D: { color: '#495057', bg: '#e9ecef', label: 'Draw' },
-  T: { color: '#495057', bg: '#fff3e0', label: 'Tie' },
-  NR: { color: '#6b7280', bg: '#f3f4f6', label: 'No Result' },
-};
-
 export function FormIndicator({ results, last = 5, size = 'md', sx }: FormIndicatorProps) {
+  const theme = useTheme();
+  const { palette } = theme;
+
+  const resultConfig: Record<FormResult, { color: string; bg: string; label: string }> = {
+    W: { color: '#FFFFFF', bg: palette.success.main, label: 'Won' },
+    L: { color: '#FFFFFF', bg: palette.error.main, label: 'Lost' },
+    D: { color: palette.text.secondary, bg: palette.action.hover, label: 'Draw' },
+    T: { color: '#FFFFFF', bg: palette.warning.main, label: 'Tie' },
+    NR: { color: palette.text.disabled, bg: palette.action.hover, label: 'No Result' },
+  };
+
   const recent = results.slice(-last);
   const sizeMap = {
     sm: { dot: 18, fontSize: '0.5625rem', gap: 0.25 },

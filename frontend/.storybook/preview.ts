@@ -14,9 +14,9 @@ const preview: Preview = {
     backgrounds: {
       default: 'light',
       values: [
-        { name: 'light', value: '#f8f9fb' },
-        { name: 'dark', value: '#111318' },
-        { name: 'white', value: '#ffffff' },
+        { name: 'light', value: '#F7F7F5' },
+        { name: 'dark', value: '#090A0B' },
+        { name: 'white', value: '#FFFFFF' },
       ],
     },
     layout: 'centered',
@@ -34,7 +34,7 @@ const preview: Preview = {
   ],
   globalTypes: {
     theme: {
-      description: 'CricketIQ Theme',
+      description: 'CricketOS Theme',
       toolbar: {
         title: 'Theme',
         icon: 'circlehollow',

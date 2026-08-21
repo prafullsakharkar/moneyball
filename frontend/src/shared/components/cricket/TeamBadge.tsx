@@ -2,7 +2,7 @@
  * TeamBadge — CricketIQ Design System
  * Compact team badge with logo, short name, and optional score.
  */
-import { Box, Avatar, Typography, type SxProps, type Theme } from '@mui/material';
+import { Box, Avatar, Typography, useTheme, type SxProps, type Theme } from '@mui/material';
 
 export interface TeamBadgeProps {
   /** Team name */
@@ -26,12 +26,14 @@ export function TeamBadge({
   name,
   shortName,
   logoUrl,
-  color = '#1565c0',
+  color,
   score,
   size = 'md',
   horizontal = true,
   sx,
 }: TeamBadgeProps) {
+  const theme = useTheme();
+  const resolvedColor = color ?? theme.palette.primary.main;
   const sizeMap = {
     sm: { avatar: 24, fontSize: '0.6875rem', scoreSize: '0.75rem' },
     md: { avatar: 32, fontSize: '0.8125rem', scoreSize: '0.875rem' },
@@ -57,7 +59,7 @@ export function TeamBadge({
           height: s.avatar,
           fontSize: '0.6em',
           fontWeight: 700,
-          bgcolor: color,
+          bgcolor: resolvedColor,
           color: '#fff',
         }}
       >

@@ -5,6 +5,9 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    allowedHosts: ['.monkeycode-ai.live'],
+  },
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, 'src/app'),

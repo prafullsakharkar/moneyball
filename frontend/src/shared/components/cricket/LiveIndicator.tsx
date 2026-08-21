@@ -1,8 +1,9 @@
 /**
- * LiveIndicator — CricketIQ Design System
+ * LiveIndicator — CricketOS Design System
  * Pulsing live dot with optional label.
+ * LIVE uses the CricketOS accent with a subtle indicator.
  */
-import { Box, Typography, type SxProps, type Theme } from '@mui/material';
+import { Box, Typography, useTheme, type SxProps, type Theme } from '@mui/material';
 
 export interface LiveIndicatorProps {
   /** Show label text */
@@ -16,12 +17,6 @@ export interface LiveIndicatorProps {
   sx?: SxProps<Theme>;
 }
 
-const variantConfig = {
-  live: { color: '#d32f2f', label: 'LIVE' },
-  recording: { color: '#d32f2f', label: 'REC' },
-  online: { color: '#2e7d32', label: 'Online' },
-};
-
 export function LiveIndicator({
   showLabel = true,
   label,
@@ -29,6 +24,14 @@ export function LiveIndicator({
   variant = 'live',
   sx,
 }: LiveIndicatorProps) {
+  const theme = useTheme();
+
+  const variantConfig = {
+    live: { color: theme.palette.primary.main, label: 'LIVE' },
+    recording: { color: theme.palette.error.main, label: 'REC' },
+    online: { color: theme.palette.success.main, label: 'Online' },
+  };
+
   const config = variantConfig[variant];
   const dotSize = size === 'sm' ? 6 : size === 'md' ? 8 : 10;
   const fontSize = size === 'sm' ? '0.5625rem' : size === 'md' ? '0.625rem' : '0.75rem';

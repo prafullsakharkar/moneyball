@@ -1,8 +1,8 @@
 /**
- * PlayerAvatar — CricketIQ Design System
+ * PlayerAvatar — CricketOS Design System
  * Player profile avatar with initials fallback, role indicator, and status badges.
  */
-import { Avatar, Box, Badge, type SxProps, type Theme } from '@mui/material';
+import { Avatar, Box, Badge, useTheme, type SxProps, type Theme } from '@mui/material';
 
 export interface PlayerAvatarProps {
   /** Player first name */
@@ -30,13 +30,6 @@ const sizeMap = {
   xl: { avatar: 72, fontSize: '1.5rem' },
 };
 
-const roleColors: Record<string, string> = {
-  batsman: '#1565c0',
-  bowler: '#d32f2f',
-  allrounder: '#2e7d32',
-  wk: '#ed6c02',
-};
-
 const roleLabels: Record<string, string> = {
   batsman: 'BAT',
   bowler: 'BWL',
@@ -54,8 +47,25 @@ export function PlayerAvatar({
   showRole = false,
   sx,
 }: PlayerAvatarProps) {
+  const theme = useTheme();
+  const { palette } = theme;
   const s = sizeMap[size];
   const initials = `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+
+  const roleColor = (r: NonNullable<PlayerAvatarProps['role']>): string => {
+    switch (r) {
+      case 'batsman':
+        return palette.primary.main;
+      case 'bowler':
+        return palette.error.main;
+      case 'allrounder':
+        return palette.success.main;
+      case 'wk':
+        return palette.warning.main;
+    }
+  };
+
+  const resolvedRoleColor = role ? roleColor(role) : palette.primary.main;
 
   const avatar = (
     <Avatar
@@ -65,7 +75,7 @@ export function PlayerAvatar({
         height: s.avatar,
         fontSize: s.fontSize,
         fontWeight: 600,
-        bgcolor: role ? roleColors[role] : 'primary.main',
+        bgcolor: resolvedRoleColor,
         ...sx,
       }}
     >
@@ -82,7 +92,7 @@ export function PlayerAvatar({
           variant="dot"
           sx={{
             '& .MuiBadge-badge': {
-              backgroundColor: online ? '#2e7d32' : '#9e9e9e',
+              backgroundColor: online ? palette.success.main : palette.text.disabled,
               border: '2px solid',
               borderColor: 'background.paper',
               width: size === 'xs' ? 6 : 8,
@@ -102,7 +112,7 @@ export function PlayerAvatar({
             position: 'absolute',
             bottom: -2,
             right: -2,
-            bgcolor: roleColors[role],
+            bgcolor: resolvedRoleColor,
             color: '#fff',
             fontSize: '0.5rem',
             fontWeight: 700,

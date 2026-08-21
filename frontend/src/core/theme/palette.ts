@@ -1,40 +1,25 @@
 /**
- * CricketIQ Theme — Palette
+ * CricketOS Theme — Palette
  * ============================================
- * Centralized color palette for the MUI theme.
- * Built on design tokens, adopting StudioHub's indigo accent (#6366f1)
- * and dark-first neutral scale.
+ * Centralized MUI color palette built on the CricketOS semantic tokens.
+ * Dark-first lime accent, enterprise neutral surfaces.
  */
 import { colors } from '@design/tokens';
+import { darkTokens, lightTokens, type CricketColorTokens } from './tokens';
 
-/**
- * Brand accent — Indigo (StudioHub reference).
- * Replaces the previous deep-blue brand for a more modern, pro feel.
- */
-export const brand = {
-  50: '#eef2ff',
-  100: '#e0e7ff',
-  200: '#c7d2fe',
-  300: '#a5b4fc',
-  400: '#818cf8',
-  500: '#6366f1', // Primary
-  600: '#4f46e5',
-  700: '#4338ca',
-  800: '#3730a3',
-  900: '#312e81',
-  950: '#1e1b4b',
-} as const;
+/** Brand — CricketOS lime accent ramp */
+export const brand = colors.brand;
 
-/** Accent — Teal (score highlights, success highlights) */
+/** Accent — Lime-green ramp */
 export const accent = colors.accent;
 
-/** Semantic status colors */
+/** Semantic status color ramps */
 export const success = colors.success;
 export const warning = colors.warning;
 export const error = colors.error;
 export const info = colors.info;
 
-/** Neutral scale (shared across modes) */
+/** Neutral grey / surface ramp */
 export const neutral = colors.neutral;
 
 /** Cricket-specific pitch/turf colors */
@@ -67,74 +52,51 @@ export interface PaletteModeColors {
   active: string;
 }
 
+function buildPalette(
+  tokens: CricketColorTokens,
+  mode: 'light' | 'dark',
+): PaletteModeColors {
+  const dark = mode === 'dark';
+  const surface = tokens.surface;
+
+  return {
+    primary: {
+      main: tokens.accent,
+      light: brand[300],
+      dark: brand[700],
+      contrastText: dark ? '#090A0B' : '#FFFFFF',
+    },
+    secondary: {
+      main: dark ? brand[400] : brand[600],
+      light: brand[300],
+      dark: brand[700],
+      contrastText: dark ? '#090A0B' : '#FFFFFF',
+    },
+    success: { main: tokens.success, light: success[100], dark: success[700] },
+    warning: { main: tokens.warning, light: warning[100], dark: warning[700] },
+    error: { main: tokens.danger, light: error[100], dark: error[700] },
+    info: { main: tokens.info, light: info[100], dark: info[700] },
+    background: {
+      default: tokens.background,
+      paper: surface[100],
+      elevated: dark ? surface[200] : surface[100],
+    },
+    text: {
+      primary: tokens.foreground,
+      secondary: tokens.muted,
+      tertiary: tokens.subtle,
+      disabled: tokens.disabled,
+    },
+    divider: tokens.border,
+    border: tokens.border,
+    borderStrong: tokens.borderStrong,
+    hover: dark ? surface[200] : surface[200],
+    active: dark ? surface[300] : surface[300],
+  };
+}
+
 /** Light mode palette */
-export const lightPalette: PaletteModeColors = {
-  primary: {
-    main: brand[500],
-    light: brand[100],
-    dark: brand[700],
-    contrastText: '#ffffff',
-  },
-  secondary: {
-    main: accent[500],
-    light: accent[100],
-    dark: accent[700],
-    contrastText: '#ffffff',
-  },
-  success: { main: success[500], light: success[50], dark: success[700] },
-  warning: { main: warning[500], light: warning[50], dark: warning[700] },
-  error: { main: error[500], light: error[50], dark: error[700] },
-  info: { main: info[500], light: info[50], dark: info[700] },
-  background: {
-    default: neutral[50],
-    paper: neutral[0],
-    elevated: neutral[0],
-  },
-  text: {
-    primary: neutral[900],
-    secondary: neutral[600],
-    tertiary: neutral[500],
-    disabled: neutral[400],
-  },
-  divider: neutral[200],
-  border: neutral[200],
-  borderStrong: neutral[300],
-  hover: 'rgba(0, 0, 0, 0.04)',
-  active: 'rgba(0, 0, 0, 0.08)',
-};
+export const lightPalette: PaletteModeColors = buildPalette(lightTokens, 'light');
 
 /** Dark mode palette */
-export const darkPalette: PaletteModeColors = {
-  primary: {
-    main: brand[400],
-    light: brand[300],
-    dark: brand[600],
-    contrastText: '#0f172a',
-  },
-  secondary: {
-    main: accent[400],
-    light: accent[300],
-    dark: accent[600],
-    contrastText: '#0f172a',
-  },
-  success: { main: success[500], light: success[50], dark: success[700] },
-  warning: { main: warning[500], light: warning[50], dark: warning[700] },
-  error: { main: error[500], light: error[50], dark: error[700] },
-  info: { main: info[500], light: info[50], dark: info[700] },
-  background: {
-    default: neutral[950],
-    paper: neutral[900],
-    elevated: neutral[800],
-  },
-  text: {
-    primary: neutral[50],
-    secondary: neutral[400],
-    tertiary: neutral[500],
-    disabled: neutral[600],
-  },
-  divider: neutral[800],
-  border: neutral[800],
-  borderStrong: neutral[700],
-  hover: 'rgba(255, 255, 255, 0.06)',
-  active: 'rgba(255, 255, 255, 0.1)',
-};
+export const darkPalette: PaletteModeColors = buildPalette(darkTokens, 'dark');

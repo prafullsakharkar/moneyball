@@ -3,35 +3,46 @@
 /* ── Tailwind v4 Theme Customization ──────────────────────── */
 
 @theme {
-  /* Brand */
-  --color-primary: #1565c0;
-  --color-primary-hover: #0d47a1;
-  --color-primary-light: #e3f2fd;
-  --color-primary-contrast: #ffffff;
+  /* Brand — CricketOS lime accent */
+  --color-primary: #A3E635;
+  --color-primary-hover: #84CC16;
+  --color-primary-light: #ECFCCB;
+  --color-primary-contrast: #090A0B;
 
   /* Status */
-  --color-success: #2e7d32;
-  --color-warning: #ed6c02;
-  --color-error: #d32f2f;
-  --color-info: #0288d1;
+  --color-success: #84CC16;
+  --color-warning: #F59E0B;
+  --color-error: #F87171;
+  --color-info: #60A5FA;
 
-  /* Neutral — MUI-style greys */
-  --color-surface: #ffffff;
-  --color-surface-dim: #f5f5f5;
-  --color-surface-container: #fafafa;
-  --color-border: #e0e0e0;
+  /* Neutral — CricketOS surfaces */
+  --color-surface: #101113;
+  --color-surface-dim: #141619;
+  --color-surface-container: #191C20;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-strong: rgba(255, 255, 255, 0.13);
+
+  /* Text */
+  --color-text-primary: #F1F3F4;
+  --color-text-secondary: rgba(241, 243, 244, 0.64);
+  --color-text-tertiary: rgba(241, 243, 244, 0.42);
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 
   /* Sidebar */
-  --color-sidebar-bg: #111827;
-  --color-sidebar-text: #9ca3af;
-  --color-sidebar-active: #1565c0;
+  --color-sidebar-bg: #101113;
+  --color-sidebar-text: rgba(241, 243, 244, 0.64);
+  --color-sidebar-active: #A3E635;
 
   /* Shadows */
-  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-dropdown: 0 4px 12px rgba(0, 0, 0, 0.35);
 
   /* Layout */
-  --sidebar-width: 260px;
+  --sidebar-width: 240px;
   --header-height: 56px;
 }
 
@@ -112,8 +123,19 @@ body {
 }
 
 .dark body {
-  background-color: #111318;
-  color: #f8f9fb;
+  background-color: #090A0B;
+  color: #F1F3F4;
+}
+
+/* ── Light Mode ───────────────────────────────────────────── */
+
+.light {
+  color-scheme: light;
+}
+
+.light body {
+  background-color: #F7F7F5;
+  color: #151515;
 }
 
 /* ── Utility ──────────────────────────────────────────────── */

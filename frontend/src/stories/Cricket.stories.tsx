@@ -75,8 +75,8 @@ export const TeamBadges: StoryObj = {
   name: 'Team Badges',
   render: () => (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <TeamBadge name="Australia" shortName="AUS" color="#1565c0" />
-      <TeamBadge name="India" shortName="IND" color="#ed6c02" score={{ runs: 312, wickets: 8, overs: 90 }} />
+      <TeamBadge name="Australia" shortName="AUS" />
+      <TeamBadge name="India" shortName="IND" score={{ runs: 312, wickets: 8, overs: 90 }} />
     </Box>
   ),
 };
