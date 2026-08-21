@@ -1,0 +1,76 @@
+- generic [ref=f3e43]:
+  - banner [ref=f3e44]:
+    - generic [ref=f3e45]:
+      - button "Cricket Australia" [ref=f3e46] [cursor=pointer]:
+        - paragraph [ref=f3e50]: Cricket Australia
+      - textbox "Global search" [ref=f3e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f3e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f3e62] [cursor=pointer]
+      - button "0 notifications" [ref=f3e65] [cursor=pointer]
+      - button "JS" [ref=f3e69] [cursor=pointer]
+  - navigation [ref=f3e71]:
+    - generic [ref=f3e73]:
+      - generic [ref=f3e74]:
+        - generic [ref=f3e79]:
+          - heading "CricketOS" [level=6] [ref=f3e80]
+          - generic [ref=f3e81]: Cricket Australia
+        - button [ref=f3e82] [cursor=pointer]
+      - generic [ref=f3e85]:
+        - list [ref=f3e86]:
+          - listitem [ref=f3e87]: Home
+          - listitem [ref=f3e88]:
+            - button "Dashboard" [ref=f3e89] [cursor=pointer]
+        - list [ref=f3e98]:
+          - listitem [ref=f3e99]: Competition
+          - listitem [ref=f3e100]:
+            - button "Competitions" [ref=f3e101] [cursor=pointer]
+          - listitem [ref=f3e111]:
+            - button "Matches" [ref=f3e112] [cursor=pointer]
+        - list [ref=f3e118]:
+          - listitem [ref=f3e119]: Development
+          - listitem [ref=f3e120]:
+            - button "Training" [ref=f3e121] [cursor=pointer]
+        - list [ref=f3e131]:
+          - listitem [ref=f3e132]: Facilities
+          - listitem [ref=f3e133]:
+            - button "Venues" [ref=f3e134] [cursor=pointer]
+        - list [ref=f3e142]:
+          - listitem [ref=f3e143]: Media
+          - listitem [ref=f3e144]:
+            - button "Media" [ref=f3e145] [cursor=pointer]
+        - list [ref=f3e152]:
+          - listitem [ref=f3e153]: Intelligence
+          - listitem [ref=f3e154]:
+            - button "Analytics" [ref=f3e155] [cursor=pointer]
+          - listitem [ref=f3e161]:
+            - button "Insights" [ref=f3e162] [cursor=pointer]
+        - list [ref=f3e178]:
+          - listitem [ref=f3e179]: Commercial
+          - listitem [ref=f3e180]:
+            - button "Organizations" [ref=f3e181] [cursor=pointer]
+        - list [ref=f3e189]:
+          - listitem [ref=f3e190]: Platform
+          - listitem [ref=f3e191]:
+            - button "Settings" [ref=f3e192] [cursor=pointer]
+          - listitem [ref=f3e199]:
+            - button "Help" [ref=f3e200] [cursor=pointer]
+      - button "Collapse" [ref=f3e208] [cursor=pointer]
+  - main [ref=f3e214]:
+    - generic [ref=f3e217]:
+      - generic [ref=f3e219]:
+        - heading "Dashboard" [level=4] [ref=f3e220]
+        - paragraph [ref=f3e221]: Overview of your cricket platform
+      - generic [ref=f3e223]:
+        - generic [ref=f3e229]:
+          - text: Teams
+          - paragraph [ref=f3e231]: "0"
+        - generic [ref=f3e237]:
+          - text: Players
+          - paragraph [ref=f3e239]: "0"
+        - generic [ref=f3e246]:
+          - text: Matches
+          - paragraph [ref=f3e248]: "0"
+        - generic [ref=f3e254]:
+          - text: Competitions
+          - paragraph [ref=f3e256]: "0"

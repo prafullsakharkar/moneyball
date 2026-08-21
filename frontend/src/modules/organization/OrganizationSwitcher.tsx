@@ -175,6 +175,7 @@ export function OrganizationSwitcher() {
                       )}
                     </Box>
                   }
+                  slotProps={{ secondary: { component: 'div' } }}
                 />
               </MenuItem>
             );

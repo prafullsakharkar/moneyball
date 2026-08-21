@@ -1,0 +1,119 @@
+- generic [ref=f7e1]:
+  - generic [ref=f7e43]:
+    - banner [ref=f7e44]:
+      - generic [ref=f7e45]:
+        - button [ref=f7e277] [cursor=pointer]:
+          - paragraph [ref=f7e50]: Cricket Australia
+        - textbox [ref=f7e278]:
+          - /placeholder: Search…
+        - button [ref=f7e279] [cursor=pointer]
+        - button [ref=f7e280] [cursor=pointer]
+        - button [ref=f7e281] [cursor=pointer]
+        - button [ref=f7e282] [cursor=pointer]:
+          - generic [ref=f7e70]: JS
+    - navigation [ref=f7e71]:
+      - generic [ref=f7e73]:
+        - generic [ref=f7e74]:
+          - generic [ref=f7e79]:
+            - heading [level=6] [ref=f7e283]: CricketOS
+            - generic [ref=f7e81]: Cricket Australia
+          - button [ref=f7e82] [cursor=pointer]
+        - generic [ref=f7e85]:
+          - list [ref=f7e86]:
+            - listitem [ref=f7e87]: Home
+            - listitem [ref=f7e88]:
+              - button [ref=f7e284] [cursor=pointer]:
+                - generic [ref=f7e96]: Dashboard
+          - list [ref=f7e98]:
+            - listitem [ref=f7e99]: Competition
+            - listitem [ref=f7e100]:
+              - button [ref=f7e285] [cursor=pointer]:
+                - generic [ref=f7e109]: Competitions
+            - listitem [ref=f7e111]:
+              - button [ref=f7e286] [cursor=pointer]:
+                - generic [ref=f7e116]: Matches
+          - list [ref=f7e118]:
+            - listitem [ref=f7e119]: Participants
+            - listitem [ref=f7e120]:
+              - button [ref=f7e287] [cursor=pointer]:
+                - generic [ref=f7e128]: Teams
+            - listitem [ref=f7e130]:
+              - button [ref=f7e288] [cursor=pointer]:
+                - generic [ref=f7e136]: Players
+          - list [ref=f7e138]:
+            - listitem [ref=f7e139]: Development
+            - listitem [ref=f7e140]:
+              - button [ref=f7e289] [cursor=pointer]:
+                - generic [ref=f7e149]: Training
+          - list [ref=f7e151]:
+            - listitem [ref=f7e152]: Facilities
+            - listitem [ref=f7e153]:
+              - button [ref=f7e290] [cursor=pointer]:
+                - generic [ref=f7e160]: Venues
+          - list [ref=f7e162]:
+            - listitem [ref=f7e163]: Media
+            - listitem [ref=f7e164]:
+              - button [ref=f7e291] [cursor=pointer]:
+                - generic [ref=f7e170]: Media
+          - list [ref=f7e172]:
+            - listitem [ref=f7e173]: Intelligence
+            - listitem [ref=f7e174]:
+              - button [ref=f7e292] [cursor=pointer]:
+                - generic [ref=f7e179]: Analytics
+            - listitem [ref=f7e181]:
+              - button [ref=f7e293] [cursor=pointer]:
+                - generic [ref=f7e196]: Insights
+          - list [ref=f7e198]:
+            - listitem [ref=f7e199]: Commercial
+            - listitem [ref=f7e200]:
+              - button [ref=f7e294] [cursor=pointer]:
+                - generic [ref=f7e207]: Organizations
+          - list [ref=f7e209]:
+            - listitem [ref=f7e210]: Platform
+            - listitem [ref=f7e211]:
+              - button [ref=f7e295] [cursor=pointer]:
+                - generic [ref=f7e217]: Settings
+            - listitem [ref=f7e219]:
+              - button [ref=f7e296] [cursor=pointer]:
+                - generic [ref=f7e225]: Help
+        - button [ref=f7e297] [cursor=pointer]:
+          - generic [ref=f7e232]: Collapse
+    - main [ref=f7e234]:
+      - generic [ref=f7e237]:
+        - generic [ref=f7e239]:
+          - heading [level=4] [ref=f7e298]: Dashboard
+          - paragraph [ref=f7e241]: Overview of your cricket platform
+        - generic [ref=f7e243]:
+          - generic [ref=f7e249]:
+            - text: Teams
+            - paragraph [ref=f7e251]: "0"
+          - generic [ref=f7e257]:
+            - text: Players
+            - paragraph [ref=f7e259]: "0"
+          - generic [ref=f7e266]:
+            - text: Matches
+            - paragraph [ref=f7e268]: "0"
+          - generic [ref=f7e274]:
+            - text: Competitions
+            - paragraph [ref=f7e276]: "0"
+  - menu [ref=f7e301]:
+    - generic [ref=f7e302]:
+      - generic [ref=f7e303]: Switch organization (2)
+      - generic [ref=f7e305]:
+        - textbox "Search organizations..." [ref=f7e309]
+        - group
+    - separator [ref=f7e310]
+    - menuitem "C Cricket Australia Board Member" [active] [ref=f7e311] [cursor=pointer]:
+      - generic [ref=f7e312]: C
+      - generic [ref=f7e314]:
+        - paragraph [ref=f7e317]: Cricket Australia
+        - generic [ref=f7e321]:
+          - generic [ref=f7e322]: Board
+          - generic [ref=f7e324]: Member
+    - menuitem "M Mumbai Cricket Association Association Member" [ref=f7e326] [cursor=pointer]:
+      - generic [ref=f7e327]: M
+      - generic [ref=f7e329]:
+        - paragraph [ref=f7e332]: Mumbai Cricket Association
+        - generic [ref=f7e334]:
+          - generic [ref=f7e335]: Association
+          - generic [ref=f7e337]: Member

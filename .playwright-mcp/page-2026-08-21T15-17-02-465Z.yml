@@ -1,0 +1,50 @@
+- generic [ref=f7e43]:
+  - banner [ref=f7e44]:
+    - generic [ref=f7e45]:
+      - button "Mumbai Cricket Association" [active] [ref=f7e339] [cursor=pointer]:
+        - paragraph [ref=f7e50]: Mumbai Cricket Association
+      - textbox "Global search" [ref=f7e340]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f7e341] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f7e342] [cursor=pointer]
+      - button "0 notifications" [ref=f7e343] [cursor=pointer]
+      - button "JS" [ref=f7e344] [cursor=pointer]
+  - navigation [ref=f7e71]:
+    - generic [ref=f7e73]:
+      - generic [ref=f7e74]:
+        - generic [ref=f7e79]:
+          - heading "CricketOS" [level=6] [ref=f7e345]
+          - generic [ref=f7e81]: Mumbai Cricket Association
+        - button [ref=f7e82] [cursor=pointer]
+      - generic [ref=f7e85]:
+        - list [ref=f7e86]:
+          - listitem [ref=f7e87]: Home
+          - listitem [ref=f7e88]:
+            - button "Dashboard" [ref=f7e346] [cursor=pointer]
+        - list [ref=f7e118]:
+          - listitem [ref=f7e119]: Participants
+          - listitem [ref=f7e130]:
+            - button "Players" [ref=f7e347] [cursor=pointer]
+        - list [ref=f7e209]:
+          - listitem [ref=f7e210]: Platform
+          - listitem [ref=f7e219]:
+            - button "Help" [ref=f7e348] [cursor=pointer]
+      - button "Collapse" [ref=f7e349] [cursor=pointer]
+  - main [ref=f7e234]:
+    - generic [ref=f7e237]:
+      - generic [ref=f7e239]:
+        - heading "Dashboard" [level=4] [ref=f7e350]
+        - paragraph [ref=f7e241]: Overview of your cricket platform
+      - generic [ref=f7e243]:
+        - generic [ref=f7e249]:
+          - text: Teams
+          - paragraph [ref=f7e251]: "0"
+        - generic [ref=f7e257]:
+          - text: Players
+          - paragraph [ref=f7e259]: "0"
+        - generic [ref=f7e266]:
+          - text: Matches
+          - paragraph [ref=f7e268]: "0"
+        - generic [ref=f7e274]:
+          - text: Competitions
+          - paragraph [ref=f7e276]: "0"
