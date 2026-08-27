@@ -66,6 +66,9 @@ export function MatchStatus({ state, result, innings, size = 'md', sx }: MatchSt
                     '0%, 100%': { opacity: 1 },
                     '50%': { opacity: 0.3 },
                   },
+                  '@media (prefers-reduced-motion: reduce)': {
+                    animation: 'none',
+                  },
                 }}
               />
             ) : undefined

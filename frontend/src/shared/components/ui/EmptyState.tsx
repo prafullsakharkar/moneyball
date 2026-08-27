@@ -42,6 +42,7 @@ export function EmptyState({
       }}
     >
       <Box
+        aria-hidden="true"
         sx={{
           width: compact ? 48 : 64,
           height: compact ? 48 : 64,

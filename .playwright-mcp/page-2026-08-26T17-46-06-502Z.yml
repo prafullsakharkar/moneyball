@@ -1,0 +1,52 @@
+- generic [ref=f7e43]:
+  - banner [ref=f7e44]:
+    - generic [ref=f7e45]:
+      - button "Mumbai Cricket Association" [ref=f7e46] [cursor=pointer]:
+        - paragraph [ref=f7e50]: Mumbai Cricket Association
+      - textbox "Global search" [ref=f7e59]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f7e60] [cursor=pointer]
+      - button "Switch to light mode" [ref=f7e63] [cursor=pointer]
+      - button "Help" [ref=f7e70] [cursor=pointer]
+      - button "0 notifications" [ref=f7e74] [cursor=pointer]
+      - button "Account menu" [ref=f7e78] [cursor=pointer]:
+        - generic [ref=f7e79]: JS
+  - navigation [ref=f7e80]:
+    - generic [ref=f7e82]:
+      - generic [ref=f7e83]:
+        - generic [ref=f7e88]:
+          - heading "CricketOS" [level=6] [ref=f7e89]
+          - generic [ref=f7e90]: Mumbai Cricket Association
+        - button "Collapse sidebar" [ref=f7e91] [cursor=pointer]
+      - generic [ref=f7e94]:
+        - list [ref=f7e95]:
+          - listitem [ref=f7e96]: Home
+          - listitem [ref=f7e97]:
+            - button "Dashboard" [ref=f7e98] [cursor=pointer]
+        - list [ref=f7e107]:
+          - listitem [ref=f7e108]: Participants
+          - listitem [ref=f7e109]:
+            - button "Players" [ref=f7e110] [cursor=pointer]
+        - list [ref=f7e117]:
+          - listitem [ref=f7e118]: Platform
+          - listitem [ref=f7e119]:
+            - button "Help" [ref=f7e120] [cursor=pointer]
+      - button "Collapse" [ref=f7e128] [cursor=pointer]
+  - main [ref=f7e134]:
+    - generic [ref=f7e137]:
+      - generic [ref=f7e139]:
+        - heading "Dashboard" [level=4] [ref=f7e140]
+        - paragraph [ref=f7e141]: Overview of your cricket platform
+      - generic [ref=f7e143]:
+        - generic [ref=f7e149]:
+          - text: Teams
+          - paragraph [ref=f7e151]: "0"
+        - generic [ref=f7e157]:
+          - text: Players
+          - paragraph [ref=f7e159]: "0"
+        - generic [ref=f7e166]:
+          - text: Matches
+          - paragraph [ref=f7e168]: "0"
+        - generic [ref=f7e174]:
+          - text: Competitions
+          - paragraph [ref=f7e176]: "0"

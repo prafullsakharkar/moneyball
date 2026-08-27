@@ -22,14 +22,16 @@ export interface TextAreaProps extends Omit<TextFieldProps, 'variant' | 'error' 
 
 export const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(
   (
-    { label, description, error, helperText, minRows = 3, maxRows, required, sx, ...props },
+    { label, description, error, helperText, minRows = 3, maxRows, required, id, sx, ...props },
     ref
   ) => {
     const hasError = Boolean(error);
+    const textareaId = id ?? (label ? `cq-textarea-${label.replace(/\s+/g, '-').toLowerCase()}` : undefined);
     return (
       <Box sx={{ width: '100%' }}>
         {label && (
           <InputLabel
+            htmlFor={textareaId}
             sx={{
               fontSize: '0.8125rem',
               fontWeight: 500,
@@ -57,6 +59,7 @@ export const TextArea = forwardRef<HTMLDivElement, TextAreaProps>(
         )}
         <TextField
           ref={ref}
+          id={textareaId}
           variant="outlined"
           multiline
           minRows={minRows}

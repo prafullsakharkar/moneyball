@@ -31,7 +31,7 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setError(null);
     try {
-      await login(data.email, data.password);
+      await login(data.email, data.password, undefined, data.rememberMe);
       navigate(from, { replace: true });
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Login failed. Please try again.';

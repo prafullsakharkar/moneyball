@@ -4,6 +4,8 @@ import {
   getStoredTokens, setStoredTokens, removeStoredTokens,
   getStoredUser, setStoredUser, removeStoredUser,
   getStoredMemberships, setStoredMemberships, removeStoredMemberships,
+  getStoredRememberMe, setStoredRememberMe,
+  sessionAdaptiveStorage, STORAGE_KEYS,
 } from '@core/storage';
 
 /* ── JWT Helpers ───────────────────────────────────────────── */
@@ -37,9 +39,9 @@ interface AuthState {
   isLoading: boolean;
   isInitialized: boolean;
 
-  login: (user: User, tokens: AuthTokens, memberships: Membership[]) => void;
+  login: (user: User, tokens: AuthTokens, memberships: Membership[], remember?: boolean) => void;
   logout: () => void;
-  setTokens: (tokens: AuthTokens) => void;
+  setTokens: (tokens: AuthTokens, remember?: boolean) => void;
   updateUser: (user: Partial<User>) => void;
   setMemberships: (memberships: Membership[]) => void;
   setInitialized: (initialized: boolean) => void;
@@ -61,8 +63,14 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   isLoading: false,
   isInitialized: false,
 
-  login: (user, tokens, memberships) => {
-    setStoredTokens(tokens.accessToken, tokens.refreshToken);
+  login: (user, tokens, memberships, remember = true) => {
+    setStoredRememberMe(remember);
+    if (remember) {
+      setStoredTokens(tokens.accessToken, tokens.refreshToken);
+    } else {
+      sessionAdaptiveStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
+      sessionAdaptiveStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
+    }
     setStoredUser(user);
     setStoredMemberships(memberships);
 
@@ -71,14 +79,21 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   logout: () => {
     removeStoredTokens();
+    sessionAdaptiveStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+    sessionAdaptiveStorage.removeItem(STORAGE_KEYS.REFRESH_TOKEN);
     removeStoredUser();
     removeStoredMemberships();
 
     set({ user: null, tokens: null, memberships: [], isAuthenticated: false, isLoading: false });
   },
 
-  setTokens: (tokens) => {
-    setStoredTokens(tokens.accessToken, tokens.refreshToken);
+  setTokens: (tokens, remember = getStoredRememberMe()) => {
+    if (remember) {
+      setStoredTokens(tokens.accessToken, tokens.refreshToken);
+    } else {
+      sessionAdaptiveStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, tokens.accessToken);
+      sessionAdaptiveStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, tokens.refreshToken);
+    }
     set({ tokens });
   },
 
@@ -115,7 +130,11 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   restoreSession: () => {
-    const { accessToken, refreshToken } = getStoredTokens();
+    const persistent = getStoredTokens();
+    const sessionAccess = sessionAdaptiveStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
+    const sessionRefresh = sessionAdaptiveStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN);
+    const accessToken = persistent.accessToken ?? sessionAccess;
+    const refreshToken = persistent.refreshToken ?? sessionRefresh;
     const user = getStoredUser<User>();
     const memberships = getStoredMemberships<Membership>();
 

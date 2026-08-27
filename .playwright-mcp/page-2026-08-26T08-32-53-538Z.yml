@@ -1,0 +1,299 @@
+- generic [ref=f4e43]:
+  - banner [ref=f4e44]:
+    - generic [ref=f4e45]:
+      - button "Cricket Australia" [ref=f4e46] [cursor=pointer]:
+        - paragraph [ref=f4e50]: Cricket Australia
+      - textbox "Global search" [ref=f4e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f4e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f4e62] [cursor=pointer]
+      - button "Help" [ref=f4e65] [cursor=pointer]
+      - button "0 notifications" [ref=f4e69] [cursor=pointer]
+      - button "JS" [ref=f4e73] [cursor=pointer]
+  - navigation [ref=f4e75]:
+    - generic [ref=f4e77]:
+      - generic [ref=f4e78]:
+        - generic [ref=f4e83]:
+          - heading "CricketOS" [level=6] [ref=f4e84]
+          - generic [ref=f4e85]: Cricket Australia
+        - button [ref=f4e86] [cursor=pointer]
+      - generic [ref=f4e89]:
+        - list [ref=f4e90]:
+          - listitem [ref=f4e91]: Home
+          - listitem [ref=f4e92]:
+            - button "Dashboard" [ref=f4e93] [cursor=pointer]
+        - list [ref=f4e102]:
+          - listitem [ref=f4e103]: Competition
+          - listitem [ref=f4e104]:
+            - button "Tournaments" [ref=f4e105] [cursor=pointer]
+          - listitem [ref=f4e115]:
+            - button "Leagues" [ref=f4e116] [cursor=pointer]
+          - listitem [ref=f4e123]:
+            - button "Seasons" [ref=f4e124] [cursor=pointer]
+          - listitem [ref=f4e130]:
+            - button "Fixtures" [ref=f4e131] [cursor=pointer]
+          - listitem [ref=f4e137]:
+            - button "Matches" [ref=f4e138] [cursor=pointer]
+          - listitem [ref=f4e144]:
+            - button "Scoring" [ref=f4e145] [cursor=pointer]
+          - listitem [ref=f4e152]:
+            - button "Officials" [ref=f4e153] [cursor=pointer]
+        - list [ref=f4e163]:
+          - listitem [ref=f4e164]: Participants
+          - listitem [ref=f4e165]:
+            - button "Players" [ref=f4e166] [cursor=pointer]
+          - listitem [ref=f4e173]:
+            - button "Teams" [ref=f4e174] [cursor=pointer]
+          - listitem [ref=f4e183]:
+            - button "Squads" [ref=f4e184] [cursor=pointer]
+          - listitem [ref=f4e192]:
+            - button "Coaches" [ref=f4e193] [cursor=pointer]
+          - listitem [ref=f4e200]:
+            - button "Staff" [ref=f4e201] [cursor=pointer]
+          - listitem [ref=f4e208]:
+            - button "Selectors" [ref=f4e209] [cursor=pointer]
+        - list [ref=f4e217]:
+          - listitem [ref=f4e218]: Development
+          - listitem [ref=f4e219]:
+            - button "Academy" [ref=f4e220] [cursor=pointer]
+          - listitem [ref=f4e229]:
+            - button "Training" [ref=f4e230] [cursor=pointer]
+          - listitem [ref=f4e240]:
+            - button "Fitness" [ref=f4e241] [cursor=pointer]
+          - listitem [ref=f4e248]:
+            - button "Medical" [ref=f4e249] [cursor=pointer]
+          - listitem [ref=f4e257]:
+            - button "Performance" [ref=f4e258] [cursor=pointer]
+          - listitem [ref=f4e264]:
+            - button "Scouting" [ref=f4e265] [cursor=pointer]
+        - list [ref=f4e274]:
+          - listitem [ref=f4e275]: Facilities
+          - listitem [ref=f4e276]:
+            - button "Grounds" [ref=f4e277] [cursor=pointer]
+          - listitem [ref=f4e284]:
+            - button "Facilities" [ref=f4e285] [cursor=pointer]
+          - listitem [ref=f4e293]:
+            - button "Equipment" [ref=f4e294] [cursor=pointer]
+          - listitem [ref=f4e302]:
+            - button "Inventory" [ref=f4e303] [cursor=pointer]
+          - listitem [ref=f4e317]:
+            - button "Devices" [ref=f4e318] [cursor=pointer]
+          - listitem [ref=f4e325]:
+            - button "Maintenance" [ref=f4e326] [cursor=pointer]
+        - list [ref=f4e332]:
+          - listitem [ref=f4e333]: Media
+          - listitem [ref=f4e334]:
+            - button "Media" [ref=f4e335] [cursor=pointer]
+          - listitem [ref=f4e342]:
+            - button "Video" [ref=f4e343] [cursor=pointer]
+          - listitem [ref=f4e350]:
+            - button "Streaming" [ref=f4e351] [cursor=pointer]
+          - listitem [ref=f4e361]:
+            - button "Gallery" [ref=f4e362] [cursor=pointer]
+          - listitem [ref=f4e371]:
+            - button "CMS" [ref=f4e372] [cursor=pointer]
+        - list [ref=f4e379]:
+          - listitem [ref=f4e380]: Intelligence
+          - listitem [ref=f4e381]:
+            - button "Statistics" [ref=f4e382] [cursor=pointer]
+          - listitem [ref=f4e388]:
+            - button "Analytics" [ref=f4e389] [cursor=pointer]
+          - listitem [ref=f4e396]:
+            - button "Reports" [ref=f4e397] [cursor=pointer]
+          - listitem [ref=f4e404]:
+            - button "AI" [ref=f4e405] [cursor=pointer]
+          - listitem [ref=f4e421]:
+            - button "Search" [ref=f4e422] [cursor=pointer]
+        - list [ref=f4e429]:
+          - listitem [ref=f4e430]: Commercial
+          - listitem [ref=f4e431]:
+            - button "Membership" [ref=f4e432] [cursor=pointer]
+          - listitem [ref=f4e438]:
+            - button "Sponsorship" [ref=f4e439] [cursor=pointer]
+          - listitem [ref=f4e448]:
+            - button "Ticketing" [ref=f4e449] [cursor=pointer]
+          - listitem [ref=f4e455]:
+            - button "Marketplace" [ref=f4e456] [cursor=pointer]
+          - listitem [ref=f4e464]:
+            - button "Merchandise" [ref=f4e465] [cursor=pointer]
+          - listitem [ref=f4e472]:
+            - button "Billing" [ref=f4e473] [cursor=pointer]
+          - listitem [ref=f4e480]:
+            - button "Finance" [ref=f4e481] [cursor=pointer]
+        - list [ref=f4e488]:
+          - listitem [ref=f4e489]: Fan
+          - listitem [ref=f4e490]:
+            - button "Fantasy" [ref=f4e491] [cursor=pointer]
+          - listitem [ref=f4e497]:
+            - button "Rewards" [ref=f4e498] [cursor=pointer]
+          - listitem [ref=f4e506]:
+            - button "Loyalty" [ref=f4e507] [cursor=pointer]
+          - listitem [ref=f4e513]:
+            - button "Community" [ref=f4e514] [cursor=pointer]
+          - listitem [ref=f4e523]:
+            - button "Engagement" [ref=f4e524] [cursor=pointer]
+        - list [ref=f4e531]:
+          - listitem [ref=f4e532]: Platform
+          - listitem [ref=f4e533]:
+            - button "Notifications" [ref=f4e534] [cursor=pointer]
+          - listitem [ref=f4e541]:
+            - button "Workflow" [ref=f4e542] [cursor=pointer]
+          - listitem [ref=f4e550]:
+            - button "Integrations" [ref=f4e551] [cursor=pointer]
+          - listitem [ref=f4e557]:
+            - button "Documents" [ref=f4e558] [cursor=pointer]
+          - listitem [ref=f4e564]:
+            - button "Calendar" [ref=f4e565] [cursor=pointer]
+          - listitem [ref=f4e571]:
+            - button "Events" [ref=f4e572] [cursor=pointer]
+          - listitem [ref=f4e579]:
+            - button "Whitelabel" [ref=f4e580] [cursor=pointer]
+          - listitem [ref=f4e590]:
+            - button "Settings" [ref=f4e591] [cursor=pointer]
+          - listitem [ref=f4e598]:
+            - button "Help" [ref=f4e599] [cursor=pointer]
+      - button "Collapse" [ref=f4e607] [cursor=pointer]
+  - main [ref=f4e613]:
+    - generic [ref=f4e615]:
+      - button "Tournaments" [ref=f4e616] [cursor=pointer]
+      - button "Leagues" [ref=f4e624] [cursor=pointer]
+      - button "Seasons" [ref=f4e629] [cursor=pointer]
+      - button "Fixtures" [ref=f4e633] [cursor=pointer]
+      - button "Matches" [ref=f4e637] [cursor=pointer]
+      - button "Scoring" [ref=f4e641] [cursor=pointer]
+      - button "Officials" [ref=f4e646] [cursor=pointer]
+    - navigation [ref=f4e654]:
+      - list [ref=f4e655]:
+        - listitem [ref=f4e656]:
+          - link "Home" [ref=f4e657] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f4e658]
+        - listitem [ref=f4e661]:
+          - link "Cricket Australia" [ref=f4e662] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f4e663]
+        - listitem [ref=f4e666]:
+          - paragraph [ref=f4e667]: Tournaments
+    - generic [ref=f4e669]:
+      - generic [ref=f4e670]:
+        - generic [ref=f4e671]:
+          - heading "Tournament Workspace" [level=4] [ref=f4e672]
+          - paragraph [ref=f4e673]: Competition, fixtures, standings and intelligence
+        - generic [ref=f4e675]:
+          - button "Export" [ref=f4e676] [cursor=pointer]
+          - button "Edit Tournament" [ref=f4e677] [cursor=pointer]
+      - generic [ref=f4e678]:
+        - generic [ref=f4e681] [cursor=pointer]:
+          - generic [ref=f4e682]:
+            - paragraph [ref=f4e688]: BBL 2024
+            - paragraph [ref=f4e689]: Big Bash League 2024
+          - paragraph [ref=f4e690]: League · 2024
+        - generic:
+          - generic:
+            - generic:
+              - generic [ref=f4e695]:
+                - paragraph [ref=f4e696]: BBL 2024
+                - generic [ref=f4e697]: active
+              - generic:
+                - heading "Big Bash League 2024" [level=5]
+                - paragraph: League · Season 2024
+            - generic:
+              - generic: 8 teams
+              - generic: 56 matches
+              - generic: 1/1/2024 → 2/15/2024
+              - generic: Win rate 58%
+            - generic:
+              - generic [ref=f4e705]:
+                - text: Teams
+                - paragraph [ref=f4e707]: "8"
+              - generic [ref=f4e709]:
+                - text: Matches
+                - paragraph [ref=f4e711]: "56"
+              - generic [ref=f4e713]:
+                - text: Standing rows
+                - paragraph [ref=f4e715]: "3"
+              - generic [ref=f4e717]:
+                - text: Status
+                - paragraph [ref=f4e719]: active
+          - generic:
+            - generic:
+              - generic [ref=f4e720] [cursor=pointer]
+              - generic:
+                - tablist:
+                  - tab "Overview" [selected] [ref=f4e723] [cursor=pointer]
+                  - tab "Seasons" [ref=f4e726] [cursor=pointer]
+                  - tab "Fixtures" [ref=f4e729] [cursor=pointer]
+                  - tab "Matches" [ref=f4e732] [cursor=pointer]
+                  - tab "Teams" [ref=f4e736] [cursor=pointer]
+                  - tab "Standings" [ref=f4e739] [cursor=pointer]
+                  - tab "Statistics" [ref=f4e742] [cursor=pointer]
+                  - tab "Analytics" [ref=f4e745] [cursor=pointer]
+                  - tab "Reports" [ref=f4e749] [cursor=pointer]
+                  - tab "Media" [ref=f4e752] [cursor=pointer]
+              - generic [ref=f4e756] [cursor=pointer]
+          - generic:
+            - generic:
+              - generic:
+                - generic [ref=f4e759]:
+                  - heading "Tournament Details" [level=6] [ref=f4e762]
+                  - generic [ref=f4e763]:
+                    - generic [ref=f4e764]:
+                      - paragraph [ref=f4e765]: Format
+                      - paragraph [ref=f4e766]: League
+                    - generic [ref=f4e767]:
+                      - paragraph [ref=f4e768]: Season
+                      - paragraph [ref=f4e769]: "2024"
+                    - generic [ref=f4e770]:
+                      - paragraph [ref=f4e771]: Start
+                      - paragraph [ref=f4e772]: 1/1/2024
+                    - generic [ref=f4e773]:
+                      - paragraph [ref=f4e774]: End
+                      - paragraph [ref=f4e775]: 2/15/2024
+                    - generic [ref=f4e776]:
+                      - paragraph [ref=f4e777]: Status
+                      - paragraph [ref=f4e778]: active
+                - generic [ref=f4e779]:
+                  - heading "Standings Snapshot" [level=6] [ref=f4e782]
+                  - generic [ref=f4e783]:
+                    - generic [ref=f4e784]:
+                      - paragraph [ref=f4e785]: S
+                      - paragraph [ref=f4e786]: Sydney Thunder
+                      - paragraph [ref=f4e787]: 17 pts
+                      - generic [ref=f4e788]:
+                        - generic "Won" [ref=f4e789]: W
+                        - generic "Won" [ref=f4e790]: W
+                        - generic "Lost" [ref=f4e791]: L
+                        - generic "Won" [ref=f4e792]: W
+                        - generic "No Result" [ref=f4e793]: NR
+                    - generic [ref=f4e794]:
+                      - paragraph [ref=f4e795]: B
+                      - paragraph [ref=f4e796]: Brisbane Heat
+                      - paragraph [ref=f4e797]: 14 pts
+                      - generic [ref=f4e798]:
+                        - generic "Won" [ref=f4e799]: W
+                        - generic "Lost" [ref=f4e800]: L
+                        - generic "Won" [ref=f4e801]: W
+                        - generic "Won" [ref=f4e802]: W
+                        - generic "Lost" [ref=f4e803]: L
+                    - generic [ref=f4e804]:
+                      - paragraph [ref=f4e805]: M
+                      - paragraph [ref=f4e806]: Melbourne Stars
+                      - paragraph [ref=f4e807]: 12 pts
+                      - generic [ref=f4e808]:
+                        - generic "Lost" [ref=f4e809]: L
+                        - generic "Won" [ref=f4e810]: W
+                        - generic "Lost" [ref=f4e811]: L
+                        - generic "Won" [ref=f4e812]: W
+                        - generic "Won" [ref=f4e813]: W
+              - generic:
+                - heading "Season Record" [level=6] [ref=f4e815]
+                - generic:
+                  - generic:
+                    - paragraph [ref=f4e816]: Total matches
+                    - paragraph [ref=f4e817]: "56"
+                  - generic:
+                    - paragraph [ref=f4e818]: Teams competing
+                    - paragraph [ref=f4e819]: "8"
+                  - generic:
+                    - paragraph [ref=f4e820]: Standings tracked
+                    - paragraph [ref=f4e821]: "3"

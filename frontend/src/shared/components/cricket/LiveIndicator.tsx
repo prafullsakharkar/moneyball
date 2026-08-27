@@ -57,6 +57,9 @@ export function LiveIndicator({
             '70%': { boxShadow: `0 0 0 ${dotSize}px ${config.color}00` },
             '100%': { boxShadow: `0 0 0 0 ${config.color}00` },
           },
+          '@media (prefers-reduced-motion: reduce)': {
+            animation: 'none',
+          },
         }}
       />
       {showLabel && (

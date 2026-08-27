@@ -59,7 +59,7 @@ export function ConfirmDialog({
     >
       {destructive && (
         <Box sx={{ display: 'flex', gap: 1.5, mb: 1.5, alignItems: 'flex-start' }}>
-          <WarningAmberIcon sx={{ color: 'warning.main', fontSize: 20, mt: 0.25 }} />
+          <WarningAmberIcon aria-hidden="true" sx={{ color: 'warning.main', fontSize: 20, mt: 0.25 }} />
           <Box>
             {description && (
               <Typography variant="body2" color="text.secondary">

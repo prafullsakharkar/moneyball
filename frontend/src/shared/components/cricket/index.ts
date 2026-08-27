@@ -27,3 +27,12 @@ export type { FormIndicatorProps, FormResult } from './FormIndicator';
 
 export { TournamentBadge } from './TournamentBadge';
 export type { TournamentBadgeProps } from './TournamentBadge';
+
+export { MatchHeader } from './MatchHeader';
+export type { MatchHeaderProps } from './MatchHeader';
+
+export { LiveScore } from './LiveScore';
+export type { LiveScoreProps } from './LiveScore';
+
+export { Scorecard } from './Scorecard';
+export type { ScorecardProps } from './Scorecard';

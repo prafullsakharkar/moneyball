@@ -153,9 +153,22 @@ export function removeStoredOrgId(): void {
   persistentStorage.removeItem(STORAGE_KEYS.CURRENT_ORG);
 }
 
+export function getStoredRememberMe(): boolean {
+  return persistentStorage.getItem(STORAGE_KEYS.REMEMBER_ME) === 'true';
+}
+
+export function setStoredRememberMe(remember: boolean): void {
+  persistentStorage.setItem(STORAGE_KEYS.REMEMBER_ME, String(remember));
+}
+
+export function removeStoredRememberMe(): void {
+  persistentStorage.removeItem(STORAGE_KEYS.REMEMBER_ME);
+}
+
 export function clearAllAuthStorage(): void {
   removeStoredTokens();
   removeStoredUser();
   removeStoredMemberships();
   removeStoredOrgId();
+  removeStoredRememberMe();
 }

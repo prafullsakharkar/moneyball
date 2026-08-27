@@ -23,7 +23,7 @@ export function UserMenu() {
 
   return (
     <>
-      <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} size="small">
+      <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} size="small" aria-label="Account menu">
         <Avatar src={user?.avatarUrl} sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: '0.75rem' }}>
           {initials}
         </Avatar>

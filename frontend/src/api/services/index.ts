@@ -11,3 +11,12 @@
  */
 export { identityService } from './identityService';
 export { organizationService } from './organizationService';
+export { playerService } from './playerService';
+export {
+  matchService,
+  teamService,
+  tournamentService,
+  analyticsService,
+  aiService,
+  mediaService,
+} from './cricketService';

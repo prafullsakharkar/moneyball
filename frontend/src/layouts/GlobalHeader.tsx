@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, IconButton, Box, useMediaQuery, useTheme, Tooltip } from '@mui/material';
-import { Menu, Command } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Menu, Command, HelpCircle } from 'lucide-react';
 import { OrganizationSwitcher } from '@modules/organization/OrganizationSwitcher';
 import { GlobalSearch } from '@modules/search/GlobalSearch';
 import { CommandPalette } from '@modules/search/CommandPalette';
@@ -15,6 +16,7 @@ interface GlobalHeaderProps {
 export function GlobalHeader({ onMenuToggle }: GlobalHeaderProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
   const openCommandPalette = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, metaKey: true }));
@@ -51,13 +53,20 @@ export function GlobalHeader({ onMenuToggle }: GlobalHeaderProps) {
 
         <Box sx={{ flex: 1 }} />
 
-        <GlobalSearch />
+        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <GlobalSearch />
+        </Box>
         <Tooltip title="Command palette (Ctrl+K)">
           <IconButton onClick={openCommandPalette} aria-label="Open command palette" sx={{ color: 'text.secondary' }}>
             <Command size={18} />
           </IconButton>
         </Tooltip>
         <ThemeToggle />
+        <Tooltip title="Help">
+          <IconButton onClick={() => navigate('/help')} aria-label="Help" sx={{ color: 'text.secondary' }}>
+            <HelpCircle size={18} />
+          </IconButton>
+        </Tooltip>
         <NotificationCenter />
         <UserMenu />
       </Toolbar>

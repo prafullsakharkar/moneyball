@@ -51,6 +51,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       <MuiDrawer
         ref={ref}
         anchor={anchor}
+        aria-labelledby={title ? 'cq-drawer-title' : undefined}
         slotProps={{
           ...slotProps,
           paper: {
@@ -78,7 +79,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
             >
               <Box sx={{ minWidth: 0 }}>
                 {title && (
-                  <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.0625rem' }}>
+                  <Typography id="cq-drawer-title" variant="h6" sx={{ fontWeight: 600, fontSize: '1.0625rem' }}>
                     {title}
                   </Typography>
                 )}
@@ -89,7 +90,7 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
                 )}
               </Box>
               {onClose && (
-                <IconButton onClick={onClose} size="small" sx={{ mt: -0.5, mr: -1 }}>
+                <IconButton onClick={onClose} size="small" aria-label="Close panel" sx={{ mt: -0.5, mr: -1 }}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
               )}

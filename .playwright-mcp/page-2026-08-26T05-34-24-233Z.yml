@@ -1,0 +1,339 @@
+- generic [ref=f7e47]:
+  - banner [ref=f7e48]:
+    - generic [ref=f7e49]:
+      - button "Cricket Australia" [ref=f7e50] [cursor=pointer]:
+        - paragraph [ref=f7e54]: Cricket Australia
+      - textbox "Global search" [ref=f7e62]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f7e63] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f7e66] [cursor=pointer]
+      - button "Help" [ref=f7e69] [cursor=pointer]
+      - button "0 notifications" [ref=f7e73] [cursor=pointer]
+      - button "JS" [ref=f7e77] [cursor=pointer]
+  - navigation [ref=f7e79]:
+    - generic [ref=f7e81]:
+      - generic [ref=f7e82]:
+        - generic [ref=f7e87]:
+          - heading "CricketOS" [level=6] [ref=f7e88]
+          - generic [ref=f7e89]: Cricket Australia
+        - button [ref=f7e90] [cursor=pointer]
+      - generic [ref=f7e93]:
+        - list [ref=f7e94]:
+          - listitem [ref=f7e95]: Home
+          - listitem [ref=f7e96]:
+            - button "Dashboard" [ref=f7e97] [cursor=pointer]
+        - list [ref=f7e106]:
+          - listitem [ref=f7e107]: Competition
+          - listitem [ref=f7e108]:
+            - button "Tournaments" [ref=f7e109] [cursor=pointer]
+          - listitem [ref=f7e119]:
+            - button "Leagues" [ref=f7e120] [cursor=pointer]
+          - listitem [ref=f7e127]:
+            - button "Seasons" [ref=f7e128] [cursor=pointer]
+          - listitem [ref=f7e134]:
+            - button "Fixtures" [ref=f7e135] [cursor=pointer]
+          - listitem [ref=f7e141]:
+            - button "Matches" [ref=f7e142] [cursor=pointer]
+          - listitem [ref=f7e148]:
+            - button "Scoring" [ref=f7e149] [cursor=pointer]
+          - listitem [ref=f7e156]:
+            - button "Officials" [ref=f7e157] [cursor=pointer]
+        - list [ref=f7e167]:
+          - listitem [ref=f7e168]: Participants
+          - listitem [ref=f7e169]:
+            - button "Players" [ref=f7e170] [cursor=pointer]
+          - listitem [ref=f7e177]:
+            - button "Teams" [ref=f7e178] [cursor=pointer]
+          - listitem [ref=f7e187]:
+            - button "Squads" [ref=f7e188] [cursor=pointer]
+          - listitem [ref=f7e196]:
+            - button "Coaches" [ref=f7e197] [cursor=pointer]
+          - listitem [ref=f7e204]:
+            - button "Staff" [ref=f7e205] [cursor=pointer]
+          - listitem [ref=f7e212]:
+            - button "Selectors" [ref=f7e213] [cursor=pointer]
+        - list [ref=f7e221]:
+          - listitem [ref=f7e222]: Development
+          - listitem [ref=f7e223]:
+            - button "Academy" [ref=f7e224] [cursor=pointer]
+          - listitem [ref=f7e233]:
+            - button "Training" [ref=f7e234] [cursor=pointer]
+          - listitem [ref=f7e244]:
+            - button "Fitness" [ref=f7e245] [cursor=pointer]
+          - listitem [ref=f7e252]:
+            - button "Medical" [ref=f7e253] [cursor=pointer]
+          - listitem [ref=f7e261]:
+            - button "Performance" [ref=f7e262] [cursor=pointer]
+          - listitem [ref=f7e268]:
+            - button "Scouting" [ref=f7e269] [cursor=pointer]
+        - list [ref=f7e278]:
+          - listitem [ref=f7e279]: Facilities
+          - listitem [ref=f7e280]:
+            - button "Grounds" [ref=f7e281] [cursor=pointer]
+          - listitem [ref=f7e288]:
+            - button "Facilities" [ref=f7e289] [cursor=pointer]
+          - listitem [ref=f7e297]:
+            - button "Equipment" [ref=f7e298] [cursor=pointer]
+          - listitem [ref=f7e306]:
+            - button "Inventory" [ref=f7e307] [cursor=pointer]
+          - listitem [ref=f7e321]:
+            - button "Devices" [ref=f7e322] [cursor=pointer]
+          - listitem [ref=f7e329]:
+            - button "Maintenance" [ref=f7e330] [cursor=pointer]
+        - list [ref=f7e336]:
+          - listitem [ref=f7e337]: Media
+          - listitem [ref=f7e338]:
+            - button "Media" [ref=f7e339] [cursor=pointer]
+          - listitem [ref=f7e346]:
+            - button "Video" [ref=f7e347] [cursor=pointer]
+          - listitem [ref=f7e354]:
+            - button "Streaming" [ref=f7e355] [cursor=pointer]
+          - listitem [ref=f7e365]:
+            - button "Gallery" [ref=f7e366] [cursor=pointer]
+          - listitem [ref=f7e375]:
+            - button "CMS" [ref=f7e376] [cursor=pointer]
+        - list [ref=f7e383]:
+          - listitem [ref=f7e384]: Intelligence
+          - listitem [ref=f7e385]:
+            - button "Statistics" [ref=f7e386] [cursor=pointer]
+          - listitem [ref=f7e392]:
+            - button "Analytics" [ref=f7e393] [cursor=pointer]
+          - listitem [ref=f7e400]:
+            - button "Reports" [ref=f7e401] [cursor=pointer]
+          - listitem [ref=f7e408]:
+            - button "AI" [ref=f7e409] [cursor=pointer]
+          - listitem [ref=f7e425]:
+            - button "Search" [ref=f7e426] [cursor=pointer]
+        - list [ref=f7e433]:
+          - listitem [ref=f7e434]: Commercial
+          - listitem [ref=f7e435]:
+            - button "Membership" [ref=f7e436] [cursor=pointer]
+          - listitem [ref=f7e442]:
+            - button "Sponsorship" [ref=f7e443] [cursor=pointer]
+          - listitem [ref=f7e452]:
+            - button "Ticketing" [ref=f7e453] [cursor=pointer]
+          - listitem [ref=f7e459]:
+            - button "Marketplace" [ref=f7e460] [cursor=pointer]
+          - listitem [ref=f7e468]:
+            - button "Merchandise" [ref=f7e469] [cursor=pointer]
+          - listitem [ref=f7e476]:
+            - button "Billing" [ref=f7e477] [cursor=pointer]
+          - listitem [ref=f7e484]:
+            - button "Finance" [ref=f7e485] [cursor=pointer]
+        - list [ref=f7e492]:
+          - listitem [ref=f7e493]: Fan
+          - listitem [ref=f7e494]:
+            - button "Fantasy" [ref=f7e495] [cursor=pointer]
+          - listitem [ref=f7e501]:
+            - button "Rewards" [ref=f7e502] [cursor=pointer]
+          - listitem [ref=f7e510]:
+            - button "Loyalty" [ref=f7e511] [cursor=pointer]
+          - listitem [ref=f7e517]:
+            - button "Community" [ref=f7e518] [cursor=pointer]
+          - listitem [ref=f7e527]:
+            - button "Engagement" [ref=f7e528] [cursor=pointer]
+        - list [ref=f7e535]:
+          - listitem [ref=f7e536]: Platform
+          - listitem [ref=f7e537]:
+            - button "Notifications" [ref=f7e538] [cursor=pointer]
+          - listitem [ref=f7e545]:
+            - button "Workflow" [ref=f7e546] [cursor=pointer]
+          - listitem [ref=f7e554]:
+            - button "Integrations" [ref=f7e555] [cursor=pointer]
+          - listitem [ref=f7e561]:
+            - button "Documents" [ref=f7e562] [cursor=pointer]
+          - listitem [ref=f7e568]:
+            - button "Calendar" [ref=f7e569] [cursor=pointer]
+          - listitem [ref=f7e575]:
+            - button "Events" [ref=f7e576] [cursor=pointer]
+          - listitem [ref=f7e583]:
+            - button "Whitelabel" [ref=f7e584] [cursor=pointer]
+          - listitem [ref=f7e594]:
+            - button "Settings" [ref=f7e595] [cursor=pointer]
+          - listitem [ref=f7e602]:
+            - button "Help" [ref=f7e603] [cursor=pointer]
+      - button "Collapse" [ref=f7e611] [cursor=pointer]
+  - main [ref=f7e617]:
+    - generic [ref=f7e619]:
+      - button "Tournaments" [ref=f7e620] [cursor=pointer]
+      - button "Leagues" [ref=f7e628] [cursor=pointer]
+      - button "Seasons" [ref=f7e633] [cursor=pointer]
+      - button "Fixtures" [ref=f7e637] [cursor=pointer]
+      - button "Matches" [ref=f7e641] [cursor=pointer]
+      - button "Scoring" [ref=f7e645] [cursor=pointer]
+      - button "Officials" [ref=f7e650] [cursor=pointer]
+    - navigation [ref=f7e658]:
+      - list [ref=f7e659]:
+        - listitem [ref=f7e660]:
+          - link "Home" [ref=f7e661] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f7e662]
+        - listitem [ref=f7e665]:
+          - link "Cricket Australia" [ref=f7e666] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f7e667]
+        - listitem [ref=f7e670]:
+          - paragraph [ref=f7e671]: Matches
+    - generic [ref=f7e673]:
+      - generic [ref=f7e674]:
+        - generic [ref=f7e675]:
+          - heading "Match Center" [level=4] [ref=f7e676]
+          - paragraph [ref=f7e677]: Premium match workspace
+        - button "Refresh" [ref=f7e680] [cursor=pointer]
+      - generic [ref=f7e681]:
+        - generic [ref=f7e682]:
+          - generic [ref=f7e683]:
+            - paragraph [ref=f7e684]: Live
+            - generic [ref=f7e686] [cursor=pointer]:
+              - generic [ref=f7e687]:
+                - paragraph [ref=f7e690]: THU vs STA
+                - paragraph [ref=f7e691]: 177/6
+              - paragraph [ref=f7e692]: Sydney Showground · T20
+          - generic [ref=f7e693]:
+            - paragraph [ref=f7e694]: Upcoming
+            - generic [ref=f7e696] [cursor=pointer]:
+              - generic [ref=f7e697]:
+                - paragraph [ref=f7e698]: STA vs HEA
+                - paragraph [ref=f7e699]: Match 28
+              - paragraph [ref=f7e700]: Melbourne Cricket Ground · T20
+          - generic [ref=f7e701]:
+            - paragraph [ref=f7e702]: Recent
+            - generic [ref=f7e704] [cursor=pointer]:
+              - generic [ref=f7e705]:
+                - paragraph [ref=f7e706]: HEA vs THU
+                - paragraph [ref=f7e707]: 153/8
+              - paragraph [ref=f7e708]: The Gabba · T20
+        - generic:
+          - generic [ref=f7e709]:
+            - generic [ref=f7e710]:
+              - generic:
+                - paragraph: Big Bash League 2024
+                - paragraph [ref=f7e711]: · Match 24
+              - generic [ref=f7e713]:
+                - generic [ref=f7e714]: Live
+                - generic [ref=f7e718]: 2nd Innings
+            - generic [ref=f7e719]:
+              - generic:
+                - generic [ref=f7e720]:
+                  - generic [ref=f7e721]: T
+                  - paragraph [ref=f7e722]: THU
+                - generic [ref=f7e723]:
+                  - paragraph [ref=f7e724]: "177"
+                  - paragraph [ref=f7e725]: /
+                  - paragraph [ref=f7e726]: "6"
+                  - paragraph [ref=f7e727]: (20 ov)
+                - paragraph [ref=f7e729]: RR 8.85
+              - generic [ref=f7e730]:
+                - paragraph [ref=f7e731]: vs
+                - paragraph [ref=f7e732]: Live
+              - generic:
+                - generic [ref=f7e733]:
+                  - generic [ref=f7e734]: S
+                  - paragraph [ref=f7e735]: STA
+                - generic [ref=f7e736]:
+                  - paragraph [ref=f7e737]: "142"
+                  - paragraph [ref=f7e738]: /
+                  - paragraph [ref=f7e739]: "4"
+                  - paragraph [ref=f7e740]: (16.3 ov)
+                - generic [ref=f7e741]:
+                  - paragraph [ref=f7e744]: LIVE
+                  - paragraph [ref=f7e745]: RR 8.60
+            - generic [ref=f7e746]:
+              - paragraph [ref=f7e747]: Sydney Showground
+              - paragraph [ref=f7e748]: Sydney
+              - paragraph [ref=f7e749]: "Target: 178"
+              - paragraph [ref=f7e750]: "Req. Rate: 8.40"
+          - generic:
+            - generic:
+              - generic [ref=f7e751] [cursor=pointer]
+              - generic:
+                - tablist:
+                  - tab "Overview" [selected] [ref=f7e754] [cursor=pointer]
+                  - tab "Scorecard" [ref=f7e758] [cursor=pointer]
+                  - tab "Live Scoring" [ref=f7e761] [cursor=pointer]
+                  - tab "Commentary" [ref=f7e764] [cursor=pointer]
+                  - tab "Analytics" [ref=f7e768] [cursor=pointer]
+                  - tab "Timeline" [ref=f7e772] [cursor=pointer]
+                  - tab "Players" [ref=f7e775] [cursor=pointer]
+                  - tab "Video" [ref=f7e778] [cursor=pointer]
+                  - tab "Reports" [ref=f7e781] [cursor=pointer]
+              - generic [ref=f7e785] [cursor=pointer]
+          - generic:
+            - generic:
+              - generic:
+                - generic [ref=f7e789]:
+                  - text: Current Innings
+                  - paragraph [ref=f7e791]: 2nd
+                - generic [ref=f7e793]:
+                  - text: Target
+                  - paragraph [ref=f7e795]: "178"
+                - generic [ref=f7e797]:
+                  - text: Required Rate
+                  - paragraph [ref=f7e799]: "8.40"
+                - generic [ref=f7e801]:
+                  - text: Format
+                  - paragraph [ref=f7e803]: T20
+              - generic:
+                - generic [ref=f7e804]:
+                  - generic [ref=f7e805]:
+                    - generic [ref=f7e806]:
+                      - paragraph [ref=f7e809]: LIVE
+                      - paragraph [ref=f7e810]: 2nd Innings
+                    - generic [ref=f7e811]: Live
+                  - generic [ref=f7e817]:
+                    - generic [ref=f7e818]: T
+                    - paragraph [ref=f7e819]: THU
+                    - generic [ref=f7e820]:
+                      - paragraph [ref=f7e821]: "177"
+                      - paragraph [ref=f7e822]: /
+                      - paragraph [ref=f7e823]: "6"
+                      - paragraph [ref=f7e824]: (20)
+                  - generic [ref=f7e825]:
+                    - generic [ref=f7e826]: S
+                    - paragraph [ref=f7e827]: STA
+                    - generic [ref=f7e830]:
+                      - paragraph [ref=f7e831]: "142"
+                      - paragraph [ref=f7e832]: /
+                      - paragraph [ref=f7e833]: "4"
+                      - paragraph [ref=f7e834]: (16.3)
+                  - generic [ref=f7e835]:
+                    - generic [ref=f7e836]:
+                      - paragraph [ref=f7e837]: Run Rate
+                      - paragraph [ref=f7e838]: "8.85"
+                    - generic [ref=f7e839]:
+                      - paragraph [ref=f7e840]: Target
+                      - paragraph [ref=f7e841]: "178"
+                    - generic [ref=f7e842]:
+                      - paragraph [ref=f7e843]: Req. Rate
+                      - paragraph [ref=f7e844]: "8.40"
+                - generic [ref=f7e845]:
+                  - generic [ref=f7e846]:
+                    - heading "Match Details" [level=6] [ref=f7e849]
+                    - generic [ref=f7e850]:
+                      - generic [ref=f7e851]:
+                        - paragraph [ref=f7e852]: Venue
+                        - paragraph [ref=f7e853]: Sydney Showground, Sydney
+                      - generic [ref=f7e854]:
+                        - paragraph [ref=f7e855]: Start
+                        - paragraph [ref=f7e856]: 1/15/2024, 2:00:00 PM
+                      - generic [ref=f7e857]:
+                        - paragraph [ref=f7e858]: Toss
+                        - paragraph [ref=f7e859]: THU elected to bowl
+                  - generic [ref=f7e860]:
+                    - heading "Current Run Rate" [level=6] [ref=f7e863]
+                    - generic [ref=f7e864]:
+                      - paragraph [ref=f7e865]: "8.60"
+                      - paragraph [ref=f7e866]: runs per over
+              - generic:
+                - generic [ref=f7e867]:
+                  - paragraph [ref=f7e868]: Sydney Thunder
+                  - paragraph [ref=f7e869]:
+                    - text: 177/6
+                    - generic [ref=f7e870]: (20 ov)
+                  - paragraph [ref=f7e871]: THU
+                - generic [ref=f7e872]:
+                  - paragraph [ref=f7e873]: Melbourne Stars
+                  - paragraph [ref=f7e874]:
+                    - text: 142/4
+                    - generic [ref=f7e875]: (16.3 ov)
+                  - paragraph [ref=f7e876]: STA

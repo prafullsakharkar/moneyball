@@ -22,6 +22,9 @@ export function LoadingState({
 }: LoadingStateProps) {
   return (
     <Box
+      role="status"
+      aria-live="polite"
+      aria-busy="true"
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -38,7 +41,7 @@ export function LoadingState({
         ...sx,
       }}
     >
-      <CircularProgress size={size} thickness={3} />
+      <CircularProgress size={size} thickness={3} aria-hidden="true" />
       {message && (
         <Typography variant="body2" color="text.secondary">
           {message}
@@ -64,15 +67,19 @@ export function Skeleton({
 }) {
   return (
     <Box
+      aria-hidden="true"
       sx={{
         width,
         height,
         borderRadius: variant === 'circular' ? '50%' : variant === 'text' ? 1 : 0.5,
         bgcolor: 'action.hover',
-        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        '@keyframes pulse': {
+        animation: 'cq-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        '@keyframes cq-pulse': {
           '0%, 100%': { opacity: 1 },
           '50%': { opacity: 0.5 },
+        },
+        '@media (prefers-reduced-motion: reduce)': {
+          animation: 'none',
         },
         ...sx,
       }}

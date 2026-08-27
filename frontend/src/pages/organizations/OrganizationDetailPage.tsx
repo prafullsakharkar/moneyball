@@ -4,6 +4,7 @@ import { Box, Typography, Tabs, Tab, Avatar, Chip, Grid, IconButton } from '@mui
 import { ArrowLeft, Edit, Plus, Users, Shield, Building2 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { organizationService } from '@api/organization';
+import { useHasPermission } from '@hooks/index';
 import {
   PageShell,
   PageHeader,
@@ -12,6 +13,7 @@ import {
   Button,
   StatCard,
   DataTable,
+  LoadingState,
   type DataTableColumn,
 } from '@shared/components';
 
@@ -51,7 +53,7 @@ function OverviewTab({ orgId }: { orgId: string }) {
 
   const teamList = teams?.data ?? [];
 
-  if (!org) return <Typography color="text.secondary">Loading...</Typography>;
+  if (!org) return <LoadingState message="Loading organization..." />;
 
   return (
     <Box>
@@ -160,6 +162,8 @@ function MembersTab({ orgId }: { orgId: string }) {
     queryFn: () => organizationService.getMembers(orgId, { limit: 50 }),
   });
 
+  const canManageMembers = useHasPermission('organization', 'manage');
+
   const memberList = data?.data ?? [];
 
   const columns: DataTableColumn<OrganizationMember>[] = [
@@ -203,22 +207,30 @@ function MembersTab({ orgId }: { orgId: string }) {
       header: 'Joined',
       cell: (_, member) => new Date(member.joinedAt).toLocaleDateString(),
     },
-    {
-      id: 'actions',
-      header: '',
-      align: 'right',
-      sortable: false,
-      cell: () => (
-        <IconButton size="small"><Edit size={16} /></IconButton>
-      ),
-    },
+    ...(canManageMembers
+      ? [
+          {
+            id: 'actions',
+            header: '',
+            align: 'right' as const,
+            sortable: false,
+            cell: () => (
+              <IconButton size="small" aria-label="Edit"><Edit size={16} /></IconButton>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
     <Box>
       <PageSection
         title={`Members (${memberList.length})`}
-        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Invite Member</Button>}
+        actions={
+          canManageMembers ? (
+            <Button startIcon={<Plus size={16} />} variant="primary" size="small">Invite Member</Button>
+          ) : undefined
+        }
       >
         <Card>
           <DataTable
@@ -244,6 +256,8 @@ function RolesTab({ orgId }: { orgId: string }) {
     queryFn: () => organizationService.getRoles(orgId),
   });
 
+  const canManageRoles = useHasPermission('organization', 'manage');
+
   const columns: DataTableColumn<OrganizationRole>[] = [
     {
       id: 'name',
@@ -268,22 +282,30 @@ function RolesTab({ orgId }: { orgId: string }) {
           <Chip label="Custom" size="small" variant="outlined" />
         ),
     },
-    {
-      id: 'actions',
-      header: '',
-      align: 'right',
-      sortable: false,
-      cell: (_, role) => (
-        <IconButton size="small" disabled={role.isSystem}><Edit size={16} /></IconButton>
-      ),
-    },
+    ...(canManageRoles
+      ? ([
+          {
+            id: 'actions',
+            header: '',
+            align: 'right' as const,
+            sortable: false,
+            cell: (_, role) => (
+              <IconButton size="small" disabled={role.isSystem} aria-label="Edit role"><Edit size={16} /></IconButton>
+            ),
+          },
+        ] as DataTableColumn<OrganizationRole>[])
+      : []),
   ];
 
   return (
     <Box>
       <PageSection
         title="Roles"
-        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Role</Button>}
+        actions={
+          canManageRoles ? (
+            <Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Role</Button>
+          ) : undefined
+        }
       >
         <Card>
           <DataTable
@@ -309,14 +331,20 @@ function DepartmentsTab({ orgId }: { orgId: string }) {
     queryFn: () => organizationService.getDepartments(orgId),
   });
 
+  const canManageDepartments = useHasPermission('organization', 'manage');
+
   return (
     <Box>
       <PageSection
         title="Departments"
-        actions={<Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Department</Button>}
+        actions={
+          canManageDepartments ? (
+            <Button startIcon={<Plus size={16} />} variant="primary" size="small">Create Department</Button>
+          ) : undefined
+        }
       >
         {isLoading ? (
-          <Typography color="text.secondary">Loading...</Typography>
+          <LoadingState message="Loading departments..." />
         ) : !departments || departments.length === 0 ? (
           <Typography color="text.secondary">No departments found</Typography>
         ) : (
@@ -388,7 +416,14 @@ export default function OrganizationDetailPage() {
         }
       />
 
-      <Tabs value={tab} onChange={(_, v) => setTab(v)} sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+      <Tabs
+        value={tab}
+        onChange={(_, v) => setTab(v)}
+        variant="scrollable"
+        scrollButtons="auto"
+        allowScrollButtonsMobile
+        sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}
+      >
         <Tab label="Overview" />
         <Tab label="Members" />
         <Tab label="Roles" />

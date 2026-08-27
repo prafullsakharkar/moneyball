@@ -35,6 +35,19 @@ import type {
   CreateDepartmentRequest,
   CreateRoleRequest,
   UpdateRoleRequest,
+  Player,
+  CreatePlayerRequest,
+  UpdatePlayerRequest,
+  BulkPlayerUpdateRequest,
+  Match,
+  Team,
+  Tournament,
+  AnalyticsQuestion,
+  AnalyticsInsight,
+  AiInsight,
+  AiConversationMessage,
+  MediaAsset,
+  VideoAsset,
 } from '@domain/index';
 
 /* ── Pagination Filter ────────────────────────────────── */
@@ -102,4 +115,65 @@ export interface OrganizationRepository {
 
   // Facilities
   getFacilities(orgId: string): Promise<Facility[]>;
+}
+
+/* ── Player Repository ──────────────────────────────────── */
+
+export interface PlayerRepository {
+  list(params?: ListParams): Promise<PaginatedResponse<Player>>;
+  get(playerId: string): Promise<Player>;
+  create(data: CreatePlayerRequest): Promise<Player>;
+  update(playerId: string, data: UpdatePlayerRequest): Promise<Player>;
+  delete(playerId: string): Promise<void>;
+  bulkUpdate(data: BulkPlayerUpdateRequest): Promise<Player[]>;
+  bulkDelete(ids: string[]): Promise<void>;
+}
+
+/* ── Cricket Match Repository ──────────────────────────── */
+
+export interface MatchRepository {
+  list(params?: ListParams): Promise<PaginatedResponse<Match>>;
+  get(matchId: string): Promise<Match>;
+  getLive(params?: ListParams): Promise<PaginatedResponse<Match>>;
+  getUpcoming(params?: ListParams): Promise<PaginatedResponse<Match>>;
+  getRecent(params?: ListParams): Promise<PaginatedResponse<Match>>;
+}
+
+/* ── Cricket Team Repository ───────────────────────────── */
+
+export interface TeamRepository {
+  list(params?: ListParams): Promise<PaginatedResponse<Team>>;
+  get(teamId: string): Promise<Team>;
+}
+
+/* ── Cricket Tournament Repository ─────────────────────── */
+
+export interface TournamentRepository {
+  list(params?: ListParams): Promise<PaginatedResponse<Tournament>>;
+  get(tournamentId: string): Promise<Tournament>;
+  getStandings(tournamentId: string): Promise<Tournament['standings']>;
+}
+
+/* ── Analytics Repository ──────────────────────────────── */
+
+export interface AnalyticsRepository {
+  getQuestions(params?: ListParams): Promise<AnalyticsQuestion[]>;
+  getInsights(params?: ListParams): Promise<AnalyticsInsight[]>;
+}
+
+/* ── AI / Insights Repository ──────────────────────────── */
+
+export interface AiRepository {
+  getInsights(params?: ListParams): Promise<AiInsight[]>;
+  getConversation(params?: ListParams): Promise<AiConversationMessage[]>;
+  ask(question: string): Promise<AiConversationMessage>;
+}
+
+/* ── Media Repository ──────────────────────────────────── */
+
+export interface MediaRepository {
+  listAssets(params?: ListParams): Promise<PaginatedResponse<MediaAsset>>;
+  getAsset(assetId: string): Promise<MediaAsset>;
+  listVideos(params?: ListParams): Promise<PaginatedResponse<VideoAsset>>;
+  getVideo(videoId: string): Promise<VideoAsset>;
 }

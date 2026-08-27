@@ -1,0 +1,237 @@
+- generic [ref=f5e43]:
+  - banner [ref=f5e44]:
+    - generic [ref=f5e45]:
+      - button "Cricket Australia" [ref=f5e46] [cursor=pointer]:
+        - paragraph [ref=f5e50]: Cricket Australia
+      - textbox "Global search" [ref=f5e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f5e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f5e62] [cursor=pointer]
+      - button "Help" [ref=f5e65] [cursor=pointer]
+      - button "0 notifications" [ref=f5e69] [cursor=pointer]
+      - button "JS" [ref=f5e73] [cursor=pointer]
+  - navigation [ref=f5e75]:
+    - generic [ref=f5e77]:
+      - generic [ref=f5e78]:
+        - generic [ref=f5e83]:
+          - heading "CricketOS" [level=6] [ref=f5e84]
+          - generic [ref=f5e85]: Cricket Australia
+        - button [ref=f5e86] [cursor=pointer]
+      - generic [ref=f5e89]:
+        - list [ref=f5e90]:
+          - listitem [ref=f5e91]: Home
+          - listitem [ref=f5e92]:
+            - button "Dashboard" [ref=f5e93] [cursor=pointer]
+        - list [ref=f5e102]:
+          - listitem [ref=f5e103]: Competition
+          - listitem [ref=f5e104]:
+            - button "Tournaments" [ref=f5e105] [cursor=pointer]
+          - listitem [ref=f5e115]:
+            - button "Leagues" [ref=f5e116] [cursor=pointer]
+          - listitem [ref=f5e123]:
+            - button "Seasons" [ref=f5e124] [cursor=pointer]
+          - listitem [ref=f5e130]:
+            - button "Fixtures" [ref=f5e131] [cursor=pointer]
+          - listitem [ref=f5e137]:
+            - button "Matches" [ref=f5e138] [cursor=pointer]
+          - listitem [ref=f5e144]:
+            - button "Scoring" [ref=f5e145] [cursor=pointer]
+          - listitem [ref=f5e152]:
+            - button "Officials" [ref=f5e153] [cursor=pointer]
+        - list [ref=f5e163]:
+          - listitem [ref=f5e164]: Participants
+          - listitem [ref=f5e165]:
+            - button "Players" [ref=f5e166] [cursor=pointer]
+          - listitem [ref=f5e173]:
+            - button "Teams" [ref=f5e174] [cursor=pointer]
+          - listitem [ref=f5e183]:
+            - button "Squads" [ref=f5e184] [cursor=pointer]
+          - listitem [ref=f5e192]:
+            - button "Coaches" [ref=f5e193] [cursor=pointer]
+          - listitem [ref=f5e200]:
+            - button "Staff" [ref=f5e201] [cursor=pointer]
+          - listitem [ref=f5e208]:
+            - button "Selectors" [ref=f5e209] [cursor=pointer]
+        - list [ref=f5e217]:
+          - listitem [ref=f5e218]: Development
+          - listitem [ref=f5e219]:
+            - button "Academy" [ref=f5e220] [cursor=pointer]
+          - listitem [ref=f5e229]:
+            - button "Training" [ref=f5e230] [cursor=pointer]
+          - listitem [ref=f5e240]:
+            - button "Fitness" [ref=f5e241] [cursor=pointer]
+          - listitem [ref=f5e248]:
+            - button "Medical" [ref=f5e249] [cursor=pointer]
+          - listitem [ref=f5e257]:
+            - button "Performance" [ref=f5e258] [cursor=pointer]
+          - listitem [ref=f5e264]:
+            - button "Scouting" [ref=f5e265] [cursor=pointer]
+        - list [ref=f5e274]:
+          - listitem [ref=f5e275]: Facilities
+          - listitem [ref=f5e276]:
+            - button "Grounds" [ref=f5e277] [cursor=pointer]
+          - listitem [ref=f5e284]:
+            - button "Facilities" [ref=f5e285] [cursor=pointer]
+          - listitem [ref=f5e293]:
+            - button "Equipment" [ref=f5e294] [cursor=pointer]
+          - listitem [ref=f5e302]:
+            - button "Inventory" [ref=f5e303] [cursor=pointer]
+          - listitem [ref=f5e317]:
+            - button "Devices" [ref=f5e318] [cursor=pointer]
+          - listitem [ref=f5e325]:
+            - button "Maintenance" [ref=f5e326] [cursor=pointer]
+        - list [ref=f5e332]:
+          - listitem [ref=f5e333]: Media
+          - listitem [ref=f5e334]:
+            - button "Media" [ref=f5e335] [cursor=pointer]
+          - listitem [ref=f5e342]:
+            - button "Video" [ref=f5e343] [cursor=pointer]
+          - listitem [ref=f5e350]:
+            - button "Streaming" [ref=f5e351] [cursor=pointer]
+          - listitem [ref=f5e361]:
+            - button "Gallery" [ref=f5e362] [cursor=pointer]
+          - listitem [ref=f5e371]:
+            - button "CMS" [ref=f5e372] [cursor=pointer]
+        - list [ref=f5e379]:
+          - listitem [ref=f5e380]: Intelligence
+          - listitem [ref=f5e381]:
+            - button "Statistics" [ref=f5e382] [cursor=pointer]
+          - listitem [ref=f5e388]:
+            - button "Analytics" [ref=f5e389] [cursor=pointer]
+          - listitem [ref=f5e396]:
+            - button "Reports" [ref=f5e397] [cursor=pointer]
+          - listitem [ref=f5e404]:
+            - button "AI" [ref=f5e405] [cursor=pointer]
+          - listitem [ref=f5e421]:
+            - button "Search" [ref=f5e422] [cursor=pointer]
+        - list [ref=f5e429]:
+          - listitem [ref=f5e430]: Commercial
+          - listitem [ref=f5e431]:
+            - button "Membership" [ref=f5e432] [cursor=pointer]
+          - listitem [ref=f5e438]:
+            - button "Sponsorship" [ref=f5e439] [cursor=pointer]
+          - listitem [ref=f5e448]:
+            - button "Ticketing" [ref=f5e449] [cursor=pointer]
+          - listitem [ref=f5e455]:
+            - button "Marketplace" [ref=f5e456] [cursor=pointer]
+          - listitem [ref=f5e464]:
+            - button "Merchandise" [ref=f5e465] [cursor=pointer]
+          - listitem [ref=f5e472]:
+            - button "Billing" [ref=f5e473] [cursor=pointer]
+          - listitem [ref=f5e480]:
+            - button "Finance" [ref=f5e481] [cursor=pointer]
+        - list [ref=f5e488]:
+          - listitem [ref=f5e489]: Fan
+          - listitem [ref=f5e490]:
+            - button "Fantasy" [ref=f5e491] [cursor=pointer]
+          - listitem [ref=f5e497]:
+            - button "Rewards" [ref=f5e498] [cursor=pointer]
+          - listitem [ref=f5e506]:
+            - button "Loyalty" [ref=f5e507] [cursor=pointer]
+          - listitem [ref=f5e513]:
+            - button "Community" [ref=f5e514] [cursor=pointer]
+          - listitem [ref=f5e523]:
+            - button "Engagement" [ref=f5e524] [cursor=pointer]
+        - list [ref=f5e531]:
+          - listitem [ref=f5e532]: Platform
+          - listitem [ref=f5e533]:
+            - button "Notifications" [ref=f5e534] [cursor=pointer]
+          - listitem [ref=f5e541]:
+            - button "Workflow" [ref=f5e542] [cursor=pointer]
+          - listitem [ref=f5e550]:
+            - button "Integrations" [ref=f5e551] [cursor=pointer]
+          - listitem [ref=f5e557]:
+            - button "Documents" [ref=f5e558] [cursor=pointer]
+          - listitem [ref=f5e564]:
+            - button "Calendar" [ref=f5e565] [cursor=pointer]
+          - listitem [ref=f5e571]:
+            - button "Events" [ref=f5e572] [cursor=pointer]
+          - listitem [ref=f5e579]:
+            - button "Whitelabel" [ref=f5e580] [cursor=pointer]
+          - listitem [ref=f5e590]:
+            - button "Settings" [ref=f5e591] [cursor=pointer]
+          - listitem [ref=f5e598]:
+            - button "Help" [ref=f5e599] [cursor=pointer]
+      - button "Collapse" [ref=f5e607] [cursor=pointer]
+  - main [ref=f5e613]:
+    - generic [ref=f5e615]:
+      - button "Statistics" [ref=f5e616] [cursor=pointer]
+      - button "Analytics" [ref=f5e620] [cursor=pointer]
+      - button "Reports" [ref=f5e625] [cursor=pointer]
+      - button "AI" [ref=f5e630] [cursor=pointer]
+      - button "Search" [ref=f5e644] [cursor=pointer]
+    - navigation [ref=f5e649]:
+      - list [ref=f5e650]:
+        - listitem [ref=f5e651]:
+          - link "Home" [ref=f5e652] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f5e653]
+        - listitem [ref=f5e656]:
+          - paragraph [ref=f5e657]: Ai
+    - generic [ref=f5e659]:
+      - generic [ref=f5e660]:
+        - generic [ref=f5e661]:
+          - heading "AI Insights" [level=4] [ref=f5e662]
+          - paragraph [ref=f5e663]: Contextual analysis across matches, players, and teams.
+        - button "Refresh" [ref=f5e666] [cursor=pointer]
+      - generic [ref=f5e668]:
+        - tablist [ref=f5e670]:
+          - tab "Overview" [selected] [ref=f5e671] [cursor=pointer]
+          - tab "Insights" [ref=f5e674] [cursor=pointer]
+          - tab "Ask" [ref=f5e678] [cursor=pointer]
+          - tab "Scouting" [ref=f5e681] [cursor=pointer]
+          - tab "Recommendations" [ref=f5e685] [cursor=pointer]
+        - generic [ref=f5e689] [cursor=pointer]
+      - generic [ref=f5e693]:
+        - generic [ref=f5e694]:
+          - generic [ref=f5e696]:
+            - text: Total insights
+            - paragraph [ref=f5e698]: "2"
+          - generic [ref=f5e700]:
+            - text: Generated
+            - paragraph [ref=f5e702]: "1"
+          - generic [ref=f5e704]:
+            - text: Verified
+            - paragraph [ref=f5e706]: "1"
+          - generic [ref=f5e708]:
+            - text: Avg confidence
+            - paragraph [ref=f5e710]: 44%
+        - generic [ref=f5e711]:
+          - heading "How to read AI insights" [level=6] [ref=f5e714]
+          - generic [ref=f5e715]:
+            - generic [ref=f5e716]:
+              - generic [ref=f5e717]: Generated
+              - paragraph [ref=f5e722]: Model-derived analysis. Validate against verified statistics before acting.
+            - generic [ref=f5e723]:
+              - generic [ref=f5e724]: Verified
+              - paragraph [ref=f5e728]: Backed by confirmed statistics from the data layer.
+        - generic [ref=f5e729]:
+          - heading "Latest insights" [level=6] [ref=f5e732]
+          - generic [ref=f5e733]:
+            - generic [ref=f5e734]:
+              - generic [ref=f5e735]:
+                - paragraph [ref=f5e739]: Maxwell is the key to a strong finish
+                - generic [ref=f5e740]: Generated
+              - paragraph [ref=f5e742]: Glenn Maxwell has scored 45% of his runs in the final 5 overs this season. Protecting his wicket until the 15th over maximizes the team total.
+              - generic [ref=f5e743]:
+                - generic [ref=f5e744]:
+                  - paragraph [ref=f5e745]: Runs in final 5 overs
+                  - paragraph [ref=f5e746]: "212"
+                - generic [ref=f5e747]:
+                  - paragraph [ref=f5e748]: Strike rate
+                  - paragraph [ref=f5e749]: "168.4"
+              - generic [ref=f5e750]:
+                - paragraph [ref=f5e751]: Confidence
+                - paragraph [ref=f5e754]: 87%
+            - generic [ref=f5e755]:
+              - generic [ref=f5e756]:
+                - paragraph [ref=f5e759]: Cummins leads wicket tally
+                - generic [ref=f5e760]: Verified
+              - paragraph [ref=f5e762]: Pat Cummins is the leading wicket-taker with 18 wickets at an average of 18.2.
+              - generic [ref=f5e763]:
+                - generic [ref=f5e764]:
+                  - paragraph [ref=f5e765]: Wickets
+                  - paragraph [ref=f5e766]: "18"
+                - generic [ref=f5e767]:
+                  - paragraph [ref=f5e768]: Average
+                  - paragraph [ref=f5e769]: "18.2"

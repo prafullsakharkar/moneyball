@@ -7,7 +7,7 @@ import { identityService, setUnauthorizedHandler } from '@api/index';
 /* ── Context ───────────────────────────────────────────────── */
 
 interface AuthContextValue {
-  login: (email: string, password: string, organizationSlug?: string) => Promise<void>;
+  login: (email: string, password: string, organizationSlug?: string, remember?: boolean) => Promise<void>;
   register: (data: {
     email: string;
     password: string;
@@ -69,13 +69,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
   /* ── Actions ──────────────────────────────────────────────── */
 
   const login = useCallback(
-    async (email: string, password: string, organizationSlug?: string) => {
+    async (email: string, password: string, organizationSlug?: string, remember = true) => {
       setLoading(true);
       try {
         const response = await identityService.login({ email, password, organizationSlug });
         const { user, tokens, memberships, mfaRequired } = response;
         if (mfaRequired) throw new Error('MFA required');
-        useAuthStore.getState().login(user, tokens, memberships);
+        useAuthStore.getState().login(user, tokens, memberships, remember);
         initializeOrg(memberships);
       } catch (error) {
         setLoading(false);

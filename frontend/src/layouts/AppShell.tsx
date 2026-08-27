@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, Toolbar } from '@mui/material';
 import { GlobalHeader } from './GlobalHeader';
-import { PrimaryNavigation } from './PrimaryNavigation';
+import { PrimarySidebar } from './PrimarySidebar';
 import { SecondaryNavigation } from './SecondaryNavigation';
+import { WorkspaceHeader } from './WorkspaceHeader';
 import { Breadcrumbs } from './Breadcrumbs';
 import { layout } from '@design/tokens';
 
@@ -19,7 +20,7 @@ export function AppShell() {
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
       <GlobalHeader onMenuToggle={() => setMobileOpen(!mobileOpen)} />
 
-      <PrimaryNavigation
+      <PrimarySidebar
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         width={DRAWER_WIDTH}
@@ -43,9 +44,10 @@ export function AppShell() {
         }}
       >
         <Toolbar sx={{ minHeight: `${layout.headerHeight}px !important` }} />
-        <SecondaryNavigation />
+        <SecondaryNavigation sidebarWidth={effectiveWidth} />
+        <WorkspaceHeader sidebarWidth={effectiveWidth} />
         <Breadcrumbs />
-        <Box sx={{ flex: 1, p: { xs: 2, sm: 3 }, overflow: 'auto' }}>
+        <Box sx={{ flex: 1, p: { xs: 1.5, sm: 2, md: 3 }, overflow: 'auto' }}>
           <Outlet />
         </Box>
       </Box>

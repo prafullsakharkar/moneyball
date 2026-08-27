@@ -1,0 +1,180 @@
+- generic [ref=f9e43]:
+  - banner [ref=f9e44]:
+    - generic [ref=f9e45]:
+      - button "Cricket Australia" [ref=f9e46] [cursor=pointer]:
+        - paragraph [ref=f9e50]: Cricket Australia
+      - textbox "Global search" [ref=f9e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f9e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f9e62] [cursor=pointer]
+      - button "Help" [ref=f9e65] [cursor=pointer]
+      - button "0 notifications" [ref=f9e69] [cursor=pointer]
+      - button "JS" [ref=f9e73] [cursor=pointer]
+  - navigation [ref=f9e75]:
+    - generic [ref=f9e77]:
+      - generic [ref=f9e78]:
+        - generic [ref=f9e83]:
+          - heading "CricketOS" [level=6] [ref=f9e84]
+          - generic [ref=f9e85]: Cricket Australia
+        - button [ref=f9e86] [cursor=pointer]
+      - generic [ref=f9e89]:
+        - list [ref=f9e90]:
+          - listitem [ref=f9e91]: Home
+          - listitem [ref=f9e92]:
+            - button "Dashboard" [ref=f9e93] [cursor=pointer]
+        - list [ref=f9e102]:
+          - listitem [ref=f9e103]: Competition
+          - listitem [ref=f9e104]:
+            - button "Tournaments" [ref=f9e105] [cursor=pointer]
+          - listitem [ref=f9e115]:
+            - button "Leagues" [ref=f9e116] [cursor=pointer]
+          - listitem [ref=f9e123]:
+            - button "Seasons" [ref=f9e124] [cursor=pointer]
+          - listitem [ref=f9e130]:
+            - button "Fixtures" [ref=f9e131] [cursor=pointer]
+          - listitem [ref=f9e137]:
+            - button "Matches" [ref=f9e138] [cursor=pointer]
+          - listitem [ref=f9e144]:
+            - button "Scoring" [ref=f9e145] [cursor=pointer]
+          - listitem [ref=f9e152]:
+            - button "Officials" [ref=f9e153] [cursor=pointer]
+        - list [ref=f9e163]:
+          - listitem [ref=f9e164]: Participants
+          - listitem [ref=f9e165]:
+            - button "Players" [ref=f9e166] [cursor=pointer]
+          - listitem [ref=f9e173]:
+            - button "Teams" [ref=f9e174] [cursor=pointer]
+          - listitem [ref=f9e183]:
+            - button "Squads" [ref=f9e184] [cursor=pointer]
+          - listitem [ref=f9e192]:
+            - button "Coaches" [ref=f9e193] [cursor=pointer]
+          - listitem [ref=f9e200]:
+            - button "Staff" [ref=f9e201] [cursor=pointer]
+          - listitem [ref=f9e208]:
+            - button "Selectors" [ref=f9e209] [cursor=pointer]
+        - list [ref=f9e217]:
+          - listitem [ref=f9e218]: Development
+          - listitem [ref=f9e219]:
+            - button "Academy" [ref=f9e220] [cursor=pointer]
+          - listitem [ref=f9e229]:
+            - button "Training" [ref=f9e230] [cursor=pointer]
+          - listitem [ref=f9e240]:
+            - button "Fitness" [ref=f9e241] [cursor=pointer]
+          - listitem [ref=f9e248]:
+            - button "Medical" [ref=f9e249] [cursor=pointer]
+          - listitem [ref=f9e257]:
+            - button "Performance" [ref=f9e258] [cursor=pointer]
+          - listitem [ref=f9e264]:
+            - button "Scouting" [ref=f9e265] [cursor=pointer]
+        - list [ref=f9e274]:
+          - listitem [ref=f9e275]: Facilities
+          - listitem [ref=f9e276]:
+            - button "Grounds" [ref=f9e277] [cursor=pointer]
+          - listitem [ref=f9e284]:
+            - button "Facilities" [ref=f9e285] [cursor=pointer]
+          - listitem [ref=f9e293]:
+            - button "Equipment" [ref=f9e294] [cursor=pointer]
+          - listitem [ref=f9e302]:
+            - button "Inventory" [ref=f9e303] [cursor=pointer]
+          - listitem [ref=f9e317]:
+            - button "Devices" [ref=f9e318] [cursor=pointer]
+          - listitem [ref=f9e325]:
+            - button "Maintenance" [ref=f9e326] [cursor=pointer]
+        - list [ref=f9e332]:
+          - listitem [ref=f9e333]: Media
+          - listitem [ref=f9e334]:
+            - button "Media" [ref=f9e335] [cursor=pointer]
+          - listitem [ref=f9e342]:
+            - button "Video" [ref=f9e343] [cursor=pointer]
+          - listitem [ref=f9e350]:
+            - button "Streaming" [ref=f9e351] [cursor=pointer]
+          - listitem [ref=f9e361]:
+            - button "Gallery" [ref=f9e362] [cursor=pointer]
+          - listitem [ref=f9e371]:
+            - button "CMS" [ref=f9e372] [cursor=pointer]
+        - list [ref=f9e379]:
+          - listitem [ref=f9e380]: Intelligence
+          - listitem [ref=f9e381]:
+            - button "Statistics" [ref=f9e382] [cursor=pointer]
+          - listitem [ref=f9e388]:
+            - button "Analytics" [ref=f9e389] [cursor=pointer]
+          - listitem [ref=f9e396]:
+            - button "Reports" [ref=f9e397] [cursor=pointer]
+          - listitem [ref=f9e404]:
+            - button "AI" [ref=f9e405] [cursor=pointer]
+          - listitem [ref=f9e421]:
+            - button "Search" [ref=f9e422] [cursor=pointer]
+        - list [ref=f9e429]:
+          - listitem [ref=f9e430]: Commercial
+          - listitem [ref=f9e431]:
+            - button "Membership" [ref=f9e432] [cursor=pointer]
+          - listitem [ref=f9e438]:
+            - button "Sponsorship" [ref=f9e439] [cursor=pointer]
+          - listitem [ref=f9e448]:
+            - button "Ticketing" [ref=f9e449] [cursor=pointer]
+          - listitem [ref=f9e455]:
+            - button "Marketplace" [ref=f9e456] [cursor=pointer]
+          - listitem [ref=f9e464]:
+            - button "Merchandise" [ref=f9e465] [cursor=pointer]
+          - listitem [ref=f9e472]:
+            - button "Billing" [ref=f9e473] [cursor=pointer]
+          - listitem [ref=f9e480]:
+            - button "Finance" [ref=f9e481] [cursor=pointer]
+        - list [ref=f9e488]:
+          - listitem [ref=f9e489]: Fan
+          - listitem [ref=f9e490]:
+            - button "Fantasy" [ref=f9e491] [cursor=pointer]
+          - listitem [ref=f9e497]:
+            - button "Rewards" [ref=f9e498] [cursor=pointer]
+          - listitem [ref=f9e506]:
+            - button "Loyalty" [ref=f9e507] [cursor=pointer]
+          - listitem [ref=f9e513]:
+            - button "Community" [ref=f9e514] [cursor=pointer]
+          - listitem [ref=f9e523]:
+            - button "Engagement" [ref=f9e524] [cursor=pointer]
+        - list [ref=f9e531]:
+          - listitem [ref=f9e532]: Platform
+          - listitem [ref=f9e533]:
+            - button "Notifications" [ref=f9e534] [cursor=pointer]
+          - listitem [ref=f9e541]:
+            - button "Workflow" [ref=f9e542] [cursor=pointer]
+          - listitem [ref=f9e550]:
+            - button "Integrations" [ref=f9e551] [cursor=pointer]
+          - listitem [ref=f9e557]:
+            - button "Documents" [ref=f9e558] [cursor=pointer]
+          - listitem [ref=f9e564]:
+            - button "Calendar" [ref=f9e565] [cursor=pointer]
+          - listitem [ref=f9e571]:
+            - button "Events" [ref=f9e572] [cursor=pointer]
+          - listitem [ref=f9e579]:
+            - button "Whitelabel" [ref=f9e580] [cursor=pointer]
+          - listitem [ref=f9e590]:
+            - button "Settings" [ref=f9e591] [cursor=pointer]
+          - listitem [ref=f9e598]:
+            - button "Help" [ref=f9e599] [cursor=pointer]
+      - button "Collapse" [ref=f9e607] [cursor=pointer]
+  - main [ref=f9e613]:
+    - generic [ref=f9e615]:
+      - button "Players" [ref=f9e616] [cursor=pointer]
+      - button "Teams" [ref=f9e621] [cursor=pointer]
+      - button "Squads" [ref=f9e628] [cursor=pointer]
+      - button "Coaches" [ref=f9e634] [cursor=pointer]
+      - button "Staff" [ref=f9e639] [cursor=pointer]
+      - button "Selectors" [ref=f9e644] [cursor=pointer]
+    - navigation [ref=f9e650]:
+      - list [ref=f9e651]:
+        - listitem [ref=f9e652]:
+          - link "Home" [ref=f9e653] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f9e654]
+        - listitem [ref=f9e657]:
+          - link "Cricket Australia" [ref=f9e658] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f9e659]
+        - listitem [ref=f9e662]:
+          - link "Players" [ref=f9e663] [cursor=pointer]:
+            - /url: /players
+        - listitem [ref=f9e664]
+        - listitem [ref=f9e667]:
+          - paragraph [ref=f9e668]: Ply_001
+    - progressbar [ref=f9e671]

@@ -26,11 +26,13 @@ export interface InputProps extends Omit<TextFieldProps, 'variant' | 'error'> {
 }
 
 export const Input = forwardRef<HTMLDivElement, InputProps>(
-  ({ label, description, error, helperText, startAdornment, endAdornment, sx, ...props }, ref) => {
+  ({ label, description, error, helperText, startAdornment, endAdornment, id, sx, ...props }, ref) => {
+    const inputId = id ?? (label ? `cq-input-${label.replace(/\s+/g, '-').toLowerCase()}` : undefined);
     return (
       <Box sx={{ width: '100%' }}>
         {label && (
           <InputLabel
+            htmlFor={inputId}
             sx={{
               fontSize: '0.8125rem',
               fontWeight: 500,
@@ -53,6 +55,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(
         )}
         <TextField
           ref={ref}
+          id={inputId}
           variant="outlined"
           error={Boolean(error)}
           helperText={error || helperText}

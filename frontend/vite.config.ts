@@ -8,6 +8,24 @@ export default defineConfig({
   server: {
     allowedHosts: ['.monkeycode-ai.live'],
   },
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined;
+          if (id.includes('@mui') || id.includes('@emotion')) return 'mui';
+          if (id.includes('framer-motion') || id.includes('motion')) return 'motion';
+          if (id.includes('@tanstack')) return 'tanstack';
+          if (id.includes('react-router')) return 'router';
+          if (id.includes('react-hook-form') || id.includes('zod') || id.includes('@hookform')) return 'forms';
+          if (id.includes('lucide-react') || id.includes('@mui/icons-material')) return 'icons';
+          if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) return 'react';
+          return 'vendor';
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       '@app': path.resolve(__dirname, 'src/app'),

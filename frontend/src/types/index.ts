@@ -49,6 +49,7 @@ export interface NavItem {
 export type {
   User,
   UserRole,
+  Profile,
   Organization,
   OrganizationType,
   OrganizationAddress,
@@ -57,6 +58,8 @@ export type {
   OrgFeatures,
   Membership,
   MembershipStatus,
+  OrganizationMembership,
+  Role,
   Permission,
   PermissionAction,
   Session,
@@ -100,6 +103,70 @@ export type {
   OrganizationListParams,
   OrganizationStats,
 } from './organization';
+
+/* ── Player (re-exports) ──────────────────────────────────── */
+
+export type {
+  Player,
+  PlayerRole,
+  BattingStyle,
+  BowlingStyle,
+  PlayerStatus,
+  PlayerAvailability,
+  PlayerStats,
+  PlayerMetrics,
+  CreatePlayerRequest,
+  UpdatePlayerRequest,
+  PlayerListParams,
+  BulkPlayerUpdateRequest,
+} from './player';
+export {
+  PLAYER_ROLE_LABELS,
+  PLAYER_STATUS_LABELS,
+  BATTING_STYLE_LABELS,
+  BOWLING_STYLE_LABELS,
+} from './player';
+
+/* ── Cricket (re-exports) ─────────────────────────────────── */
+
+export type {
+  MatchFormat,
+  MatchState,
+  InningsNumber,
+  MatchTeam,
+  MatchInnings,
+  BattingCardEntry,
+  BowlingCardEntry,
+  FallOfWicket,
+  Partnership,
+  Extras,
+  Powerplay,
+  CommentaryEntry,
+  Match,
+  Team,
+  FormResult,
+  TeamSquadMember,
+  TournamentFormat,
+  Tournament,
+  StandingRow,
+  TrendPoint,
+  ComparisonDatum,
+  AnalyticsQuestion,
+  AnalyticsInsight,
+  InsightSource,
+  AiInsight,
+  AiConversationMessage,
+  MediaKind,
+  MediaAsset,
+  VideoEvent,
+  VideoClip,
+  VideoAsset,
+} from './cricket';
+export {
+  MATCH_FORMAT_LABELS,
+  MATCH_STATE_LABELS,
+  TOURNAMENT_STATUS_LABELS,
+} from './cricket';
 
 /* ── Domain Registry ───────────────────────────────────────── */
 

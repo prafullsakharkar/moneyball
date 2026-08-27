@@ -17,7 +17,12 @@ function isActive(href: string, pathname: string): boolean {
   return href === '/' ? pathname === '/' : pathname.startsWith(href);
 }
 
-export function SecondaryNavigation() {
+interface SecondaryNavigationProps {
+  /** Effective sidebar width (accounts for collapsed state). */
+  sidebarWidth?: number;
+}
+
+export function SecondaryNavigation({ sidebarWidth = layout.sidebarWidth }: SecondaryNavigationProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -45,7 +50,7 @@ export function SecondaryNavigation() {
         borderColor: 'divider',
         bgcolor: 'background.paper',
         overflowX: 'auto',
-        ml: { md: `${layout.sidebarWidth}px` },
+        ml: { md: `${sidebarWidth}px` },
       }}
     >
       {activeSection.items.map((item) => {

@@ -18,6 +18,35 @@ export interface User {
   updatedAt: string;
 }
 
+/* ── Profile ───────────────────────────────────────────────── */
+
+export interface Profile {
+  id: string;
+  userId: string;
+  displayName: string;
+  bio?: string;
+  phone?: string;
+  dateOfBirth?: string;
+  nationality?: string;
+  location?: string;
+  avatarUrl?: string;
+  coverUrl?: string;
+  socialLinks?: {
+    website?: string;
+    twitter?: string;
+    instagram?: string;
+    linkedin?: string;
+  };
+  preferences?: {
+    language?: string;
+    timezone?: string;
+    theme?: 'light' | 'dark' | 'system';
+    notifications?: Record<string, boolean>;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type UserRole = 'owner' | 'admin' | 'coach' | 'manager' | 'player' | 'viewer';
 
 /* ── Organization ──────────────────────────────────────────── */
@@ -111,6 +140,35 @@ export interface Membership {
 }
 
 export type MembershipStatus = 'active' | 'inactive' | 'pending' | 'suspended' | 'invited';
+
+/* ── Organization Membership ───────────────────────────────── */
+
+export interface OrganizationMembership {
+  id: string;
+  userId: string;
+  organizationId: string;
+  organization: Organization;
+  role: UserRole;
+  permissions: Permission[];
+  status: MembershipStatus;
+  joinedAt: string;
+  isDefault?: boolean;
+}
+
+/* ── Role ──────────────────────────────────────────────────── */
+
+export interface Role {
+  id: string;
+  organizationId: string;
+  name: string;
+  key: string;
+  description?: string;
+  permissions: Permission[];
+  isSystem?: boolean;
+  memberCount?: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
 /* ── Permission ────────────────────────────────────────────── */
 

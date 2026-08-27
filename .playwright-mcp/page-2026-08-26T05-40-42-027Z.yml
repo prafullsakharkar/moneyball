@@ -1,0 +1,353 @@
+- generic [ref=f8e43]:
+  - banner [ref=f8e44]:
+    - generic [ref=f8e45]:
+      - button "Cricket Australia" [ref=f8e46] [cursor=pointer]:
+        - paragraph [ref=f8e50]: Cricket Australia
+      - textbox "Global search" [ref=f8e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f8e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f8e62] [cursor=pointer]
+      - button "Help" [ref=f8e65] [cursor=pointer]
+      - button "0 notifications" [ref=f8e69] [cursor=pointer]
+      - button "JS" [ref=f8e73] [cursor=pointer]
+  - navigation [ref=f8e75]:
+    - generic [ref=f8e77]:
+      - generic [ref=f8e78]:
+        - generic [ref=f8e83]:
+          - heading "CricketOS" [level=6] [ref=f8e84]
+          - generic [ref=f8e85]: Cricket Australia
+        - button [ref=f8e86] [cursor=pointer]
+      - generic [ref=f8e89]:
+        - list [ref=f8e90]:
+          - listitem [ref=f8e91]: Home
+          - listitem [ref=f8e92]:
+            - button "Dashboard" [ref=f8e93] [cursor=pointer]
+        - list [ref=f8e102]:
+          - listitem [ref=f8e103]: Competition
+          - listitem [ref=f8e104]:
+            - button "Tournaments" [ref=f8e105] [cursor=pointer]
+          - listitem [ref=f8e115]:
+            - button "Leagues" [ref=f8e116] [cursor=pointer]
+          - listitem [ref=f8e123]:
+            - button "Seasons" [ref=f8e124] [cursor=pointer]
+          - listitem [ref=f8e130]:
+            - button "Fixtures" [ref=f8e131] [cursor=pointer]
+          - listitem [ref=f8e137]:
+            - button "Matches" [ref=f8e138] [cursor=pointer]
+          - listitem [ref=f8e144]:
+            - button "Scoring" [ref=f8e145] [cursor=pointer]
+          - listitem [ref=f8e152]:
+            - button "Officials" [ref=f8e153] [cursor=pointer]
+        - list [ref=f8e163]:
+          - listitem [ref=f8e164]: Participants
+          - listitem [ref=f8e165]:
+            - button "Players" [ref=f8e166] [cursor=pointer]
+          - listitem [ref=f8e173]:
+            - button "Teams" [ref=f8e174] [cursor=pointer]
+          - listitem [ref=f8e183]:
+            - button "Squads" [ref=f8e184] [cursor=pointer]
+          - listitem [ref=f8e192]:
+            - button "Coaches" [ref=f8e193] [cursor=pointer]
+          - listitem [ref=f8e200]:
+            - button "Staff" [ref=f8e201] [cursor=pointer]
+          - listitem [ref=f8e208]:
+            - button "Selectors" [ref=f8e209] [cursor=pointer]
+        - list [ref=f8e217]:
+          - listitem [ref=f8e218]: Development
+          - listitem [ref=f8e219]:
+            - button "Academy" [ref=f8e220] [cursor=pointer]
+          - listitem [ref=f8e229]:
+            - button "Training" [ref=f8e230] [cursor=pointer]
+          - listitem [ref=f8e240]:
+            - button "Fitness" [ref=f8e241] [cursor=pointer]
+          - listitem [ref=f8e248]:
+            - button "Medical" [ref=f8e249] [cursor=pointer]
+          - listitem [ref=f8e257]:
+            - button "Performance" [ref=f8e258] [cursor=pointer]
+          - listitem [ref=f8e264]:
+            - button "Scouting" [ref=f8e265] [cursor=pointer]
+        - list [ref=f8e274]:
+          - listitem [ref=f8e275]: Facilities
+          - listitem [ref=f8e276]:
+            - button "Grounds" [ref=f8e277] [cursor=pointer]
+          - listitem [ref=f8e284]:
+            - button "Facilities" [ref=f8e285] [cursor=pointer]
+          - listitem [ref=f8e293]:
+            - button "Equipment" [ref=f8e294] [cursor=pointer]
+          - listitem [ref=f8e302]:
+            - button "Inventory" [ref=f8e303] [cursor=pointer]
+          - listitem [ref=f8e317]:
+            - button "Devices" [ref=f8e318] [cursor=pointer]
+          - listitem [ref=f8e325]:
+            - button "Maintenance" [ref=f8e326] [cursor=pointer]
+        - list [ref=f8e332]:
+          - listitem [ref=f8e333]: Media
+          - listitem [ref=f8e334]:
+            - button "Media" [ref=f8e335] [cursor=pointer]
+          - listitem [ref=f8e342]:
+            - button "Video" [ref=f8e343] [cursor=pointer]
+          - listitem [ref=f8e350]:
+            - button "Streaming" [ref=f8e351] [cursor=pointer]
+          - listitem [ref=f8e361]:
+            - button "Gallery" [ref=f8e362] [cursor=pointer]
+          - listitem [ref=f8e371]:
+            - button "CMS" [ref=f8e372] [cursor=pointer]
+        - list [ref=f8e379]:
+          - listitem [ref=f8e380]: Intelligence
+          - listitem [ref=f8e381]:
+            - button "Statistics" [ref=f8e382] [cursor=pointer]
+          - listitem [ref=f8e388]:
+            - button "Analytics" [ref=f8e389] [cursor=pointer]
+          - listitem [ref=f8e396]:
+            - button "Reports" [ref=f8e397] [cursor=pointer]
+          - listitem [ref=f8e404]:
+            - button "AI" [ref=f8e405] [cursor=pointer]
+          - listitem [ref=f8e421]:
+            - button "Search" [ref=f8e422] [cursor=pointer]
+        - list [ref=f8e429]:
+          - listitem [ref=f8e430]: Commercial
+          - listitem [ref=f8e431]:
+            - button "Membership" [ref=f8e432] [cursor=pointer]
+          - listitem [ref=f8e438]:
+            - button "Sponsorship" [ref=f8e439] [cursor=pointer]
+          - listitem [ref=f8e448]:
+            - button "Ticketing" [ref=f8e449] [cursor=pointer]
+          - listitem [ref=f8e455]:
+            - button "Marketplace" [ref=f8e456] [cursor=pointer]
+          - listitem [ref=f8e464]:
+            - button "Merchandise" [ref=f8e465] [cursor=pointer]
+          - listitem [ref=f8e472]:
+            - button "Billing" [ref=f8e473] [cursor=pointer]
+          - listitem [ref=f8e480]:
+            - button "Finance" [ref=f8e481] [cursor=pointer]
+        - list [ref=f8e488]:
+          - listitem [ref=f8e489]: Fan
+          - listitem [ref=f8e490]:
+            - button "Fantasy" [ref=f8e491] [cursor=pointer]
+          - listitem [ref=f8e497]:
+            - button "Rewards" [ref=f8e498] [cursor=pointer]
+          - listitem [ref=f8e506]:
+            - button "Loyalty" [ref=f8e507] [cursor=pointer]
+          - listitem [ref=f8e513]:
+            - button "Community" [ref=f8e514] [cursor=pointer]
+          - listitem [ref=f8e523]:
+            - button "Engagement" [ref=f8e524] [cursor=pointer]
+        - list [ref=f8e531]:
+          - listitem [ref=f8e532]: Platform
+          - listitem [ref=f8e533]:
+            - button "Notifications" [ref=f8e534] [cursor=pointer]
+          - listitem [ref=f8e541]:
+            - button "Workflow" [ref=f8e542] [cursor=pointer]
+          - listitem [ref=f8e550]:
+            - button "Integrations" [ref=f8e551] [cursor=pointer]
+          - listitem [ref=f8e557]:
+            - button "Documents" [ref=f8e558] [cursor=pointer]
+          - listitem [ref=f8e564]:
+            - button "Calendar" [ref=f8e565] [cursor=pointer]
+          - listitem [ref=f8e571]:
+            - button "Events" [ref=f8e572] [cursor=pointer]
+          - listitem [ref=f8e579]:
+            - button "Whitelabel" [ref=f8e580] [cursor=pointer]
+          - listitem [ref=f8e590]:
+            - button "Settings" [ref=f8e591] [cursor=pointer]
+          - listitem [ref=f8e598]:
+            - button "Help" [ref=f8e599] [cursor=pointer]
+      - button "Collapse" [ref=f8e607] [cursor=pointer]
+  - main [ref=f8e613]:
+    - generic [ref=f8e615]:
+      - button "Players" [ref=f8e616] [cursor=pointer]
+      - button "Teams" [ref=f8e621] [cursor=pointer]
+      - button "Squads" [ref=f8e628] [cursor=pointer]
+      - button "Coaches" [ref=f8e634] [cursor=pointer]
+      - button "Staff" [ref=f8e639] [cursor=pointer]
+      - button "Selectors" [ref=f8e644] [cursor=pointer]
+    - navigation [ref=f8e650]:
+      - list [ref=f8e651]:
+        - listitem [ref=f8e652]:
+          - link "Home" [ref=f8e653] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f8e654]
+        - listitem [ref=f8e657]:
+          - link "Cricket Australia" [ref=f8e658] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f8e659]
+        - listitem [ref=f8e662]:
+          - paragraph [ref=f8e663]: Players
+    - generic [ref=f8e665]:
+      - generic [ref=f8e666]:
+        - generic [ref=f8e667]:
+          - heading "Players" [level=4] [ref=f8e668]
+          - paragraph [ref=f8e669]: Manage your squad — roles, styles, and career statistics
+        - button [ref=f8e671] [cursor=pointer]
+      - generic [ref=f8e674]:
+        - generic [ref=f8e677]:
+          - textbox "Search players..." [ref=f8e681]
+          - group
+        - generic [ref=f8e683]:
+          - combobox [ref=f8e684] [cursor=pointer]
+          - textbox
+          - group
+        - generic [ref=f8e686]:
+          - combobox [ref=f8e687] [cursor=pointer]
+          - textbox
+          - group
+      - generic [ref=f8e688]:
+        - generic [ref=f8e689]:
+          - heading "Squad" [level=6] [ref=f8e690]
+          - generic [ref=f8e691]: "6"
+        - generic [ref=f8e694]:
+          - textbox "Search players..." [ref=f8e698]
+          - group
+        - generic [ref=f8e699]:
+          - button "Export" [ref=f8e700] [cursor=pointer]
+          - button "Toggle columns" [ref=f8e705] [cursor=pointer]
+          - button "Change density" [ref=f8e708] [cursor=pointer]
+          - button [ref=f8e711] [cursor=pointer]
+      - table "Players table" [ref=f8e715]:
+        - rowgroup [ref=f8e716]:
+          - row [ref=f8e717]:
+            - columnheader [ref=f8e718]:
+              - checkbox "Select all rows" [ref=f8e720] [cursor=pointer]
+            - columnheader [ref=f8e723]:
+              - button "Player" [ref=f8e724] [cursor=pointer]
+            - columnheader [ref=f8e728]:
+              - button "Role" [ref=f8e729] [cursor=pointer]
+            - columnheader [ref=f8e733]:
+              - button "Status" [ref=f8e734] [cursor=pointer]
+            - columnheader [ref=f8e738]:
+              - button "Runs" [ref=f8e739] [cursor=pointer]
+            - columnheader [ref=f8e743]:
+              - button "Wkts" [ref=f8e744] [cursor=pointer]
+            - columnheader [ref=f8e748]:
+              - button "Avg" [ref=f8e749] [cursor=pointer]
+            - columnheader [ref=f8e753]:
+              - button "SR" [ref=f8e754] [cursor=pointer]
+            - columnheader [ref=f8e758]:
+              - button "Econ" [ref=f8e759] [cursor=pointer]
+            - columnheader [ref=f8e763]:
+              - button "Price" [ref=f8e764] [cursor=pointer]
+            - columnheader [ref=f8e768]:
+              - button "Rank" [ref=f8e769] [cursor=pointer]
+        - rowgroup [ref=f8e773]:
+          - row [ref=f8e774] [cursor=pointer]:
+            - cell [ref=f8e775]:
+              - checkbox "Select row ply_002" [ref=f8e777]
+            - 'cell "JB J. Bumrah Australia Men · #93" [ref=f8e780]':
+              - generic [ref=f8e781]:
+                - generic [ref=f8e782]: JB
+                - generic [ref=f8e784]:
+                  - generic [ref=f8e785]: J. Bumrah
+                  - generic [ref=f8e786]: "Australia Men · #93"
+            - cell "Bowler" [ref=f8e787]
+            - cell "Active" [ref=f8e790]
+            - cell "120" [ref=f8e793]
+            - cell "149" [ref=f8e794]
+            - cell "6.00" [ref=f8e795]
+            - cell "66.67" [ref=f8e796]
+            - cell "4.75" [ref=f8e797]
+            - cell "₹1,200,000" [ref=f8e798]
+            - cell "#1" [ref=f8e799]
+          - row [ref=f8e800] [cursor=pointer]:
+            - cell [ref=f8e801]:
+              - checkbox "Select row ply_006" [ref=f8e803]
+            - 'cell "KR KL Rahul Australia Men · #1" [ref=f8e806]':
+              - generic [ref=f8e807]:
+                - generic [ref=f8e808]: KR
+                - generic [ref=f8e810]:
+                  - generic [ref=f8e811]: KL Rahul
+                  - generic [ref=f8e812]: "Australia Men · #1"
+            - cell "Wicket-keeper" [ref=f8e813]
+            - cell "Injured" [ref=f8e816]
+            - cell "2,205" [ref=f8e819]
+            - cell "0" [ref=f8e820]
+            - cell "52.50" [ref=f8e821]
+            - cell "88.20" [ref=f8e822]
+            - cell "0.00" [ref=f8e823]
+            - cell "₹700,000" [ref=f8e824]
+            - cell "#8" [ref=f8e825]
+          - row [ref=f8e826] [cursor=pointer]:
+            - cell [ref=f8e827]:
+              - checkbox "Select row ply_004" [ref=f8e829]
+            - 'cell "MD MS Dhoni Australia Men · #7" [ref=f8e832]':
+              - generic [ref=f8e833]:
+                - generic [ref=f8e834]: MD
+                - generic [ref=f8e836]:
+                  - generic [ref=f8e837]: MS Dhoni
+                  - generic [ref=f8e838]: "Australia Men · #7"
+            - cell "Wicket-keeper" [ref=f8e839]
+            - cell "Retired" [ref=f8e842]
+            - cell "10,773" [ref=f8e845]
+            - cell "1" [ref=f8e846]
+            - cell "50.58" [ref=f8e847]
+            - cell "87.59" [ref=f8e848]
+            - cell "6.67" [ref=f8e849]
+            - cell "₹0" [ref=f8e850]
+            - cell "#0" [ref=f8e851]
+          - row [ref=f8e852] [cursor=pointer]:
+            - cell [ref=f8e853]:
+              - checkbox "Select row ply_003" [ref=f8e855]
+            - 'cell "RJ R. Jadeja Australia Men · #8" [ref=f8e858]':
+              - generic [ref=f8e859]:
+                - generic [ref=f8e860]: RJ
+                - generic [ref=f8e862]:
+                  - generic [ref=f8e863]: R. Jadeja
+                  - generic [ref=f8e864]: "Australia Men · #8"
+            - cell "All-rounder" [ref=f8e865]
+            - cell "Active" [ref=f8e868]
+            - cell "2,756" [ref=f8e871]
+            - cell "220" [ref=f8e872]
+            - cell "22.97" [ref=f8e873]
+            - cell "86.13" [ref=f8e874]
+            - cell "4.41" [ref=f8e875]
+            - cell "₹900,000" [ref=f8e876]
+            - cell "#4" [ref=f8e877]
+          - row [ref=f8e878] [cursor=pointer]:
+            - cell [ref=f8e879]:
+              - checkbox "Select row ply_005" [ref=f8e881]
+            - 'cell "RS R. Sharma Australia Men · #45" [ref=f8e884]':
+              - generic [ref=f8e885]:
+                - generic [ref=f8e886]: RS
+                - generic [ref=f8e888]:
+                  - generic [ref=f8e889]: R. Sharma
+                  - generic [ref=f8e890]: "Australia Men · #45"
+            - cell "Batsman" [ref=f8e891]
+            - cell "Active" [ref=f8e894]
+            - cell "10,709" [ref=f8e897]
+            - cell "8" [ref=f8e898]
+            - cell "49.12" [ref=f8e899]
+            - cell "90.75" [ref=f8e900]
+            - cell "7.00" [ref=f8e901]
+            - cell "₹1,100,000" [ref=f8e902]
+            - cell "#3" [ref=f8e903]
+          - row [ref=f8e904] [cursor=pointer]:
+            - cell [ref=f8e905]:
+              - checkbox "Select row ply_001" [ref=f8e907]
+            - 'cell "VK V. Kohli Australia Men · #18" [ref=f8e910]':
+              - generic [ref=f8e911]:
+                - generic [ref=f8e912]: VK
+                - generic [ref=f8e914]:
+                  - generic [ref=f8e915]: V. Kohli
+                  - generic [ref=f8e916]: "Australia Men · #18"
+            - cell "Batsman" [ref=f8e917]
+            - cell "Active" [ref=f8e920]
+            - cell "12,898" [ref=f8e923]
+            - cell "4" [ref=f8e924]
+            - cell "56.08" [ref=f8e925]
+            - cell "92.79" [ref=f8e926]
+            - cell "6.38" [ref=f8e927]
+            - cell "₹1,500,000" [ref=f8e928]
+            - cell "#2" [ref=f8e929]
+      - generic [ref=f8e930]:
+        - generic [ref=f8e931]:
+          - generic [ref=f8e932]: Rows per page
+          - generic [ref=f8e933]:
+            - combobox "Rows per page" [ref=f8e934] [cursor=pointer]: "10"
+            - textbox: "10"
+            - group
+        - generic [ref=f8e935]: 1–6 of 6
+        - generic [ref=f8e936]:
+          - generic "Previous page" [ref=f8e937]:
+            - button "Previous page" [disabled]
+          - generic [ref=f8e938]: 1 / 1
+          - generic "Next page" [ref=f8e939]:
+            - button "Next page" [disabled]

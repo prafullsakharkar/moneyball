@@ -96,13 +96,54 @@ export type { ToastApi, ToastOptions, BannerProps, BannerTone } from './feedback
 
 /* ── Data Table System ─────────────────────────────────── */
 
-export { DataTable } from './table';
+export {
+  DataTable,
+  TableToolbar,
+  TablePagination,
+  ColumnVisibilityMenu,
+  DensityMenu,
+  ContextMenu,
+  BulkActionBar,
+  TableState,
+  DetailDrawer,
+} from './table';
 
-export type { DataTableColumn, DataTableProps } from './table';
+export type {
+  DataTableColumn,
+  DataTableProps,
+  TableToolbarProps,
+  TablePaginationProps,
+  ColumnVisibilityMenuProps,
+  DensityMenuProps,
+  ContextMenuItem,
+  ContextMenuProps,
+  BulkAction,
+  BulkActionBarProps,
+  TableStateKind,
+  TableStateProps,
+  DetailField,
+  DetailDrawerProps,
+} from './table';
 
 /* ── Forms System ──────────────────────────────────────── */
 
-export { FormField, FormRow, FormActions, Select, TextArea, Switch, Checkbox } from './form';
+export {
+  FormField,
+  FormRow,
+  FormActions,
+  Select,
+  TextArea,
+  Switch,
+  Checkbox,
+  useForm,
+  Form,
+  FormInput,
+  FormSelect,
+  FormTextArea,
+  FormSwitch,
+  FormCheckbox,
+  FormDialog,
+} from './form';
 
 export type {
   FormFieldProps,
@@ -113,6 +154,14 @@ export type {
   TextAreaProps,
   SwitchProps,
   CheckboxProps,
+  UseFormOptions,
+  FormProps,
+  FormInputProps,
+  FormSelectProps,
+  FormTextAreaProps,
+  FormSwitchProps,
+  FormCheckboxProps,
+  FormDialogProps,
 } from './form';
 
 /* ── Motion System ────────────────────────────────────── */

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ErrorState } from '@shared/components';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -38,38 +39,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
       }
 
       return (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            minHeight: '40vh',
-            gap: '1rem',
-            padding: '2rem',
-            textAlign: 'center',
-          }}
-        >
-          <h2 style={{ fontSize: '1.5rem', color: 'var(--color-error)' }}>
-            Something went wrong
-          </h2>
-          <p style={{ color: 'var(--color-text-secondary)', maxWidth: 500 }}>
-            {this.state.error?.message || 'An unexpected error occurred.'}
-          </p>
-          <button
-            onClick={this.handleReset}
-            style={{
-              padding: '0.5rem 1.5rem',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-primary)',
-              color: 'var(--color-primary-contrast)',
-              cursor: 'pointer',
-            }}
-          >
-            Try Again
-          </button>
-        </div>
+        <ErrorState
+          title="Something went wrong"
+          description={this.state.error?.message || 'An unexpected error occurred.'}
+          onRetry={this.handleReset}
+        />
       );
     }
 

@@ -1,0 +1,177 @@
+- generic [ref=f3e43]:
+  - banner [ref=f3e44]:
+    - generic [ref=f3e45]:
+      - button "Cricket Australia" [ref=f3e46] [cursor=pointer]:
+        - paragraph [ref=f3e50]: Cricket Australia
+      - textbox "Global search" [ref=f3e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f3e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f3e62] [cursor=pointer]
+      - button "Help" [ref=f3e65] [cursor=pointer]
+      - button "0 notifications" [ref=f3e69] [cursor=pointer]
+      - button "JS" [ref=f3e73] [cursor=pointer]
+  - navigation [ref=f3e75]:
+    - generic [ref=f3e77]:
+      - generic [ref=f3e78]:
+        - generic [ref=f3e83]:
+          - heading "CricketOS" [level=6] [ref=f3e84]
+          - generic [ref=f3e85]: Cricket Australia
+        - button [ref=f3e86] [cursor=pointer]
+      - generic [ref=f3e89]:
+        - list [ref=f3e90]:
+          - listitem [ref=f3e91]: Home
+          - listitem [ref=f3e92]:
+            - button "Dashboard" [ref=f3e93] [cursor=pointer]
+        - list [ref=f3e102]:
+          - listitem [ref=f3e103]: Competition
+          - listitem [ref=f3e104]:
+            - button "Tournaments" [ref=f3e105] [cursor=pointer]
+          - listitem [ref=f3e115]:
+            - button "Leagues" [ref=f3e116] [cursor=pointer]
+          - listitem [ref=f3e123]:
+            - button "Seasons" [ref=f3e124] [cursor=pointer]
+          - listitem [ref=f3e130]:
+            - button "Fixtures" [ref=f3e131] [cursor=pointer]
+          - listitem [ref=f3e137]:
+            - button "Matches" [ref=f3e138] [cursor=pointer]
+          - listitem [ref=f3e144]:
+            - button "Scoring" [ref=f3e145] [cursor=pointer]
+          - listitem [ref=f3e152]:
+            - button "Officials" [ref=f3e153] [cursor=pointer]
+        - list [ref=f3e163]:
+          - listitem [ref=f3e164]: Participants
+          - listitem [ref=f3e165]:
+            - button "Players" [ref=f3e166] [cursor=pointer]
+          - listitem [ref=f3e173]:
+            - button "Teams" [ref=f3e174] [cursor=pointer]
+          - listitem [ref=f3e183]:
+            - button "Squads" [ref=f3e184] [cursor=pointer]
+          - listitem [ref=f3e192]:
+            - button "Coaches" [ref=f3e193] [cursor=pointer]
+          - listitem [ref=f3e200]:
+            - button "Staff" [ref=f3e201] [cursor=pointer]
+          - listitem [ref=f3e208]:
+            - button "Selectors" [ref=f3e209] [cursor=pointer]
+        - list [ref=f3e217]:
+          - listitem [ref=f3e218]: Development
+          - listitem [ref=f3e219]:
+            - button "Academy" [ref=f3e220] [cursor=pointer]
+          - listitem [ref=f3e229]:
+            - button "Training" [ref=f3e230] [cursor=pointer]
+          - listitem [ref=f3e240]:
+            - button "Fitness" [ref=f3e241] [cursor=pointer]
+          - listitem [ref=f3e248]:
+            - button "Medical" [ref=f3e249] [cursor=pointer]
+          - listitem [ref=f3e257]:
+            - button "Performance" [ref=f3e258] [cursor=pointer]
+          - listitem [ref=f3e264]:
+            - button "Scouting" [ref=f3e265] [cursor=pointer]
+        - list [ref=f3e274]:
+          - listitem [ref=f3e275]: Facilities
+          - listitem [ref=f3e276]:
+            - button "Grounds" [ref=f3e277] [cursor=pointer]
+          - listitem [ref=f3e284]:
+            - button "Facilities" [ref=f3e285] [cursor=pointer]
+          - listitem [ref=f3e293]:
+            - button "Equipment" [ref=f3e294] [cursor=pointer]
+          - listitem [ref=f3e302]:
+            - button "Inventory" [ref=f3e303] [cursor=pointer]
+          - listitem [ref=f3e317]:
+            - button "Devices" [ref=f3e318] [cursor=pointer]
+          - listitem [ref=f3e325]:
+            - button "Maintenance" [ref=f3e326] [cursor=pointer]
+        - list [ref=f3e332]:
+          - listitem [ref=f3e333]: Media
+          - listitem [ref=f3e334]:
+            - button "Media" [ref=f3e335] [cursor=pointer]
+          - listitem [ref=f3e342]:
+            - button "Video" [ref=f3e343] [cursor=pointer]
+          - listitem [ref=f3e350]:
+            - button "Streaming" [ref=f3e351] [cursor=pointer]
+          - listitem [ref=f3e361]:
+            - button "Gallery" [ref=f3e362] [cursor=pointer]
+          - listitem [ref=f3e371]:
+            - button "CMS" [ref=f3e372] [cursor=pointer]
+        - list [ref=f3e379]:
+          - listitem [ref=f3e380]: Intelligence
+          - listitem [ref=f3e381]:
+            - button "Statistics" [ref=f3e382] [cursor=pointer]
+          - listitem [ref=f3e388]:
+            - button "Analytics" [ref=f3e389] [cursor=pointer]
+          - listitem [ref=f3e396]:
+            - button "Reports" [ref=f3e397] [cursor=pointer]
+          - listitem [ref=f3e404]:
+            - button "AI" [ref=f3e405] [cursor=pointer]
+          - listitem [ref=f3e421]:
+            - button "Search" [ref=f3e422] [cursor=pointer]
+        - list [ref=f3e429]:
+          - listitem [ref=f3e430]: Commercial
+          - listitem [ref=f3e431]:
+            - button "Membership" [ref=f3e432] [cursor=pointer]
+          - listitem [ref=f3e438]:
+            - button "Sponsorship" [ref=f3e439] [cursor=pointer]
+          - listitem [ref=f3e448]:
+            - button "Ticketing" [ref=f3e449] [cursor=pointer]
+          - listitem [ref=f3e455]:
+            - button "Marketplace" [ref=f3e456] [cursor=pointer]
+          - listitem [ref=f3e464]:
+            - button "Merchandise" [ref=f3e465] [cursor=pointer]
+          - listitem [ref=f3e472]:
+            - button "Billing" [ref=f3e473] [cursor=pointer]
+          - listitem [ref=f3e480]:
+            - button "Finance" [ref=f3e481] [cursor=pointer]
+        - list [ref=f3e488]:
+          - listitem [ref=f3e489]: Fan
+          - listitem [ref=f3e490]:
+            - button "Fantasy" [ref=f3e491] [cursor=pointer]
+          - listitem [ref=f3e497]:
+            - button "Rewards" [ref=f3e498] [cursor=pointer]
+          - listitem [ref=f3e506]:
+            - button "Loyalty" [ref=f3e507] [cursor=pointer]
+          - listitem [ref=f3e513]:
+            - button "Community" [ref=f3e514] [cursor=pointer]
+          - listitem [ref=f3e523]:
+            - button "Engagement" [ref=f3e524] [cursor=pointer]
+        - list [ref=f3e531]:
+          - listitem [ref=f3e532]: Platform
+          - listitem [ref=f3e533]:
+            - button "Notifications" [ref=f3e534] [cursor=pointer]
+          - listitem [ref=f3e541]:
+            - button "Workflow" [ref=f3e542] [cursor=pointer]
+          - listitem [ref=f3e550]:
+            - button "Integrations" [ref=f3e551] [cursor=pointer]
+          - listitem [ref=f3e557]:
+            - button "Documents" [ref=f3e558] [cursor=pointer]
+          - listitem [ref=f3e564]:
+            - button "Calendar" [ref=f3e565] [cursor=pointer]
+          - listitem [ref=f3e571]:
+            - button "Events" [ref=f3e572] [cursor=pointer]
+          - listitem [ref=f3e579]:
+            - button "Whitelabel" [ref=f3e580] [cursor=pointer]
+          - listitem [ref=f3e590]:
+            - button "Settings" [ref=f3e591] [cursor=pointer]
+          - listitem [ref=f3e598]:
+            - button "Help" [ref=f3e599] [cursor=pointer]
+      - button "Collapse" [ref=f3e607] [cursor=pointer]
+  - main [ref=f3e613]:
+    - generic [ref=f3e615]:
+      - button "Tournaments" [ref=f3e616] [cursor=pointer]
+      - button "Leagues" [ref=f3e624] [cursor=pointer]
+      - button "Seasons" [ref=f3e629] [cursor=pointer]
+      - button "Fixtures" [ref=f3e633] [cursor=pointer]
+      - button "Matches" [ref=f3e637] [cursor=pointer]
+      - button "Scoring" [ref=f3e641] [cursor=pointer]
+      - button "Officials" [ref=f3e646] [cursor=pointer]
+    - navigation [ref=f3e654]:
+      - list [ref=f3e655]:
+        - listitem [ref=f3e656]:
+          - link "Home" [ref=f3e657] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f3e658]
+        - listitem [ref=f3e661]:
+          - link "Cricket Australia" [ref=f3e662] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f3e663]
+        - listitem [ref=f3e666]:
+          - paragraph [ref=f3e667]: Tournaments
+    - progressbar [ref=f3e670]

@@ -1,0 +1,236 @@
+- generic [ref=f4e43]:
+  - banner [ref=f4e44]:
+    - generic [ref=f4e45]:
+      - button "Cricket Australia" [ref=f4e46] [cursor=pointer]:
+        - paragraph [ref=f4e50]: Cricket Australia
+      - textbox "Global search" [ref=f4e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f4e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f4e62] [cursor=pointer]
+      - button "Help" [ref=f4e65] [cursor=pointer]
+      - button "0 notifications" [ref=f4e69] [cursor=pointer]
+      - button "JS" [ref=f4e73] [cursor=pointer]
+  - navigation [ref=f4e75]:
+    - generic [ref=f4e77]:
+      - generic [ref=f4e78]:
+        - generic [ref=f4e83]:
+          - heading "CricketOS" [level=6] [ref=f4e84]
+          - generic [ref=f4e85]: Cricket Australia
+        - button [ref=f4e86] [cursor=pointer]
+      - generic [ref=f4e89]:
+        - list [ref=f4e90]:
+          - listitem [ref=f4e91]: Home
+          - listitem [ref=f4e92]:
+            - button "Dashboard" [ref=f4e93] [cursor=pointer]
+        - list [ref=f4e102]:
+          - listitem [ref=f4e103]: Competition
+          - listitem [ref=f4e104]:
+            - button "Tournaments" [ref=f4e105] [cursor=pointer]
+          - listitem [ref=f4e115]:
+            - button "Leagues" [ref=f4e116] [cursor=pointer]
+          - listitem [ref=f4e123]:
+            - button "Seasons" [ref=f4e124] [cursor=pointer]
+          - listitem [ref=f4e130]:
+            - button "Fixtures" [ref=f4e131] [cursor=pointer]
+          - listitem [ref=f4e137]:
+            - button "Matches" [ref=f4e138] [cursor=pointer]
+          - listitem [ref=f4e144]:
+            - button "Scoring" [ref=f4e145] [cursor=pointer]
+          - listitem [ref=f4e152]:
+            - button "Officials" [ref=f4e153] [cursor=pointer]
+        - list [ref=f4e163]:
+          - listitem [ref=f4e164]: Participants
+          - listitem [ref=f4e165]:
+            - button "Players" [ref=f4e166] [cursor=pointer]
+          - listitem [ref=f4e173]:
+            - button "Teams" [ref=f4e174] [cursor=pointer]
+          - listitem [ref=f4e183]:
+            - button "Squads" [ref=f4e184] [cursor=pointer]
+          - listitem [ref=f4e192]:
+            - button "Coaches" [ref=f4e193] [cursor=pointer]
+          - listitem [ref=f4e200]:
+            - button "Staff" [ref=f4e201] [cursor=pointer]
+          - listitem [ref=f4e208]:
+            - button "Selectors" [ref=f4e209] [cursor=pointer]
+        - list [ref=f4e217]:
+          - listitem [ref=f4e218]: Development
+          - listitem [ref=f4e219]:
+            - button "Academy" [ref=f4e220] [cursor=pointer]
+          - listitem [ref=f4e229]:
+            - button "Training" [ref=f4e230] [cursor=pointer]
+          - listitem [ref=f4e240]:
+            - button "Fitness" [ref=f4e241] [cursor=pointer]
+          - listitem [ref=f4e248]:
+            - button "Medical" [ref=f4e249] [cursor=pointer]
+          - listitem [ref=f4e257]:
+            - button "Performance" [ref=f4e258] [cursor=pointer]
+          - listitem [ref=f4e264]:
+            - button "Scouting" [ref=f4e265] [cursor=pointer]
+        - list [ref=f4e274]:
+          - listitem [ref=f4e275]: Facilities
+          - listitem [ref=f4e276]:
+            - button "Grounds" [ref=f4e277] [cursor=pointer]
+          - listitem [ref=f4e284]:
+            - button "Facilities" [ref=f4e285] [cursor=pointer]
+          - listitem [ref=f4e293]:
+            - button "Equipment" [ref=f4e294] [cursor=pointer]
+          - listitem [ref=f4e302]:
+            - button "Inventory" [ref=f4e303] [cursor=pointer]
+          - listitem [ref=f4e317]:
+            - button "Devices" [ref=f4e318] [cursor=pointer]
+          - listitem [ref=f4e325]:
+            - button "Maintenance" [ref=f4e326] [cursor=pointer]
+        - list [ref=f4e332]:
+          - listitem [ref=f4e333]: Media
+          - listitem [ref=f4e334]:
+            - button "Media" [ref=f4e335] [cursor=pointer]
+          - listitem [ref=f4e342]:
+            - button "Video" [ref=f4e343] [cursor=pointer]
+          - listitem [ref=f4e350]:
+            - button "Streaming" [ref=f4e351] [cursor=pointer]
+          - listitem [ref=f4e361]:
+            - button "Gallery" [ref=f4e362] [cursor=pointer]
+          - listitem [ref=f4e371]:
+            - button "CMS" [ref=f4e372] [cursor=pointer]
+        - list [ref=f4e379]:
+          - listitem [ref=f4e380]: Intelligence
+          - listitem [ref=f4e381]:
+            - button "Statistics" [ref=f4e382] [cursor=pointer]
+          - listitem [ref=f4e388]:
+            - button "Analytics" [ref=f4e389] [cursor=pointer]
+          - listitem [ref=f4e396]:
+            - button "Reports" [ref=f4e397] [cursor=pointer]
+          - listitem [ref=f4e404]:
+            - button "AI" [ref=f4e405] [cursor=pointer]
+          - listitem [ref=f4e421]:
+            - button "Search" [ref=f4e422] [cursor=pointer]
+        - list [ref=f4e429]:
+          - listitem [ref=f4e430]: Commercial
+          - listitem [ref=f4e431]:
+            - button "Membership" [ref=f4e432] [cursor=pointer]
+          - listitem [ref=f4e438]:
+            - button "Sponsorship" [ref=f4e439] [cursor=pointer]
+          - listitem [ref=f4e448]:
+            - button "Ticketing" [ref=f4e449] [cursor=pointer]
+          - listitem [ref=f4e455]:
+            - button "Marketplace" [ref=f4e456] [cursor=pointer]
+          - listitem [ref=f4e464]:
+            - button "Merchandise" [ref=f4e465] [cursor=pointer]
+          - listitem [ref=f4e472]:
+            - button "Billing" [ref=f4e473] [cursor=pointer]
+          - listitem [ref=f4e480]:
+            - button "Finance" [ref=f4e481] [cursor=pointer]
+        - list [ref=f4e488]:
+          - listitem [ref=f4e489]: Fan
+          - listitem [ref=f4e490]:
+            - button "Fantasy" [ref=f4e491] [cursor=pointer]
+          - listitem [ref=f4e497]:
+            - button "Rewards" [ref=f4e498] [cursor=pointer]
+          - listitem [ref=f4e506]:
+            - button "Loyalty" [ref=f4e507] [cursor=pointer]
+          - listitem [ref=f4e513]:
+            - button "Community" [ref=f4e514] [cursor=pointer]
+          - listitem [ref=f4e523]:
+            - button "Engagement" [ref=f4e524] [cursor=pointer]
+        - list [ref=f4e531]:
+          - listitem [ref=f4e532]: Platform
+          - listitem [ref=f4e533]:
+            - button "Notifications" [ref=f4e534] [cursor=pointer]
+          - listitem [ref=f4e541]:
+            - button "Workflow" [ref=f4e542] [cursor=pointer]
+          - listitem [ref=f4e550]:
+            - button "Integrations" [ref=f4e551] [cursor=pointer]
+          - listitem [ref=f4e557]:
+            - button "Documents" [ref=f4e558] [cursor=pointer]
+          - listitem [ref=f4e564]:
+            - button "Calendar" [ref=f4e565] [cursor=pointer]
+          - listitem [ref=f4e571]:
+            - button "Events" [ref=f4e572] [cursor=pointer]
+          - listitem [ref=f4e579]:
+            - button "Whitelabel" [ref=f4e580] [cursor=pointer]
+          - listitem [ref=f4e590]:
+            - button "Settings" [ref=f4e591] [cursor=pointer]
+          - listitem [ref=f4e598]:
+            - button "Help" [ref=f4e599] [cursor=pointer]
+      - button "Collapse" [ref=f4e607] [cursor=pointer]
+  - main [ref=f4e613]:
+    - generic [ref=f4e615]:
+      - button "Media" [ref=f4e616] [cursor=pointer]
+      - button "Video" [ref=f4e621] [cursor=pointer]
+      - button "Streaming" [ref=f4e626] [cursor=pointer]
+      - button "Gallery" [ref=f4e634] [cursor=pointer]
+      - button "CMS" [ref=f4e641] [cursor=pointer]
+    - navigation [ref=f4e646]:
+      - list [ref=f4e647]:
+        - listitem [ref=f4e648]:
+          - link "Home" [ref=f4e649] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f4e650]
+        - listitem [ref=f4e653]:
+          - paragraph [ref=f4e654]: Video
+    - generic [ref=f4e656]:
+      - generic [ref=f4e657]:
+        - generic [ref=f4e658]:
+          - heading "Video Analysis" [level=4] [ref=f4e659]
+          - paragraph [ref=f4e660]: Match 24 Full Footage
+        - button [ref=f4e663] [cursor=pointer]
+      - generic [ref=f4e667]:
+        - generic [ref=f4e674] [cursor=pointer]:
+          - paragraph [ref=f4e675]: Match 24 Full Footage
+          - paragraph [ref=f4e676]: 2h 0m
+        - generic:
+          - generic:
+            - generic:
+              - generic [ref=f4e677] [cursor=pointer]
+              - generic:
+                - tablist:
+                  - tab "Overview" [selected] [ref=f4e680] [cursor=pointer]
+                  - tab "Timeline" [ref=f4e683] [cursor=pointer]
+                  - tab "Events" [ref=f4e686] [cursor=pointer]
+                  - tab "Clips" [ref=f4e689] [cursor=pointer]
+                  - tab "Tags" [ref=f4e692] [cursor=pointer]
+              - generic [ref=f4e696] [cursor=pointer]
+          - generic:
+            - generic:
+              - generic:
+                - generic [ref=f4e700]:
+                  - text: Duration
+                  - paragraph [ref=f4e702]: 2h 0m
+                - generic [ref=f4e704]:
+                  - text: Events
+                  - paragraph [ref=f4e706]: "2"
+                - generic [ref=f4e708]:
+                  - text: Clips
+                  - paragraph [ref=f4e710]: "1"
+                - generic [ref=f4e712]:
+                  - text: Tags
+                  - paragraph [ref=f4e714]: "2"
+              - generic:
+                - generic [ref=f4e715]:
+                  - heading "Video Player" [level=6] [ref=f4e718]
+                  - generic [ref=f4e722]:
+                    - paragraph [ref=f4e723]: Match 24 Full Footage
+                    - paragraph [ref=f4e724]: Match 24
+                - generic [ref=f4e725]:
+                  - heading "Video Details" [level=6] [ref=f4e728]
+                  - generic [ref=f4e729]:
+                    - generic [ref=f4e730]:
+                      - paragraph [ref=f4e731]: Description
+                      - paragraph [ref=f4e732]: Complete broadcast footage of Match 24.
+                    - generic [ref=f4e733]:
+                      - paragraph [ref=f4e734]: Duration
+                      - paragraph [ref=f4e735]: 2h 0m
+                    - generic [ref=f4e736]:
+                      - paragraph [ref=f4e737]: Match
+                      - paragraph [ref=f4e738]: Match 24
+                    - generic [ref=f4e739]:
+                      - paragraph [ref=f4e740]: Events
+                      - paragraph [ref=f4e741]: "2"
+                    - generic [ref=f4e742]:
+                      - paragraph [ref=f4e743]: Clips
+                      - paragraph [ref=f4e744]: "1"
+              - generic:
+                - heading "Tags" [level=6] [ref=f4e746]
+                - generic:
+                  - generic: full-match
+                  - generic: broadcast

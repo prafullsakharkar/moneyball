@@ -42,6 +42,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
       options,
       placeholder,
       required,
+      id,
       sx,
       children,
       ...props
@@ -49,10 +50,12 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     ref
   ) => {
     const hasError = Boolean(error);
+    const selectId = id ?? (label ? `cq-select-${label.replace(/\s+/g, '-').toLowerCase()}` : undefined);
     return (
       <Box sx={{ width: '100%' }}>
         {label && (
           <InputLabel
+            htmlFor={selectId}
             sx={{
               fontSize: '0.8125rem',
               fontWeight: 500,
@@ -80,6 +83,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         )}
         <MuiSelect
           ref={ref}
+          id={selectId}
           variant="outlined"
           size="small"
           fullWidth

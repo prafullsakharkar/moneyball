@@ -1,0 +1,32 @@
+- generic [ref=f5e5]:
+  - generic [ref=f5e6]:
+    - heading "CricketOS" [level=5] [ref=f5e10]
+    - paragraph [ref=f5e11]: Global Cricket Platform
+  - form "Sign in form" [ref=f5e12]:
+    - generic [ref=f5e13]:
+      - heading "Sign In" [level=6] [ref=f5e14]
+      - paragraph [ref=f5e15]: Welcome back to CricketOS
+    - generic [ref=f5e16]:
+      - generic [ref=f5e17]: Email
+      - generic [ref=f5e19]:
+        - textbox "Email address" [active] [ref=f5e20]:
+          - /placeholder: you@example.com
+        - group
+    - generic [ref=f5e21]:
+      - generic [ref=f5e22]: Password
+      - generic [ref=f5e24]:
+        - textbox "Password" [ref=f5e25]:
+          - /placeholder: Enter your password
+        - button "Show password" [ref=f5e26] [cursor=pointer]
+        - group
+    - generic [ref=f5e30]:
+      - generic [ref=f5e32] [cursor=pointer]:
+        - checkbox "Remember me" [ref=f5e34]
+        - generic [ref=f5e37]: Remember me
+      - link "Forgot password?" [ref=f5e39] [cursor=pointer]:
+        - /url: /auth/forgot-password
+    - button "Sign In" [ref=f5e40] [cursor=pointer]
+    - paragraph [ref=f5e41]:
+      - text: Don't have an account?
+      - link "Create one" [ref=f5e42] [cursor=pointer]:
+        - /url: /auth/register

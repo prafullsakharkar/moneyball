@@ -50,7 +50,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         variant={variantMuiMap[variant] ?? 'contained'}
         color={colorMuiMap[variant] ?? 'primary'}
         disabled={disabled || loading}
-        startIcon={loading ? <CircularProgress size={14} color="inherit" /> : props.startIcon}
+        aria-busy={loading || undefined}
+        startIcon={loading ? <CircularProgress size={14} color="inherit" aria-hidden="true" /> : props.startIcon}
         sx={sx}
         {...props}
       >

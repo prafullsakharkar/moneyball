@@ -21,7 +21,7 @@ import { useOrganizationStore } from '@stores/organizationStore';
 import { useFilteredNavigation } from '@hooks/useFilteredNavigation';
 import { layout } from '@design/tokens';
 
-interface PrimaryNavigationProps {
+interface PrimarySidebarProps {
   open: boolean;
   onClose: () => void;
   width: number;
@@ -99,7 +99,7 @@ function NavContent({ onNavigate, collapsed, onToggleCollapse }: NavContentProps
           )}
         </Box>
         {!collapsed && onToggleCollapse && (
-          <IconButton size="small" onClick={onToggleCollapse} sx={{ color: 'text.secondary' }}>
+          <IconButton size="small" onClick={onToggleCollapse} sx={{ color: 'text.secondary' }} aria-label="Collapse sidebar">
             <ChevronLeft size={16} />
           </IconButton>
         )}
@@ -231,13 +231,13 @@ function NavContent({ onNavigate, collapsed, onToggleCollapse }: NavContentProps
   );
 }
 
-export function PrimaryNavigation({
+export function PrimarySidebar({
   open,
   onClose,
   width,
   collapsed = false,
   onToggleCollapse,
-}: PrimaryNavigationProps) {
+}: PrimarySidebarProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();

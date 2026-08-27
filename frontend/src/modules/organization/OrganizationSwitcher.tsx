@@ -82,7 +82,7 @@ export function OrganizationSwitcher() {
           size="small"
           sx={{ textTransform: 'none', color: 'text.primary', fontWeight: 500 }}
         >
-          <Typography variant="body2" noWrap sx={{ maxWidth: 180 }}>
+          <Typography variant="body2" noWrap sx={{ maxWidth: { xs: 90, sm: 180 } }}>
             {currentOrganization?.name ?? 'Select Organization'}
           </Typography>
         </Button>
@@ -108,6 +108,7 @@ export function OrganizationSwitcher() {
             onChange={(e) => setSearch(e.target.value)}
             autoFocus
             slotProps={{
+              htmlInput: { 'aria-label': 'Search organizations' },
               input: {
                 startAdornment: (
                   <InputAdornment position="start">

@@ -34,12 +34,16 @@ export interface DialogProps extends Omit<MuiDialogProps, 'title'> {
 
 export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
   ({ title, subtitle, onClose, children, actions, maxWidth = 'sm', padding = 3, ...props }, ref) => {
+    const titleId = title ? 'cq-dialog-title' : undefined;
+    const descId = subtitle ? 'cq-dialog-description' : undefined;
     return (
       <MuiDialog
         ref={ref}
         maxWidth={maxWidth}
         fullWidth
         onClose={onClose}
+        aria-labelledby={titleId}
+        aria-describedby={descId}
         slotProps={{
           paper: {
             sx: {
@@ -51,6 +55,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       >
         {(title || onClose) && (
           <DialogTitle
+            id={titleId}
             sx={{
               display: 'flex',
               alignItems: 'flex-start',
@@ -65,13 +70,18 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
                 {title}
               </Typography>
               {subtitle && (
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
+                <Typography id={descId} variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
                   {subtitle}
                 </Typography>
               )}
             </Box>
             {onClose && (
-              <IconButton onClick={onClose} size="small" sx={{ mt: -0.5, mr: -1 }}>
+              <IconButton
+                onClick={onClose}
+                size="small"
+                aria-label="Close dialog"
+                sx={{ mt: -0.5, mr: -1 }}
+              >
                 <CloseIcon fontSize="small" />
               </IconButton>
             )}

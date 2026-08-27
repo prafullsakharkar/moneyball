@@ -5,15 +5,18 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import PeopleIcon from '@mui/icons-material/People';
 import { PageShell, PageHeader, StatCard, Motion, stagger } from '@shared/components';
 import { motion } from '@shared/components/motion';
-
-const stats = [
-  { label: 'Teams', value: 0, icon: <GroupsIcon />, accent: 'primary' as const },
-  { label: 'Players', value: 0, icon: <PeopleIcon />, accent: 'success' as const },
-  { label: 'Matches', value: 0, icon: <SportsCricketIcon />, accent: 'warning' as const },
-  { label: 'Competitions', value: 0, icon: <EmojiEventsIcon />, accent: 'info' as const },
-];
+import { useOrganizationStats } from '@hooks/index';
 
 export default function HomePage() {
+  const { data: stats } = useOrganizationStats();
+
+  const cards = [
+    { label: 'Teams', value: stats?.teamCount ?? 0, icon: <GroupsIcon />, accent: 'primary' as const },
+    { label: 'Players', value: stats?.playerCount ?? 0, icon: <PeopleIcon />, accent: 'success' as const },
+    { label: 'Matches', value: stats?.matchCount ?? 0, icon: <SportsCricketIcon />, accent: 'warning' as const },
+    { label: 'Competitions', value: stats?.competitionCount ?? 0, icon: <EmojiEventsIcon />, accent: 'info' as const },
+  ];
+
   return (
     <PageShell>
       <PageHeader title="Dashboard" description="Overview of your cricket platform" />
@@ -26,9 +29,14 @@ export default function HomePage() {
             gap: 2,
           }}
         >
-          {stats.map((stat) => (
+          {cards.map((stat) => (
             <Motion key={stat.label} variant="fadeUp">
-              <StatCard value={stat.value} label={stat.label} icon={stat.icon} accent={stat.accent} />
+              <StatCard
+                value={stat.value}
+                label={stat.label}
+                icon={stat.icon}
+                accent={stat.accent}
+              />
             </Motion>
           ))}
         </Box>

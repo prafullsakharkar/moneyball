@@ -21,7 +21,7 @@ export function GlobalSearch() {
         sx={{ ml: 1, flex: 1, fontSize: '0.875rem' }}
         inputProps={{ 'aria-label': 'Global search' }} />
       {query && (
-        <IconButton size="small" onClick={() => setQuery('')}>
+        <IconButton size="small" onClick={() => setQuery('')} aria-label="Clear search">
           <ClearIcon fontSize="small" />
         </IconButton>
       )}

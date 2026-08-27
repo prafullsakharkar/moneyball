@@ -1,0 +1,331 @@
+- generic [ref=f10e43]:
+  - banner [ref=f10e44]:
+    - generic [ref=f10e45]:
+      - button "Cricket Australia" [ref=f10e46] [cursor=pointer]:
+        - paragraph [ref=f10e50]: Cricket Australia
+      - textbox "Global search" [ref=f10e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f10e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f10e62] [cursor=pointer]
+      - button "Help" [ref=f10e65] [cursor=pointer]
+      - button "0 notifications" [ref=f10e69] [cursor=pointer]
+      - button "JS" [ref=f10e73] [cursor=pointer]
+  - navigation [ref=f10e75]:
+    - generic [ref=f10e77]:
+      - generic [ref=f10e78]:
+        - generic [ref=f10e83]:
+          - heading "CricketOS" [level=6] [ref=f10e84]
+          - generic [ref=f10e85]: Cricket Australia
+        - button [ref=f10e86] [cursor=pointer]
+      - generic [ref=f10e89]:
+        - list [ref=f10e90]:
+          - listitem [ref=f10e91]: Home
+          - listitem [ref=f10e92]:
+            - button "Dashboard" [ref=f10e93] [cursor=pointer]
+        - list [ref=f10e102]:
+          - listitem [ref=f10e103]: Competition
+          - listitem [ref=f10e104]:
+            - button "Tournaments" [ref=f10e105] [cursor=pointer]
+          - listitem [ref=f10e115]:
+            - button "Leagues" [ref=f10e116] [cursor=pointer]
+          - listitem [ref=f10e123]:
+            - button "Seasons" [ref=f10e124] [cursor=pointer]
+          - listitem [ref=f10e130]:
+            - button "Fixtures" [ref=f10e131] [cursor=pointer]
+          - listitem [ref=f10e137]:
+            - button "Matches" [ref=f10e138] [cursor=pointer]
+          - listitem [ref=f10e144]:
+            - button "Scoring" [ref=f10e145] [cursor=pointer]
+          - listitem [ref=f10e152]:
+            - button "Officials" [ref=f10e153] [cursor=pointer]
+        - list [ref=f10e163]:
+          - listitem [ref=f10e164]: Participants
+          - listitem [ref=f10e165]:
+            - button "Players" [ref=f10e166] [cursor=pointer]
+          - listitem [ref=f10e173]:
+            - button "Teams" [ref=f10e174] [cursor=pointer]
+          - listitem [ref=f10e183]:
+            - button "Squads" [ref=f10e184] [cursor=pointer]
+          - listitem [ref=f10e192]:
+            - button "Coaches" [ref=f10e193] [cursor=pointer]
+          - listitem [ref=f10e200]:
+            - button "Staff" [ref=f10e201] [cursor=pointer]
+          - listitem [ref=f10e208]:
+            - button "Selectors" [ref=f10e209] [cursor=pointer]
+        - list [ref=f10e217]:
+          - listitem [ref=f10e218]: Development
+          - listitem [ref=f10e219]:
+            - button "Academy" [ref=f10e220] [cursor=pointer]
+          - listitem [ref=f10e229]:
+            - button "Training" [ref=f10e230] [cursor=pointer]
+          - listitem [ref=f10e240]:
+            - button "Fitness" [ref=f10e241] [cursor=pointer]
+          - listitem [ref=f10e248]:
+            - button "Medical" [ref=f10e249] [cursor=pointer]
+          - listitem [ref=f10e257]:
+            - button "Performance" [ref=f10e258] [cursor=pointer]
+          - listitem [ref=f10e264]:
+            - button "Scouting" [ref=f10e265] [cursor=pointer]
+        - list [ref=f10e274]:
+          - listitem [ref=f10e275]: Facilities
+          - listitem [ref=f10e276]:
+            - button "Grounds" [ref=f10e277] [cursor=pointer]
+          - listitem [ref=f10e284]:
+            - button "Facilities" [ref=f10e285] [cursor=pointer]
+          - listitem [ref=f10e293]:
+            - button "Equipment" [ref=f10e294] [cursor=pointer]
+          - listitem [ref=f10e302]:
+            - button "Inventory" [ref=f10e303] [cursor=pointer]
+          - listitem [ref=f10e317]:
+            - button "Devices" [ref=f10e318] [cursor=pointer]
+          - listitem [ref=f10e325]:
+            - button "Maintenance" [ref=f10e326] [cursor=pointer]
+        - list [ref=f10e332]:
+          - listitem [ref=f10e333]: Media
+          - listitem [ref=f10e334]:
+            - button "Media" [ref=f10e335] [cursor=pointer]
+          - listitem [ref=f10e342]:
+            - button "Video" [ref=f10e343] [cursor=pointer]
+          - listitem [ref=f10e350]:
+            - button "Streaming" [ref=f10e351] [cursor=pointer]
+          - listitem [ref=f10e361]:
+            - button "Gallery" [ref=f10e362] [cursor=pointer]
+          - listitem [ref=f10e371]:
+            - button "CMS" [ref=f10e372] [cursor=pointer]
+        - list [ref=f10e379]:
+          - listitem [ref=f10e380]: Intelligence
+          - listitem [ref=f10e381]:
+            - button "Statistics" [ref=f10e382] [cursor=pointer]
+          - listitem [ref=f10e388]:
+            - button "Analytics" [ref=f10e389] [cursor=pointer]
+          - listitem [ref=f10e396]:
+            - button "Reports" [ref=f10e397] [cursor=pointer]
+          - listitem [ref=f10e404]:
+            - button "AI" [ref=f10e405] [cursor=pointer]
+          - listitem [ref=f10e421]:
+            - button "Search" [ref=f10e422] [cursor=pointer]
+        - list [ref=f10e429]:
+          - listitem [ref=f10e430]: Commercial
+          - listitem [ref=f10e431]:
+            - button "Membership" [ref=f10e432] [cursor=pointer]
+          - listitem [ref=f10e438]:
+            - button "Sponsorship" [ref=f10e439] [cursor=pointer]
+          - listitem [ref=f10e448]:
+            - button "Ticketing" [ref=f10e449] [cursor=pointer]
+          - listitem [ref=f10e455]:
+            - button "Marketplace" [ref=f10e456] [cursor=pointer]
+          - listitem [ref=f10e464]:
+            - button "Merchandise" [ref=f10e465] [cursor=pointer]
+          - listitem [ref=f10e472]:
+            - button "Billing" [ref=f10e473] [cursor=pointer]
+          - listitem [ref=f10e480]:
+            - button "Finance" [ref=f10e481] [cursor=pointer]
+        - list [ref=f10e488]:
+          - listitem [ref=f10e489]: Fan
+          - listitem [ref=f10e490]:
+            - button "Fantasy" [ref=f10e491] [cursor=pointer]
+          - listitem [ref=f10e497]:
+            - button "Rewards" [ref=f10e498] [cursor=pointer]
+          - listitem [ref=f10e506]:
+            - button "Loyalty" [ref=f10e507] [cursor=pointer]
+          - listitem [ref=f10e513]:
+            - button "Community" [ref=f10e514] [cursor=pointer]
+          - listitem [ref=f10e523]:
+            - button "Engagement" [ref=f10e524] [cursor=pointer]
+        - list [ref=f10e531]:
+          - listitem [ref=f10e532]: Platform
+          - listitem [ref=f10e533]:
+            - button "Notifications" [ref=f10e534] [cursor=pointer]
+          - listitem [ref=f10e541]:
+            - button "Workflow" [ref=f10e542] [cursor=pointer]
+          - listitem [ref=f10e550]:
+            - button "Integrations" [ref=f10e551] [cursor=pointer]
+          - listitem [ref=f10e557]:
+            - button "Documents" [ref=f10e558] [cursor=pointer]
+          - listitem [ref=f10e564]:
+            - button "Calendar" [ref=f10e565] [cursor=pointer]
+          - listitem [ref=f10e571]:
+            - button "Events" [ref=f10e572] [cursor=pointer]
+          - listitem [ref=f10e579]:
+            - button "Whitelabel" [ref=f10e580] [cursor=pointer]
+          - listitem [ref=f10e590]:
+            - button "Settings" [ref=f10e591] [cursor=pointer]
+          - listitem [ref=f10e598]:
+            - button "Help" [ref=f10e599] [cursor=pointer]
+      - button "Collapse" [ref=f10e607] [cursor=pointer]
+  - main [ref=f10e613]:
+    - generic [ref=f10e615]:
+      - button "Players" [ref=f10e616] [cursor=pointer]
+      - button "Teams" [ref=f10e621] [cursor=pointer]
+      - button "Squads" [ref=f10e628] [cursor=pointer]
+      - button "Coaches" [ref=f10e634] [cursor=pointer]
+      - button "Staff" [ref=f10e639] [cursor=pointer]
+      - button "Selectors" [ref=f10e644] [cursor=pointer]
+    - navigation [ref=f10e650]:
+      - list [ref=f10e651]:
+        - listitem [ref=f10e652]:
+          - link "Home" [ref=f10e653] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f10e654]
+        - listitem [ref=f10e657]:
+          - link "Cricket Australia" [ref=f10e658] [cursor=pointer]:
+            - /url: /organizations
+        - listitem [ref=f10e659]
+        - listitem [ref=f10e662]:
+          - link "Players" [ref=f10e663] [cursor=pointer]:
+            - /url: /players
+        - listitem [ref=f10e664]
+        - listitem [ref=f10e667]:
+          - paragraph [ref=f10e668]: Ply_001
+    - generic [ref=f10e670]:
+      - generic [ref=f10e671]:
+        - generic [ref=f10e672]:
+          - heading "Player Workspace" [level=4] [ref=f10e673]
+          - paragraph [ref=f10e674]: Premium player workspace
+        - button "Refresh" [ref=f10e677] [cursor=pointer]
+      - generic [ref=f10e678]:
+        - generic [ref=f10e680]:
+          - generic [ref=f10e682] [cursor=pointer]:
+            - generic [ref=f10e683]: VK
+            - generic [ref=f10e685]:
+              - paragraph [ref=f10e686]: V. Kohli
+              - paragraph [ref=f10e687]: Batsman
+          - generic [ref=f10e689] [cursor=pointer]:
+            - generic [ref=f10e690]: JB
+            - generic [ref=f10e692]:
+              - paragraph [ref=f10e693]: J. Bumrah
+              - paragraph [ref=f10e694]: Bowler
+          - generic [ref=f10e696] [cursor=pointer]:
+            - generic [ref=f10e697]: RJ
+            - generic [ref=f10e699]:
+              - paragraph [ref=f10e700]: R. Jadeja
+              - paragraph [ref=f10e701]: All-rounder
+          - generic [ref=f10e703] [cursor=pointer]:
+            - generic [ref=f10e704]: MD
+            - generic [ref=f10e706]:
+              - paragraph [ref=f10e707]: MS Dhoni
+              - paragraph [ref=f10e708]: Wicket-keeper
+          - generic [ref=f10e710] [cursor=pointer]:
+            - generic [ref=f10e711]: RS
+            - generic [ref=f10e713]:
+              - paragraph [ref=f10e714]: R. Sharma
+              - paragraph [ref=f10e715]: Batsman
+          - generic [ref=f10e717] [cursor=pointer]:
+            - generic [ref=f10e718]: KR
+            - generic [ref=f10e720]:
+              - paragraph [ref=f10e721]: KL Rahul
+              - paragraph [ref=f10e722]: Wicket-keeper
+        - generic:
+          - generic [ref=f10e723]:
+            - generic [ref=f10e724]:
+              - generic [ref=f10e725]: VK
+              - generic [ref=f10e726]: BAT
+            - generic [ref=f10e727]:
+              - generic [ref=f10e728]:
+                - paragraph [ref=f10e729]: V. Kohli
+                - generic [ref=f10e730]: "#18"
+                - generic [ref=f10e732]: Active
+              - generic [ref=f10e734]:
+                - paragraph [ref=f10e735]: Batsman
+                - paragraph [ref=f10e736]: Right-hand
+                - paragraph [ref=f10e737]: Right-arm medium
+                - paragraph [ref=f10e738]: Australia Men
+                - paragraph [ref=f10e739]: India
+              - generic [ref=f10e740]:
+                - generic [ref=f10e741]: captain
+                - generic [ref=f10e743]: batsman
+            - generic [ref=f10e745]:
+              - generic [ref=f10e746]:
+                - paragraph [ref=f10e747]: Bat Avg
+                - paragraph [ref=f10e748]: "56.08"
+              - generic [ref=f10e749]:
+                - paragraph [ref=f10e750]: Strike Rate
+                - paragraph [ref=f10e751]: "92.8"
+              - generic [ref=f10e752]:
+                - paragraph [ref=f10e753]: Wickets
+                - paragraph [ref=f10e754]: "4"
+          - generic:
+            - generic:
+              - generic [ref=f10e755] [cursor=pointer]
+              - generic:
+                - tablist:
+                  - tab "Overview" [selected] [ref=f10e758] [cursor=pointer]
+                  - tab "Statistics" [ref=f10e761] [cursor=pointer]
+                  - tab "Batting" [ref=f10e764] [cursor=pointer]
+                  - tab "Bowling" [ref=f10e768] [cursor=pointer]
+                  - tab "Fielding" [ref=f10e772] [cursor=pointer]
+                  - tab "Matches" [ref=f10e777] [cursor=pointer]
+                  - tab "Performance" [ref=f10e780] [cursor=pointer]
+                  - tab "Training" [ref=f10e783] [cursor=pointer]
+                  - tab "Fitness" [ref=f10e786] [cursor=pointer]
+                  - tab "Medical" [ref=f10e790] [cursor=pointer]
+                  - tab "Scouting" [ref=f10e794] [cursor=pointer]
+                  - tab "Video" [ref=f10e797] [cursor=pointer]
+                  - tab "AI Insights" [ref=f10e800] [cursor=pointer]
+              - generic [ref=f10e805] [cursor=pointer]
+          - generic:
+            - generic:
+              - generic:
+                - generic [ref=f10e809]:
+                  - text: Matches
+                  - paragraph [ref=f10e811]: "280"
+                - generic [ref=f10e813]:
+                  - text: Runs
+                  - paragraph [ref=f10e815]: "12898"
+                - generic [ref=f10e817]:
+                  - text: Wickets
+                  - paragraph [ref=f10e819]: "4"
+                - generic [ref=f10e821]:
+                  - text: Ranking
+                  - paragraph [ref=f10e823]: "#2"
+              - generic:
+                - generic [ref=f10e824]:
+                  - heading "Batting Summary" [level=6] [ref=f10e827]
+                  - generic [ref=f10e828]:
+                    - generic [ref=f10e829]:
+                      - generic [ref=f10e830]:
+                        - generic [ref=f10e831]: Batting Average
+                        - paragraph [ref=f10e832]: "56.08"
+                      - progressbar [ref=f10e833]
+                    - generic [ref=f10e835]:
+                      - generic [ref=f10e836]:
+                        - generic [ref=f10e837]: Strike Rate
+                        - paragraph [ref=f10e838]: "92.8"
+                      - progressbar [ref=f10e839]
+                    - generic [ref=f10e841]:
+                      - generic [ref=f10e842]:
+                        - generic [ref=f10e843]: Highest Score
+                        - paragraph [ref=f10e844]: "183"
+                      - progressbar [ref=f10e845]
+                - generic [ref=f10e847]:
+                  - heading "Bowling Summary" [level=6] [ref=f10e850]
+                  - generic [ref=f10e851]:
+                    - generic [ref=f10e852]:
+                      - generic [ref=f10e853]:
+                        - generic [ref=f10e854]: Bowling Average
+                        - paragraph [ref=f10e855]: "170.00"
+                      - progressbar [ref=f10e856]
+                    - generic [ref=f10e858]:
+                      - generic [ref=f10e859]:
+                        - generic [ref=f10e860]: Economy Rate
+                        - paragraph [ref=f10e861]: "6.38"
+                      - progressbar [ref=f10e862]
+                    - generic [ref=f10e864]:
+                      - generic [ref=f10e865]:
+                        - generic [ref=f10e866]: Best Bowling
+                        - paragraph [ref=f10e867]: 1/15
+                      - progressbar [ref=f10e868]
+              - generic:
+                - generic [ref=f10e870]:
+                  - heading "Recent Form" [level=6] [ref=f10e873]
+                  - generic [ref=f10e874]:
+                    - generic "Won" [ref=f10e875]: W
+                    - generic "Won" [ref=f10e876]: W
+                    - generic "Lost" [ref=f10e877]: L
+                    - generic "Won" [ref=f10e878]: W
+                    - generic "Draw" [ref=f10e879]: D
+                - generic [ref=f10e880]:
+                  - heading "Availability" [level=6] [ref=f10e883]
+                  - generic [ref=f10e884]:
+                    - generic [ref=f10e885]: available
+                    - paragraph [ref=f10e887]: Available for selection

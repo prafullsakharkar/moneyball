@@ -4,6 +4,7 @@ import { Box, Avatar, Chip, TablePagination } from '@mui/material';
 import { Search, Plus, ArrowUpRight } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { organizationService } from '@api/organization';
+import { useHasPermission } from '@hooks/index';
 import {
   PageShell,
   PageHeader,
@@ -50,6 +51,8 @@ export default function OrganizationListPage() {
   const [typeFilter, setTypeFilter] = useState<string>('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const canManageOrganizations = useHasPermission('organization', 'manage');
 
   const { data, isLoading } = useQuery({
     queryKey: ['organizations', { search, type: typeFilter, page: page + 1, limit: rowsPerPage }],
@@ -111,9 +114,11 @@ export default function OrganizationListPage() {
         title="Organizations"
         description="Manage all organizations on the platform"
         actions={
-          <Button startIcon={<Plus size={16} />} variant="primary" size="small">
-            New Organization
-          </Button>
+          canManageOrganizations ? (
+            <Button startIcon={<Plus size={16} />} variant="primary" size="small">
+              New Organization
+            </Button>
+          ) : undefined
         }
       />
 
@@ -123,7 +128,7 @@ export default function OrganizationListPage() {
           value={search}
           onChange={(e) => { setSearch(e.target.value); setPage(0); }}
           size="small"
-          sx={{ minWidth: 280 }}
+          sx={{ minWidth: 280, width: { xs: '100%', sm: 'auto' } }}
           slotProps={{
             input: {
               startAdornment: <Search size={16} />,

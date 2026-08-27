@@ -28,6 +28,8 @@ export function ErrorState({
 }: ErrorStateProps) {
   return (
     <Box
+      role="alert"
+      aria-live="assertive"
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -39,6 +41,7 @@ export function ErrorState({
       }}
     >
       <Box
+        aria-hidden="true"
         sx={{
           width: 64,
           height: 64,

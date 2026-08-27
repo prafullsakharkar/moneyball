@@ -1,0 +1,230 @@
+- generic [ref=f6e43]:
+  - banner [ref=f6e44]:
+    - generic [ref=f6e45]:
+      - button "Cricket Australia" [ref=f6e46] [cursor=pointer]:
+        - paragraph [ref=f6e50]: Cricket Australia
+      - textbox "Global search" [ref=f6e58]:
+        - /placeholder: Search…
+      - button "Open command palette" [ref=f6e59] [cursor=pointer]
+      - button "Switch to dark mode" [ref=f6e62] [cursor=pointer]
+      - button "Help" [ref=f6e65] [cursor=pointer]
+      - button "0 notifications" [ref=f6e69] [cursor=pointer]
+      - button "JS" [ref=f6e73] [cursor=pointer]
+  - navigation [ref=f6e75]:
+    - generic [ref=f6e77]:
+      - generic [ref=f6e78]:
+        - generic [ref=f6e83]:
+          - heading "CricketOS" [level=6] [ref=f6e84]
+          - generic [ref=f6e85]: Cricket Australia
+        - button [ref=f6e86] [cursor=pointer]
+      - generic [ref=f6e89]:
+        - list [ref=f6e90]:
+          - listitem [ref=f6e91]: Home
+          - listitem [ref=f6e92]:
+            - button "Dashboard" [ref=f6e93] [cursor=pointer]
+        - list [ref=f6e102]:
+          - listitem [ref=f6e103]: Competition
+          - listitem [ref=f6e104]:
+            - button "Tournaments" [ref=f6e105] [cursor=pointer]
+          - listitem [ref=f6e115]:
+            - button "Leagues" [ref=f6e116] [cursor=pointer]
+          - listitem [ref=f6e123]:
+            - button "Seasons" [ref=f6e124] [cursor=pointer]
+          - listitem [ref=f6e130]:
+            - button "Fixtures" [ref=f6e131] [cursor=pointer]
+          - listitem [ref=f6e137]:
+            - button "Matches" [ref=f6e138] [cursor=pointer]
+          - listitem [ref=f6e144]:
+            - button "Scoring" [ref=f6e145] [cursor=pointer]
+          - listitem [ref=f6e152]:
+            - button "Officials" [ref=f6e153] [cursor=pointer]
+        - list [ref=f6e163]:
+          - listitem [ref=f6e164]: Participants
+          - listitem [ref=f6e165]:
+            - button "Players" [ref=f6e166] [cursor=pointer]
+          - listitem [ref=f6e173]:
+            - button "Teams" [ref=f6e174] [cursor=pointer]
+          - listitem [ref=f6e183]:
+            - button "Squads" [ref=f6e184] [cursor=pointer]
+          - listitem [ref=f6e192]:
+            - button "Coaches" [ref=f6e193] [cursor=pointer]
+          - listitem [ref=f6e200]:
+            - button "Staff" [ref=f6e201] [cursor=pointer]
+          - listitem [ref=f6e208]:
+            - button "Selectors" [ref=f6e209] [cursor=pointer]
+        - list [ref=f6e217]:
+          - listitem [ref=f6e218]: Development
+          - listitem [ref=f6e219]:
+            - button "Academy" [ref=f6e220] [cursor=pointer]
+          - listitem [ref=f6e229]:
+            - button "Training" [ref=f6e230] [cursor=pointer]
+          - listitem [ref=f6e240]:
+            - button "Fitness" [ref=f6e241] [cursor=pointer]
+          - listitem [ref=f6e248]:
+            - button "Medical" [ref=f6e249] [cursor=pointer]
+          - listitem [ref=f6e257]:
+            - button "Performance" [ref=f6e258] [cursor=pointer]
+          - listitem [ref=f6e264]:
+            - button "Scouting" [ref=f6e265] [cursor=pointer]
+        - list [ref=f6e274]:
+          - listitem [ref=f6e275]: Facilities
+          - listitem [ref=f6e276]:
+            - button "Grounds" [ref=f6e277] [cursor=pointer]
+          - listitem [ref=f6e284]:
+            - button "Facilities" [ref=f6e285] [cursor=pointer]
+          - listitem [ref=f6e293]:
+            - button "Equipment" [ref=f6e294] [cursor=pointer]
+          - listitem [ref=f6e302]:
+            - button "Inventory" [ref=f6e303] [cursor=pointer]
+          - listitem [ref=f6e317]:
+            - button "Devices" [ref=f6e318] [cursor=pointer]
+          - listitem [ref=f6e325]:
+            - button "Maintenance" [ref=f6e326] [cursor=pointer]
+        - list [ref=f6e332]:
+          - listitem [ref=f6e333]: Media
+          - listitem [ref=f6e334]:
+            - button "Media" [ref=f6e335] [cursor=pointer]
+          - listitem [ref=f6e342]:
+            - button "Video" [ref=f6e343] [cursor=pointer]
+          - listitem [ref=f6e350]:
+            - button "Streaming" [ref=f6e351] [cursor=pointer]
+          - listitem [ref=f6e361]:
+            - button "Gallery" [ref=f6e362] [cursor=pointer]
+          - listitem [ref=f6e371]:
+            - button "CMS" [ref=f6e372] [cursor=pointer]
+        - list [ref=f6e379]:
+          - listitem [ref=f6e380]: Intelligence
+          - listitem [ref=f6e381]:
+            - button "Statistics" [ref=f6e382] [cursor=pointer]
+          - listitem [ref=f6e388]:
+            - button "Analytics" [ref=f6e389] [cursor=pointer]
+          - listitem [ref=f6e396]:
+            - button "Reports" [ref=f6e397] [cursor=pointer]
+          - listitem [ref=f6e404]:
+            - button "AI" [ref=f6e405] [cursor=pointer]
+          - listitem [ref=f6e421]:
+            - button "Search" [ref=f6e422] [cursor=pointer]
+        - list [ref=f6e429]:
+          - listitem [ref=f6e430]: Commercial
+          - listitem [ref=f6e431]:
+            - button "Membership" [ref=f6e432] [cursor=pointer]
+          - listitem [ref=f6e438]:
+            - button "Sponsorship" [ref=f6e439] [cursor=pointer]
+          - listitem [ref=f6e448]:
+            - button "Ticketing" [ref=f6e449] [cursor=pointer]
+          - listitem [ref=f6e455]:
+            - button "Marketplace" [ref=f6e456] [cursor=pointer]
+          - listitem [ref=f6e464]:
+            - button "Merchandise" [ref=f6e465] [cursor=pointer]
+          - listitem [ref=f6e472]:
+            - button "Billing" [ref=f6e473] [cursor=pointer]
+          - listitem [ref=f6e480]:
+            - button "Finance" [ref=f6e481] [cursor=pointer]
+        - list [ref=f6e488]:
+          - listitem [ref=f6e489]: Fan
+          - listitem [ref=f6e490]:
+            - button "Fantasy" [ref=f6e491] [cursor=pointer]
+          - listitem [ref=f6e497]:
+            - button "Rewards" [ref=f6e498] [cursor=pointer]
+          - listitem [ref=f6e506]:
+            - button "Loyalty" [ref=f6e507] [cursor=pointer]
+          - listitem [ref=f6e513]:
+            - button "Community" [ref=f6e514] [cursor=pointer]
+          - listitem [ref=f6e523]:
+            - button "Engagement" [ref=f6e524] [cursor=pointer]
+        - list [ref=f6e531]:
+          - listitem [ref=f6e532]: Platform
+          - listitem [ref=f6e533]:
+            - button "Notifications" [ref=f6e534] [cursor=pointer]
+          - listitem [ref=f6e541]:
+            - button "Workflow" [ref=f6e542] [cursor=pointer]
+          - listitem [ref=f6e550]:
+            - button "Integrations" [ref=f6e551] [cursor=pointer]
+          - listitem [ref=f6e557]:
+            - button "Documents" [ref=f6e558] [cursor=pointer]
+          - listitem [ref=f6e564]:
+            - button "Calendar" [ref=f6e565] [cursor=pointer]
+          - listitem [ref=f6e571]:
+            - button "Events" [ref=f6e572] [cursor=pointer]
+          - listitem [ref=f6e579]:
+            - button "Whitelabel" [ref=f6e580] [cursor=pointer]
+          - listitem [ref=f6e590]:
+            - button "Settings" [ref=f6e591] [cursor=pointer]
+          - listitem [ref=f6e598]:
+            - button "Help" [ref=f6e599] [cursor=pointer]
+      - button "Collapse" [ref=f6e607] [cursor=pointer]
+  - main [ref=f6e613]:
+    - generic [ref=f6e615]:
+      - button "Statistics" [ref=f6e616] [cursor=pointer]
+      - button "Analytics" [ref=f6e620] [cursor=pointer]
+      - button "Reports" [ref=f6e625] [cursor=pointer]
+      - button "AI" [ref=f6e630] [cursor=pointer]
+      - button "Search" [ref=f6e644] [cursor=pointer]
+    - navigation [ref=f6e649]:
+      - list [ref=f6e650]:
+        - listitem [ref=f6e651]:
+          - link "Home" [ref=f6e652] [cursor=pointer]:
+            - /url: /
+        - listitem [ref=f6e653]
+        - listitem [ref=f6e656]:
+          - paragraph [ref=f6e657]: Analytics
+    - generic [ref=f6e659]:
+      - generic [ref=f6e660]:
+        - generic [ref=f6e661]:
+          - heading "Analytics" [level=4] [ref=f6e662]
+          - paragraph [ref=f6e663]: Answering what changed, why, and who is driving performance.
+        - button "Refresh" [ref=f6e666] [cursor=pointer]
+      - generic [ref=f6e668]:
+        - tablist [ref=f6e670]:
+          - tab "Overview" [selected] [ref=f6e671] [cursor=pointer]
+          - tab "Questions" [ref=f6e675] [cursor=pointer]
+          - tab "Insights" [ref=f6e679] [cursor=pointer]
+          - tab "Trends" [ref=f6e682] [cursor=pointer]
+          - tab "Comparisons" [ref=f6e685] [cursor=pointer]
+          - tab "Heatmap" [ref=f6e688] [cursor=pointer]
+          - tab "Scatter" [ref=f6e691] [cursor=pointer]
+        - generic [ref=f6e697] [cursor=pointer]
+      - generic [ref=f6e701]:
+        - generic [ref=f6e702]:
+          - generic [ref=f6e704]:
+            - text: Questions answered
+            - paragraph [ref=f6e706]: "4"
+          - generic [ref=f6e708]:
+            - text: Active insights
+            - paragraph [ref=f6e710]: "2"
+          - generic [ref=f6e712]:
+            - text: Positive signals
+            - paragraph [ref=f6e714]: "1"
+          - generic [ref=f6e716]:
+            - text: Concerns
+            - paragraph [ref=f6e718]: "1"
+        - generic [ref=f6e719]:
+          - generic [ref=f6e720]:
+            - heading "Key Questions" [level=6] [ref=f6e723]
+            - generic [ref=f6e724]:
+              - generic [ref=f6e725]:
+                - paragraph [ref=f6e726]: What changed in the last 5 matches?
+                - paragraph [ref=f6e727]: The batting strike rate improved from 128 to 152, driven by a more aggressive powerplay approach.
+              - generic [ref=f6e728]:
+                - paragraph [ref=f6e729]: Why did bowling performance decline?
+                - paragraph [ref=f6e730]: Economy rate rose from 7.2 to 8.6 in the death overs (16-20), largely due to slower-ball execution issues.
+              - generic [ref=f6e731]:
+                - paragraph [ref=f6e732]: Who is improving?
+                - paragraph [ref=f6e733]: Glenn Maxwell has increased his boundary percentage from 18% to 27% over the season.
+              - generic [ref=f6e734]:
+                - paragraph [ref=f6e735]: Where is the team losing matches?
+                - paragraph [ref=f6e736]: The team has lost 4 of 5 matches when conceding more than 40 runs in the final 4 overs.
+          - generic [ref=f6e737]:
+            - heading "Insight Signals" [level=6] [ref=f6e740]
+            - generic [ref=f6e741]:
+              - generic [ref=f6e742]:
+                - paragraph [ref=f6e745]: Powerplay aggression paying off
+                - paragraph [ref=f6e746]: Increased boundary rate in the first 6 overs correlates with higher win probability.
+              - generic [ref=f6e747]:
+                - paragraph [ref=f6e750]: Death over economy slipping
+                - paragraph [ref=f6e751]: Economy in overs 16-20 has risen steadily, a concern for close finishes.
+        - generic [ref=f6e752]:
+          - heading "Average absolute change across metrics" [level=6] [ref=f6e755]
+          - generic [ref=f6e756]:
+            - paragraph [ref=f6e757]: "1.4"
+            - paragraph [ref=f6e758]: units per metric
